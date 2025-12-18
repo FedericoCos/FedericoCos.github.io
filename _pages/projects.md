@@ -44,13 +44,14 @@ toc_icon: "gamepad"
 
 ## Game Development
 
+### Nailed It
+
 <div class="project-card">
   <div class="project-image">
     <img src="/assets/images/nailed-it.png" alt="Nailed It Gameplay">
   </div>
 
-  <div class="project-info">
-    <h3>1. Nailed It</h3>
+  <div class="project-info">d
     <p><em>Developed for the "Video Game Design and Programming" course at Politecnico di Milano.</em></p>
     
     <p><strong>The Concept:</strong><br>
@@ -77,6 +78,47 @@ toc_icon: "gamepad"
   <div class="video-item">
     <p><strong>Gameplay Walkthrough</strong></p>
     {% include video id="S7PVqLQhDXk&t" provider="youtube" %}
+  </div>
+</div>
+
+<hr>
+
+### First Vulkan Engine
+
+<div class="project-card">
+  <div class="project-image">
+    <img src="/assets/images/CG_wall.png" alt="Vulkan Engine Demo">
+  </div>
+
+  <div class="project-info">
+    <p><em>A low-level rasterization engine built from scratch to master modern graphics APIs.</em></p>
+    
+    <p><strong>The Concept:</strong><br>
+    This project was a deep dive into the complexities of explicit rendering APIs. I architected a custom C++ engine to handle the verbose nature of Vulkan, focusing on efficient resource management and pipeline synchronization. To benchmark the renderer, I developed a vehicle simulation where a car navigates a track, handling collisions and object collection (flags) with high performance.</p>
+
+    <ul>
+      <li><strong>Focus:</strong> Graphics Pipeline, Shader Logic (GLSL), Memory Optimization</li>
+      <li><strong>Stack:</strong> C++, Vulkan SDK</li>
+      <li><strong>Key Feature:</strong> Custom collision detection system & optimized command buffer recording.</li>
+    </ul>
+
+    </div>
+</div>
+
+<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Engine Showcase</h4>
+
+<div class="video-container">
+  <div class="video-item">
+    <p><strong>Gameplay Demo</strong></p>
+    <video width="100%" controls style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+      <source src="/assets/videos/CG_video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <div class="video-item">
+    <p><strong>Debug / Wireframe View</strong></p>
+    <img src="/assets/images/CG_img.png" alt="Vulkan Engine Detail View" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
   </div>
 </div>
 
