@@ -51,7 +51,7 @@ toc_icon: "gamepad"
     <img src="/assets/images/nailed-it.png" alt="Nailed It Gameplay">
   </div>
 
-  <div class="project-info">d
+  <div class="project-info">
     <p><em>Developed for the "Video Game Design and Programming" course at Politecnico di Milano.</em></p>
     
     <p><strong>The Concept:</strong><br>
@@ -85,7 +85,7 @@ toc_icon: "gamepad"
 
 <div class="project-card">
   <div class="project-image">
-    <img src="/assets/images/CG_wall.png" alt="Vulkan Engine Demo">
+    <img src="/assets/images/CG_img.png" alt="Vulkan Engine Demo">
   </div>
 
   <div class="project-info">
@@ -112,11 +112,6 @@ toc_icon: "gamepad"
       <source src="/assets/videos/CG_video.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-  </div>
-
-  <div class="video-item">
-    <p><strong>Debug / Wireframe View</strong></p>
-    <img src="/assets/images/CG_img.png" alt="Vulkan Engine Detail View" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
   </div>
 </div>
 
