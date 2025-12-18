@@ -81,8 +81,6 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-<hr>
-
 ### First Vulkan Engine
 
 <div class="project-card">
