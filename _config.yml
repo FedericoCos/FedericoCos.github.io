@@ -19,7 +19,6 @@ description: >- # this means to ignore newlines until "baseurl:"
   Graphics Engine Engineer | C++ | OpenGL | Vulkan | Unity | PyGame
 github_username: FedericoCos
 minimal_mistakes_skin: neon
-url: "https://FedericoCos.github.io"
 search: true
 
 # Build settings
