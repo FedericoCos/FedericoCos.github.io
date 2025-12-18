@@ -6,52 +6,78 @@ author_profile: true
 toc: true
 toc_label: "My Portfolio"
 toc_icon: "gamepad"
-
-# -----------------------
-# PROJECT DATA: Nailed It
-# -----------------------
-project_nailed_it:
-  - image_path: "/assets/images/nailed-it.png"
-    alt: "Nailed It Gameplay"
-    title: "Nailed It"
-    excerpt: "A 2D Puzzle-Platformer where you **nail yourself to walls** to create your own platforms. Developed with **Unity** and **C#**."
-    url: "https://polimi-game-collective.itch.io/nailed-it"
-    btn_label: "Play on Itch.io"
-    btn_class: "btn--primary"
-
 ---
+
+<style>
+  .project-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: flex-start; /* This forces Top Alignment */
+  }
+  .project-image {
+    flex: 1 1 400px; /* Takes up space but shrinks if needed */
+  }
+  .project-image img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    width: 100%;
+  }
+  .project-info {
+    flex: 1 1 300px;
+  }
+  .project-info h3 {
+    margin-top: 0; /* Removes default top spacing to align with image */
+  }
+  .video-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 1rem;
+  }
+  .video-item {
+    flex: 1 1 45%; /* Videos take roughly half width each */
+    min-width: 300px; /* Forces stacking on mobile */
+  }
+</style>
 
 ## Game Development
 
-### 1. Nailed It
-*Developed for the "Video Game Design and Programming" course at Politecnico di Milano.*
-
-{% include feature_row id="project_nailed_it" type="left" %}
-
-**The Concept:**
-"Nailed It" mixes classic platforming with a unique point & shoot mechanic. In this world, platforms are often missing. To progress, you must **shoot nails** into the environment or **nail your own character** to walls, using your past bodies as steps to reach new heights.
-
-**My Role:** Group Leader & Gameplay Programmer.
-* **Tech Stack:** Unity (2D), C#.
-* **Key Contribution:** Designed the core "nailing" physics mechanic and managed the Git workflow for the 4-person team.
-
-**Team:**
-* **Costantini Federico** (Leader & Programmer)
-* **Zaanca Federico** (Programmer)
-* **Xie Valerio** (Artist)
-* **Sas Alexandro** (Artist)
-
-#### Media Showcase
-
-<div class="grid__wrapper">
-  <div class="grid__item">
-    <h4>Trailer</h4>
-    {% include video id="NQ8VkvjYgpw" provider="youtube" %}
+<div class="project-card">
+  <div class="project-image">
+    <img src="/assets/images/nailed-it.png" alt="Nailed It Gameplay">
   </div>
-  <div class="grid__item">
-    <h4>Gameplay Walkthrough</h4>
-    {% include video id="S7PVqLQhDXk" provider="youtube" %}
+
+  <div class="project-info">
+    <h3>1. Nailed It</h3>
+    <p><em>Developed for the "Video Game Design and Programming" course at Politecnico di Milano.</em></p>
+    
+    <p><strong>The Concept:</strong><br>
+    "Nailed It" is a 2D puzzle-platformer built on a unique mechanic: <strong>you are the platform.</strong> In a world with limited footing, you must shoot nails into walls and fix your own character to the environment, sacrificing your previous body to create a step for your next life to climb.</p>
+
+    <ul>
+      <li><strong>Role:</strong> Group Leader & Programmer</li>
+      <li><strong>Stack:</strong> Unity (2D), C#</li>
+      <li><strong>Team:</strong> Costantini Federico, Zanca Federico, Xie Valerio, Sas Alexandro</li>
+    </ul>
+
+    <a href="https://polimi-game-collective.itch.io/nailed-it" class="btn btn--primary btn--large">Play on Itch.io</a>
   </div>
 </div>
 
----
+<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Media Showcase</h4>
+
+<div class="video-container">
+  <div class="video-item">
+    <p><strong>Trailer</strong></p>
+    {% include video id="NQ8VkvjYgpw&t" provider="youtube" %}
+  </div>
+
+  <div class="video-item">
+    <p><strong>Gameplay Walkthrough</strong></p>
+    {% include video id="S7PVqLQhDXk&t" provider="youtube" %}
+  </div>
+</div>
+
+<hr>
