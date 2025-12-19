@@ -10,25 +10,26 @@ toc_icon: "gamepad"
 
 <style>
 
-  /* 1. Expand the main content column */
-  .page__inner-wrap {
-    max-width: 85% !important; /* Default is usually much smaller */
-    margin-right: 0; 
+  /* 1. Target the specific ID to override theme defaults */
+  #main .page__inner-wrap {
+    max-width: 100% !important; /* Force it to fill the container */
+    width: 100% !important;
+    margin-right: 0 !important;
+    padding-right: 2rem; 
   }
 
-  /* 2. On very large screens, cap it so lines don't get too long */
-  @media (min-width: 1400px) {
-    .page__inner-wrap {
-      max-width: 1200px !important;
+  /* 2. On large screens, ensure the container itself is wide enough */
+  @media (min-width: 64em) {
+    .page__content {
+      width: calc(100% - 250px) !important; /* Give more space relative to sidebar */
+      float: right;
     }
   }
 
-  /* 3. Ensure the text doesn't touch the right edge on mobile */
-  @media (max-width: 600px) {
-    .page__inner-wrap {
-      max-width: 100% !important;
-      padding-right: 1rem;
-    }
+  /* 3. DEBUGGER: If you see a RED LINE at the top, the code IS working. 
+     If no red line, your browser is showing the cached version. */
+  body {
+    border-top: 5px solid red; 
   }
 
   .project-card {
