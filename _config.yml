@@ -56,7 +56,7 @@ plugins:
 
 author:
   name   : "Federico Costantini"
-  avatar : "/assets/images/bio-photo.jpg"
+  avatar : "/assets/images/me.png"
   bio    : "Passionate about Game development and Computer Graphics."
   links:
     - label: "GitHub"
