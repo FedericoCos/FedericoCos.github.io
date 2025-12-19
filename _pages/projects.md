@@ -166,6 +166,8 @@ toc_icon: "gamepad"
   </div>
 </div>
 
+### 
+
 <div class="video-container">
   <div class="video-item" style="flex: 1 1 30%;">
     <p><strong>Original Scene</strong></p>
@@ -180,9 +182,63 @@ toc_icon: "gamepad"
     <img src="/assets/images/Vulkan_tor.png" alt="Generated Point Cloud" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
   </div>
   <div class="video-item" style="flex: 1 1 30%;">
-    <p><strong>Trained Model</strong></p>
+    <p><strong>Gaussian Splatting</strong></p>
     <img src="/assets/images/Vulkan_gs.png" alt="Gaussian Splatting Result" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
   </div>
+</div>
+
+### 4. OpenGL Desktop vs. Safety Critical (SC)
+
+<div class="project-card">
+  <div class="project-image">
+    <img src="/assets/images/menger_world.png" alt="Menger Sponge Fractal">
+  </div>
+
+  <div class="project-info">
+    <p><em>A comparative analysis of standard rendering pipelines versus deterministic, certifiable embedded graphics.</em></p>
+    
+    <p><strong>The Objective:</strong><br>
+    In safety-critical domains (Avionics, Automotive), unpredictability is unacceptable. This research project analyzed the trade-offs between the flexible <strong>OpenGL Desktop</strong> API and the restrictive <strong>OpenGL SC 2.0</strong> (Safety Critical) subset. The goal was to quantify the impact of removing non-deterministic features—such as runtime shader compilation and dynamic memory allocation—on rendering stability.</p>
+
+    <p><strong>The Methodology:</strong><br>
+    I developed a dual-pipeline engine (using C++ and simulated SC via OpenGL ES 2.0) to benchmark three distinct scenarios:
+    1. <strong>Stress Testing:</strong> Comparing Instanced Rendering vs. Single Draw Calls (1M+ cubes).
+    2. <strong>Compute Emulation:</strong> Porting native Compute Shaders to Fragment Shaders for SC compliance.
+    3. <strong>Lighting Stability:</strong> analyzing shadow precision and shader complexity limits.</p>
+
+    <ul>
+      <li><strong>Stack:</strong> C++, OpenGL Core Profile, OpenGL ES 2.0 (SC Simulation), Python (Data Analysis).</li>
+      <li><strong>Key Finding:</strong> While Desktop OpenGL achieved higher raw throughput, the SC implementation demonstrated significantly lower <strong>Worst Case Execution Time (WCET)</strong> variance, proving its necessity for real-time guarantees.</li>
+    </ul>
+    
+    </div>
+</div>
+
+<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Experimental Results</h4>
+
+<div class="video-container">
+  
+  <div class="video-item" style="flex: 1 1 45%;">
+    <p><strong>Stress Test: World of Cubes</strong></p>
+    <img src="/assets/images/cubes.png" alt="Instance Rendering Stress Test" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
+  </div>
+
+  <div class="video-item" style="flex: 1 1 45%;">
+    <p><strong>Performance Analysis</strong></p>
+    <img src="/assets/images/cubes_10k_ES.png" alt="Frame Timing Analysis Graph" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
+  </div>
+
+  ####
+  <p><strong>Lighting & Shadow Artifacts</strong></p>
+
+  <div class="video-item" style="flex: 1 1 45%;">
+    <img src="/assets/images/Model_DS.png" alt="Menger Sponge Detail" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
+  </div>
+
+  <div class="video-item" style="flex: 1 1 45%;">
+    <img src="/assets/images/ThirdScene.png" alt="Shadow Precision Comparison" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
+  </div>
+
 </div>
 
 <hr>
