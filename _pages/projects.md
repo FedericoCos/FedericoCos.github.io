@@ -9,49 +9,82 @@ toc_icon: "gamepad"
 ---
 
 <style>
-
-  /* 1. Target the specific ID to override theme defaults */
+  /* 1. LAYOUT OVERRIDES */
   #main .page__inner-wrap {
-    max-width: 100% !important; /* Force it to fill the container */
+    max-width: 100% !important;
     width: 100% !important;
     margin-right: 0 !important;
     padding-right: 2rem; 
   }
 
+  /* 2. CATEGORY HEADERS (The big sections) */
+  .category-header {
+    margin-top: 5rem !important; /* Huge gap above new sections */
+    margin-bottom: 2rem !important;
+    border-bottom: 3px solid #555; /* Solid underline */
+    padding-bottom: 10px;
+    font-size: 2.2em;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff; /* Ensure bright contrast */
+  }
+
+  /* 3. PROJECT CARD STYLING */
   .project-card {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    margin-bottom: 2rem;
-    align-items: flex-start; /* This forces Top Alignment */
+    margin-bottom: 1.5rem; /* Reduced bottom margin so Media Showcase sits closer */
+    align-items: flex-start;
   }
   .project-image {
-    flex: 1 1 400px; /* Takes up space but shrinks if needed */
+    flex: 1 1 400px;
   }
   .project-image img {
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     width: 100%;
+    border: 1px solid #333; /* Subtle border for definition */
   }
   .project-info {
     flex: 1 1 300px;
   }
   .project-info h3 {
-    margin-top: 0; /* Removes default top spacing to align with image */
+    margin-top: 0;
+  }
+
+  /* 4. MEDIA SECTION STYLING */
+  .media-header {
+    border-bottom: 1px solid #444; 
+    padding-bottom: 5px; 
+    margin-top: 0; 
+    margin-bottom: 15px; 
+    color: #aaa; /* Slightly dimmer than main text */
+    font-size: 1.1em;
   }
   .video-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    margin-top: 1rem;
+    margin-bottom: 0;
   }
   .video-item {
-    flex: 1 1 45%; /* Videos take roughly half width each */
-    min-width: 300px; /* Forces stacking on mobile */
+    flex: 1 1 45%;
+    min-width: 300px;
+  }
+  
+  /* 5. SEPARATION BETWEEN PROJECTS */
+  .project-divider {
+    border: 0;
+    height: 1px;
+    /* Fading gradient line */
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+    margin: 4rem 0; /* Large breathing room */
   }
 </style>
 
-# Game Development
+<h1 class="category-header" style="margin-top: 0 !important;">Game Development</h1>
 
 ## 1. Nailed It
 
@@ -76,21 +109,20 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Media Showcase</h4>
-
+<h4 class="media-header">Media Showcase</h4>
 <div class="video-container">
   <div class="video-item">
     <p><strong>Trailer</strong></p>
     {% include video id="NQ8VkvjYgpw" provider="youtube" %}
   </div>
-
   <div class="video-item">
     <p><strong>Gameplay Walkthrough</strong></p>
     {% include video id="S7PVqLQhDXk" provider="youtube" %}
   </div>
 </div>
 
-<hr>
+<div class="project-divider"></div>
+
 
 ## 2. First Vulkan Engine
 
@@ -110,12 +142,10 @@ toc_icon: "gamepad"
       <li><strong>Stack:</strong> C++, Vulkan SDK</li>
       <li><strong>Key Feature:</strong> Custom collision detection system & optimized command buffer recording.</li>
     </ul>
-
-    </div>
+  </div>
 </div>
 
-<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Engine Showcase</h4>
-
+<h4 class="media-header">Engine Showcase</h4>
 <div class="video-container">
   <div class="video-item">
     <p><strong>Gameplay Demo</strong></p>
@@ -126,9 +156,8 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-<hr>
 
-# Engine Development
+<h1 class="category-header">Engine Development</h1>
 
 ## 3. Vulkan Path Tracer & Gaussian Splatting R&D
 
@@ -156,8 +185,7 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Engine Showcase</h4>
-
+<h4 class="media-header">Engine Showcase</h4>
 <div class="video-container" style="margin-bottom: 20px;">
   <div class="video-item">
     <video width="100%" controls style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
@@ -169,8 +197,6 @@ toc_icon: "gamepad"
     <img src="/assets/images/Vulkan_wall.png" alt="Original Scene Render" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
   </div>
 </div>
-
-<hr>
 
 <div class="video-container">
   <div class="video-item" style="flex: 1 1 30%;">
@@ -191,7 +217,8 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-<hr>
+<div class="project-divider"></div>
+
 
 ## 4. OpenGL Desktop vs. Safety Critical (SC)
 
@@ -216,12 +243,10 @@ toc_icon: "gamepad"
       <li><strong>Stack:</strong> C++, OpenGL Core Profile, OpenGL ES 2.0 (SC Simulation), Python (Data Analysis).</li>
       <li><strong>Key Finding:</strong> While Desktop OpenGL achieved higher raw throughput, the SC implementation demonstrated significantly lower <strong>Worst Case Execution Time (WCET)</strong> variance, proving its necessity for real-time guarantees.</li>
     </ul>
-    
-    </div>
+  </div>
 </div>
 
-<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Experimental Results</h4>
-
+<h4 class="media-header">Experimental Results</h4>
 <div class="video-container">
   
   <div class="video-item" style="flex: 1 1 45%;">
@@ -233,9 +258,9 @@ toc_icon: "gamepad"
     <p><strong>Performance Analysis</strong></p>
     <img src="/assets/images/cubes_10k_ES.png" alt="Frame Timing Analysis Graph" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
   </div>
+</div>
 
-  <hr>
-
+<div class="video-container" style="margin-top: 1rem;">
   <div class="video-item" style="flex: 1 1 45%;">
     <img src="/assets/images/Model_DS.png" alt="Menger Sponge Detail" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
   </div>
@@ -243,12 +268,10 @@ toc_icon: "gamepad"
   <div class="video-item" style="flex: 1 1 45%;">
     <img src="/assets/images/ThirdScene.png" alt="Shadow Precision Comparison" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
   </div>
-
 </div>
 
-<hr>
 
-# Small personal projects
+<h1 class="category-header">Small Personal Projects</h1>
 
 ## 5. Interactive Sudoku Visualizer
 
@@ -270,8 +293,7 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Algorithm Demo</h4>
-
+<h4 class="media-header">Algorithm Demo</h4>
 <div class="video-container">
   <div style="width: 100%; max-width: 800px;">
     <video width="100%" controls style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
@@ -281,7 +303,8 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-<hr>
+<div class="project-divider"></div>
+
 
 ## 6. 2D Metaballs & Marching Squares
 
@@ -306,8 +329,7 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Simulation Demo</h4>
-
+<h4 class="media-header">Simulation Demo</h4>
 <div class="video-container">
   <div style="width: 100%; max-width: 800px;">
     <p><strong>Real-Time Contouring</strong></p>
@@ -318,4 +340,4 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-<hr>
+<hr style="margin-top: 4rem;">
