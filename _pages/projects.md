@@ -340,3 +340,46 @@ toc_icon: "gamepad"
 </div>
 
 <hr style="margin-top: 4rem;">
+
+<h1 class="category-header">Software Engineering</h1>
+
+## 7. My Shelfie - Distributed System
+
+<div class="project-card">
+  <div class="project-image">
+    <img src="/assets/images/myshelfie_wall.png" alt="My Shelfie Digital Implementation">
+  </div>
+
+  <div class="project-info">
+    <p><em>A full-stack distributed implementation of the board game "My Shelfie" by Cranio Creations.</em></p>
+    
+    <p><strong>The Challenge:</strong><br>
+    Developed for the "Software Engineering 1" course, this project required transforming a physical board game into a robust distributed system. The core challenge was to design a network-agnostic architecture capable of handling concurrent client connections while enforcing strict game rules and turns.</p>
+
+    <p><strong>The Architecture:</strong><br>
+    The system follows the <strong>MVC (Model-View-Controller)</strong> pattern to decouple the game logic from the interface. It features a unique <strong>Dual-Network Layer</strong>, allowing clients to connect via either **RMI** (Remote Method Invocation) or **TCP Sockets** transparently. Additionally, the game offers two synchronized interfaces: a lightweight **CLI** and a full interactive **GUI**.</p>
+
+    <ul>
+      <li><strong>Stack:</strong> Java 19, JavaFX (GUI), RMI, TCP Sockets.</li>
+      <li><strong>Design Patterns:</strong> Observer (for game state updates), Strategy, Singleton, Proxy (for network abstraction).</li>
+    </ul>
+  </div>
+</div>
+
+<h4 class="media-header">Interface Design</h4>
+
+<div class="video-container">
+  
+  <div class="video-item" style="flex: 1 1 45%;">
+    <p><strong>In Game Chat</strong></p>
+    <img src="/assets/images/myshelfie_chat.png" alt="My Shelfie GUI Gameplay" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
+  </div>
+
+  <div class="video-item" style="flex: 1 1 45%;">
+    <p><strong>4 People Game</strong></p>
+    <img src="/assets/images/myshelfie_group.png" alt="My Shelfie UI Detail" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
+  </div>
+
+</div>
+
+<hr>
