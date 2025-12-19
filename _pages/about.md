@@ -1,6 +1,6 @@
 ---
-title: "About"
-permalink: /about/
+title: "Curriculum Vitae"
+permalink: /cv/
 layout: single
 author_profile: true
 toc: true
@@ -17,7 +17,7 @@ toc_icon: "address-card"
     padding-right: 2rem; 
   }
 
-  /* 2. SECTION HEADERS (Consistent with Projects Page) */
+  /* 2. SECTION HEADERS */
   .cv-header {
     margin-top: 4rem;
     margin-bottom: 2rem;
@@ -30,9 +30,9 @@ toc_icon: "address-card"
     color: #fff;
   }
   
-  /* 3. CARD STYLE FOR ITEMS (Education/Work) */
+  /* 3. CARD STYLE */
   .cv-card {
-    background-color: #1a1a1a; /* Dark card background */
+    background-color: #1a1a1a;
     border: 1px solid #333;
     border-radius: 8px;
     padding: 1.5rem;
@@ -41,11 +41,11 @@ toc_icon: "address-card"
     transition: transform 0.2s ease;
   }
   .cv-card:hover {
-    transform: translateY(-2px); /* Subtle lift effect */
+    transform: translateY(-2px);
     border-color: #555;
   }
 
-  /* 4. TYPOGRAPHY INSIDE CARDS */
+  /* 4. TYPOGRAPHY */
   .cv-title {
     font-size: 1.4em;
     font-weight: 700;
@@ -63,13 +63,13 @@ toc_icon: "address-card"
   }
   .cv-date {
     font-weight: 600;
-    color: #d9534f; /* Accent color for dates */
+    color: #d9534f;
   }
   
   /* 5. SKILLS GRID */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Auto-adjusts to 2 columns now */
     gap: 1.5rem;
   }
   .skill-category {
@@ -104,6 +104,17 @@ toc_icon: "address-card"
 <h1 class="cv-header" style="margin-top: 0;">Education</h1>
 
 <div class="cv-card">
+  <div class="cv-title">Master's Degree in Computer Science and Engineering</div>
+  <div class="cv-subtitle">
+    <span>Politecnico di Milano</span>
+    <span class="cv-date">2023 - Present</span>
+  </div>
+  <ul>
+    <li>Currently enrolled. Specializing copmuter graphics.</li>
+  </ul>
+</div>
+
+<div class="cv-card">
   <div class="cv-title">Bachelor's Degree in Computer Science and Engineering</div>
   <div class="cv-subtitle">
     <span>Politecnico di Milano</span>
@@ -111,7 +122,6 @@ toc_icon: "address-card"
   </div>
   <ul>
     <li><strong>Grade:</strong> <span style="color: #4db6ac; font-weight: bold;">110/110 cum laude</span>.</li>
-    <li><strong>Focus:</strong> Computer Graphics, Game Programming, AI.</li>
   </ul>
 </div>
 
@@ -173,6 +183,7 @@ toc_icon: "address-card"
       <li>Unity 3D</li>
     </ul>
   </div>
+</div>
 
 
 <h1 class="cv-header">Languages & Certifications</h1>
