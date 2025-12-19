@@ -1,6 +1,6 @@
 ---
-title: "Curriculum Vitae"
-permalink: /cv/
+title: "About"
+permalink: /about/
 layout: single
 author_profile: true
 toc: true
