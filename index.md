@@ -202,7 +202,7 @@ sidebar: false
 
   <a href="/projects/#4-Nailed-it" class="mini-project">
     <img src="/assets/images/nailed-it.png" alt="Nailed It">
-    <div class="mini-overlay"><strong>Metaballs Simulation</strong></div>
+    <div class="mini-overlay"><strong>Nailed it</strong></div>
   </a>
 
 </div>
