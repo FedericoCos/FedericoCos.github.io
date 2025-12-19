@@ -58,21 +58,28 @@ sidebar: false
     margin-bottom: 4rem;
   }
   .skill-card {
-    background: #fdfdfd;
+    background: #1a1a1a; /* CHANGED: Dark background */
     padding: 2rem;
     border-radius: 8px;
-    border-left: 4px solid #00cc44; /* Green accent */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid #333; /* CHANGED: Dark border */
+    border-left: 4px solid #00cc44; /* Green accent preserved */
+    color: #eee; /* CHANGED: Light text for readability */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     transition: transform 0.2s;
   }
   .skill-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 24px rgba(0,204,68,0.1); /* Green glow on hover */
+    border-color: #555;
   }
   .skill-icon {
     font-size: 2.5rem;
-    color: #333;
+    color: #00cc44; /* Green Icon */
     margin-bottom: 1rem;
+  }
+  .skill-card h3 {
+    margin-top: 0;
+    color: #fff;
   }
 
   /* 3. FEATURED PROJECT MINI-CARDS */
@@ -87,26 +94,31 @@ sidebar: false
     border-radius: 8px;
     overflow: hidden;
     height: 200px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    border: 1px solid #333;
   }
   .mini-project img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s;
+    opacity: 0.8;
   }
   .mini-project:hover img {
     transform: scale(1.05);
+    opacity: 1;
   }
   .mini-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
+    background: rgba(0, 0, 0, 0.9);
+    color: #00cc44;
     padding: 10px;
     text-align: center;
+    border-top: 1px solid #333;
+    font-weight: bold;
   }
 
   /* 4. BUTTONS */
@@ -125,6 +137,7 @@ sidebar: false
   .btn-green:hover {
     background-color: transparent;
     color: #00cc44 !important;
+    box-shadow: 0 0 15px rgba(0, 204, 68, 0.4);
   }
   
   /* Responsive Fix for Typewriter */
@@ -142,7 +155,7 @@ sidebar: false
 
   <p style="font-size: 1.2rem; color: #ccc; margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
     Graphics Engineer & MSc Student @ Politecnico di Milano.<br>
-    I build <span class="hero-accent">Rendering Engines</span>, optimize <span class="hero-accent">Graphics Pipelines</span>, and push pixels to their limit.
+    I focus on <span class="hero-accent">Custom Rendering Engines</span>, optimize <span class="hero-accent">Graphics Pipelines</span>, and develop Games using <span class="hero-accent">Unity</span>.
   </p>
 
   <div style="margin-top: 2rem;">
@@ -155,21 +168,21 @@ sidebar: false
 
 <div class="skills-grid">
   <div class="skill-card">
-    <div class="skill-icon"><i class="fas fa-vr-cardboard" style="color: #00cc44;"></i></div>
+    <div class="skill-icon"><i class="fas fa-vr-cardboard"></i></div>
     <h3>Graphics Programming</h3>
     <p>Specialized in <strong>Vulkan</strong> and <strong>OpenGL</strong>. I love writing shaders (GLSL/HLSL), implementing Ray Tracing, and understanding the GPU pipeline at a hardware level.</p>
   </div>
 
   <div class="skill-card">
-    <div class="skill-icon"><i class="fas fa-cogs" style="color: #00cc44;"></i></div>
+    <div class="skill-icon"><i class="fas fa-cogs"></i></div>
     <h3>Engine Development</h3>
     <p>Building engines from scratch using <strong>C++</strong>. Managing explicit memory allocation, synchronization, and data-oriented design to achieve maximum performance.</p>
   </div>
 
   <div class="skill-card">
-    <div class="skill-icon"><i class="fas fa-network-wired" style="color: #00cc44;"></i></div>
-    <h3>Distributed Systems</h3>
-    <p>Proven experience in Software Engineering with <strong>Java</strong>, designing distributed architectures (RMI/Sockets) and safety-critical analysis (WCET).</p>
+    <div class="skill-icon"><i class="fas fa-gamepad"></i></div>
+    <h3>Game Development</h3>
+    <p>Developing interactive experiences using <strong>Unity (C#)</strong> and custom frameworks. I focus on gameplay mechanics, physics implementation, and realt-time Physical Based Rendering.</p>
   </div>
 </div>
 
@@ -187,13 +200,11 @@ sidebar: false
     <div class="mini-overlay"><strong>Custom Rasterizer</strong></div>
   </a>
 
-  <a href="/projects/#6-2d-metaballs--marching-squares" class="mini-project">
-    <img src="/assets/images/metaballs_wallpaper.jpg" alt="Metaballs Sim">
+  <a href="/projects/#4-Nailed-it" class="mini-project">
+    <img src="/assets/images/nailed-it.png" alt="Metaballs Sim">
     <div class="mini-overlay"><strong>Metaballs Simulation</strong></div>
   </a>
 
 </div>
 
-<div style="text-align: center; margin-top: 3rem; margin-bottom: 2rem;">
-  <p style="color: #777; font-style: italic;">"The only way to do great work is to love what you do."</p>
-</div>
+<div style="margin-bottom: 4rem;"></div>
