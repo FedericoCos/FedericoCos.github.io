@@ -18,20 +18,6 @@ toc_icon: "gamepad"
     padding-right: 2rem; 
   }
 
-  /* 2. On large screens, ensure the container itself is wide enough */
-  @media (min-width: 64em) {
-    .page__content {
-      width: calc(100% - 250px) !important; /* Give more space relative to sidebar */
-      float: right;
-    }
-  }
-
-  /* 3. DEBUGGER: If you see a RED LINE at the top, the code IS working. 
-     If no red line, your browser is showing the cached version. */
-  body {
-    border-top: 5px solid red; 
-  }
-
   .project-card {
     display: flex;
     flex-wrap: wrap;
