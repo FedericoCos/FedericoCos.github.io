@@ -115,4 +115,70 @@ toc_icon: "gamepad"
   </div>
 </div>
 
+## Engine Development
+
+### 3. Vulkan Path Tracer & Gaussian Splatting R&D
+
+<div class="project-card">
+  <div class="project-image">
+    <img src="/assets/images/neoclassic_wallpaper.png" alt="Toroidal Sampling Visualization">
+  </div>
+
+  <div class="project-info">
+    <p><em>A custom engine designed to research toroidal sampling strategies for optimizing 3D scene reconstruction.</em></p>
+    
+    <p><strong>The Engine:</strong><br>
+    I developed a custom <strong>Vulkan Path Tracer</strong> capable of rendering complex environments (interiors, exteriors) and conducting emissive lighting tests. Unlike a standard renderer, this engine functions as a data generator.</p>
+
+    <p><strong>The Research:</strong><br>
+    The core innovation is the implementation of a <strong>Toroidal Scanner</strong>. A torus is placed centrally in the scene to cast rays using varied sampling strategies, generating a high-fidelity point cloud of the environment. This data, paired with captured imagery, creates a dataset to train a <strong>Gaussian Splatting</strong> model.</p>
+    
+    <p><strong>The Objective:</strong><br>
+    The goal is to evaluate if toroidal sampling provides sufficient quality for scene reconstruction. Success in this area opens the door to a novel compression technique: "unrolling" the 3D data from the torus surface into a 2D texture, allowing standard image algorithms (like JPG) to drastically reduce the memory footprint of Gaussian Splats.</p>
+
+    <ul>
+      <li><strong>Stack:</strong> C++, Vulkan Ray Tracing, Python (for GS Model training).</li>
+      <li><strong>Key Features:</strong> Custom Ray Generation Shaders, Point Cloud Export, Emissive Light Testing.</li>
+    </ul>
+  </div>
+</div>
+
+<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Research Breakdown</h4>
+
+<div class="video-container" style="margin-bottom: 20px;">
+  <div class="video-item">
+    <p><strong>Engine showcase</strong></p>
+    <video width="100%" controls style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+      <source src="/assets/videos/Vulkan_vid1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="video-item">
+    <p><strong>Gaussian Splatting result</strong></p>
+    <video width="100%" controls style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+      <source src="/assets/videos/Vulkan_vid1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
+<div class="video-container">
+  <div class="video-item" style="flex: 1 1 30%;">
+    <p><strong>Original Scene</strong></p>
+    <img src="/assets/images/Vulkan_full.png" alt="Original Scene Render" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
+  </div>
+  <div class="video-item" style="flex: 1 1 30%;">
+    <p><strong>Generated Point Cloud</strong></p>
+    <img src="/assets/images/Vulkan_point.png" alt="Generated Point Cloud" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
+  </div>
+  <div class="video-item" style="flex: 1 1 30%;">
+    <p><strong>Toroidal view</strong></p>
+    <img src="/assets/images/Vulkan_tor.png" alt="Generated Point Cloud" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
+  </div>
+  <div class="video-item" style="flex: 1 1 30%;">
+    <p><strong>Trained Model</strong></p>
+    <img src="/assets/images/Vulkan_gs.png" alt="Gaussian Splatting Result" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
+  </div>
+</div>
+
 <hr>
