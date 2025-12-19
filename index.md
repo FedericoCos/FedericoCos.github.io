@@ -141,7 +141,7 @@ sidebar: false
   }
   
   /* Responsive Fix for Typewriter */
-  @media (max-width: 600px) {
+  @media {
     .typewriter h1 { font-size: 1.2rem; }
   }
 </style>
@@ -201,7 +201,7 @@ sidebar: false
   </a>
 
   <a href="/projects/#4-Nailed-it" class="mini-project">
-    <img src="/assets/images/nailed-it.png" alt="Metaballs Sim">
+    <img src="/assets/images/nailed-it.png" alt="Nailed It">
     <div class="mini-overlay"><strong>Metaballs Simulation</strong></div>
   </a>
 
