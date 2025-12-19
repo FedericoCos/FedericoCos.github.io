@@ -3,6 +3,7 @@ title: "Projects"
 permalink: /projects/
 layout: single
 author_profile: true
+classes: wide
 toc: true
 toc_label: "My Portfolio"
 toc_icon: "gamepad"
@@ -44,7 +45,7 @@ toc_icon: "gamepad"
 
 ## Game Development
 
-### Nailed It
+### 1. Nailed It
 
 <div class="project-card">
   <div class="project-image">
@@ -81,7 +82,7 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-### First Vulkan Engine
+### 2. First Vulkan Engine
 
 <div class="project-card">
   <div class="project-image">
@@ -143,22 +144,17 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Research Breakdown</h4>
+<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Engine Showcase</h4>
 
 <div class="video-container" style="margin-bottom: 20px;">
   <div class="video-item">
-    <p><strong>Engine showcase</strong></p>
     <video width="100%" controls style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
       <source src="/assets/videos/Vulkan_vid1.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
-  <div class="video-item">
-    <p><strong>Gaussian Splatting result</strong></p>
-    <video width="100%" controls style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-      <source src="/assets/videos/Vulkan_vid1.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <div class="video-item" style="flex: 1 1 30%;">
+    <img src="/assets/images/Vulkan_wall.png" alt="Original Scene Render" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
   </div>
 </div>
 
