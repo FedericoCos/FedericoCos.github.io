@@ -10,14 +10,6 @@ toc_icon: "gamepad"
 
 <style>
 
-  /* 1. Target the specific ID to override theme defaults */
-  #main .page__inner-wrap {
-    max-width: 100% !important; /* Force it to fill the container */
-    width: 100% !important;
-    margin-right: 0 !important;
-    padding-right: 2rem; 
-  }
-
   .project-card {
     display: flex;
     flex-wrap: wrap;
@@ -81,12 +73,12 @@ toc_icon: "gamepad"
 <div class="video-container">
   <div class="video-item">
     <p><strong>Trailer</strong></p>
-    {% include video id="NQ8VkvjYgpw&t" provider="youtube" %}
+    {% include video id="NQ8VkvjYgpw" provider="youtube" %}
   </div>
 
   <div class="video-item">
     <p><strong>Gameplay Walkthrough</strong></p>
-    {% include video id="S7PVqLQhDXk&t" provider="youtube" %}
+    {% include video id="S7PVqLQhDXk" provider="youtube" %}
   </div>
 </div>
 
@@ -165,8 +157,6 @@ toc_icon: "gamepad"
     <img src="/assets/images/Vulkan_wall.png" alt="Original Scene Render" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
   </div>
 </div>
-
-### 
 
 <div class="video-container">
   <div class="video-item" style="flex: 1 1 30%;">
