@@ -170,7 +170,7 @@ sidebar: false
   <div class="skill-card">
     <div class="skill-icon"><i class="fas fa-vr-cardboard"></i></div>
     <h3>Graphics Programming</h3>
-    <p>Specialized in <strong>Vulkan</strong> and <strong>OpenGL</strong>. I love writing shaders (GLSL/HLSL), implementing Ray Tracing, and understanding the GPU pipeline at a hardware level.</p>
+    <p>Specialized in <strong>Vulkan</strong> and <strong>OpenGL</strong>. I work with shaders (GLSL/HLSL), Ray Tracing, and the GPU pipeline at a hardware level.</p>
   </div>
 
   <div class="skill-card">
