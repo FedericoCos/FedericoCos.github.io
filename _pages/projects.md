@@ -25,7 +25,6 @@ toc_icon: "gamepad"
     padding-bottom: 10px;
     font-size: 2.2em;
     font-weight: 800;
-    text-transform: uppercase;
     letter-spacing: 1px;
     color: #fff; /* Ensure bright contrast */
   }
@@ -84,7 +83,7 @@ toc_icon: "gamepad"
   }
 </style>
 
-<h1 class="category-header" style="margin-top: 0 !important;">Game Development</h1>
+# <h1 class="category-header" style="margin-top: 0 !important;">Game Development</h1>
 
 ## 1. Nailed It
 
@@ -157,7 +156,7 @@ toc_icon: "gamepad"
 </div>
 
 
-<h1 class="category-header">Engine Development</h1>
+# <h1 class="category-header">Engine Development</h1>
 
 ## 3. Vulkan Path Tracer & Gaussian Splatting R&D
 
@@ -271,7 +270,7 @@ toc_icon: "gamepad"
 </div>
 
 
-<h1 class="category-header">Small Personal Projects</h1>
+# <h1 class="category-header">Small Personal Projects</h1>
 
 ## 5. Interactive Sudoku Visualizer
 
