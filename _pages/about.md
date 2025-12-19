@@ -171,7 +171,7 @@ toc_icon: "address-card"
 <div class="skills-grid">
   <div class="skill-category">
     <div class="skill-header">Programming Languages</div>
-    <ul style="margin-bottom: 0;">
+    <ul style="margin-bottom: 5;">
       <li>C++, C#</li>
       <li>Python, C</li>
       <li>Java, TypeScript</li>
@@ -180,7 +180,7 @@ toc_icon: "address-card"
 
   <div class="skill-category">
     <div class="skill-header">Graphics & APIs</div>
-    <ul style="margin-bottom: 0;">
+    <ul style="margin-bottom: 5;">
       <li>Vulkan, OpenGL (Core/ES)</li>
       <li>GLSL, HLSL</li>
       <li>Unity 3D</li>
