@@ -3,13 +3,34 @@ title: "Projects"
 permalink: /projects/
 layout: single
 author_profile: true
-classes: wide
 toc: true
 toc_label: "My Portfolio"
 toc_icon: "gamepad"
 ---
 
 <style>
+
+  /* 1. Expand the main content column */
+  .page__inner-wrap {
+    max-width: 85% !important; /* Default is usually much smaller */
+    margin-right: 0; 
+  }
+
+  /* 2. On very large screens, cap it so lines don't get too long */
+  @media (min-width: 1400px) {
+    .page__inner-wrap {
+      max-width: 1200px !important;
+    }
+  }
+
+  /* 3. Ensure the text doesn't touch the right edge on mobile */
+  @media (max-width: 600px) {
+    .page__inner-wrap {
+      max-width: 100% !important;
+      padding-right: 1rem;
+    }
+  }
+
   .project-card {
     display: flex;
     flex-wrap: wrap;
