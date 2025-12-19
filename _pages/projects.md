@@ -166,6 +166,8 @@ toc_icon: "gamepad"
   </div>
 </div>
 
+<hr>
+
 <div class="video-container">
   <div class="video-item" style="flex: 1 1 30%;">
     <p><strong>Original Scene</strong></p>
@@ -226,7 +228,7 @@ toc_icon: "gamepad"
     <img src="/assets/images/cubes_10k_ES.png" alt="Frame Timing Analysis Graph" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
   </div>
 
-  <p><strong>Lighting & Shadow Artifacts</strong></p>
+  <hr>
 
   <div class="video-item" style="flex: 1 1 45%;">
     <img src="/assets/images/Model_DS.png" alt="Menger Sponge Detail" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
@@ -251,7 +253,7 @@ toc_icon: "gamepad"
     <p><em>A Python application that visualizes the Backtracking algorithm in real-time using Pygame.</em></p>
     
     <p><strong>The Concept:</strong><br>
-    Built using the **Pygame** engine, this tool allows users to manually input Sudoku puzzles via an interactive grid. The core feature is the <strong>Algorithm Visualization</strong>: upon triggering the solver, the application renders the recursive <strong>Backtracking</strong> process step-by-step. It demonstrates how the algorithm explores the state space, places tentative numbers, and "backtracks" when constraints are violated.</p>
+    Built using the <strong>Pygame</strong> engine, this tool allows users to manually input Sudoku puzzles via an interactive grid. The core feature is the <strong>Algorithm Visualization</strong>: upon triggering the solver, the application renders the recursive <strong>Backtracking</strong> process step-by-step. It demonstrates how the algorithm explores the state space, places tentative numbers, and "backtracks" when constraints are violated.</p>
 
     <ul>
       <li><strong>Stack:</strong> Python 3, Pygame.</li>
@@ -266,14 +268,11 @@ toc_icon: "gamepad"
 
 <div class="video-container">
   <div style="width: 100%; max-width: 800px;">
-    <p><strong>Backtracking Visualization</strong></p>
     <video width="100%" controls style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
       <source src="/assets/videos/Sudoku.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
 </div>
-
-<hr>
 
 <hr>
