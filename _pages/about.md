@@ -101,7 +101,8 @@ toc_icon: "address-card"
 </p>
 
 
-<h1 class="cv-header" style="margin-top: 0;">Education</h1>
+# Education
+<hr>
 
 <div class="cv-card">
   <div class="cv-title">Master's Degree in Computer Science and Engineering</div>
@@ -148,7 +149,8 @@ toc_icon: "address-card"
 </div>
 
 
-<h1 class="cv-header">Work Experience</h1>
+# Work Experience
+<hr>
 
 <div class="cv-card">
   <div class="cv-title">Junior Software Engineer</div>
@@ -163,7 +165,8 @@ toc_icon: "address-card"
 </div>
 
 
-<h1 class="cv-header">Technical Skills</h1>
+# Technical Skills
+<hr>
 
 <div class="skills-grid">
   <div class="skill-category">
@@ -186,7 +189,8 @@ toc_icon: "address-card"
 </div>
 
 
-<h1 class="cv-header">Languages & Certifications</h1>
+# Languages & Certifications
+<hr>
 
 <div class="cv-card" style="padding: 1rem;">
   <ul style="margin-bottom: 0;">
