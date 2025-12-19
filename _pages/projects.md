@@ -10,6 +10,14 @@ toc_icon: "gamepad"
 
 <style>
 
+  /* 1. Target the specific ID to override theme defaults */
+  #main .page__inner-wrap {
+    max-width: 100% !important; /* Force it to fill the container */
+    width: 100% !important;
+    margin-right: 0 !important;
+    padding-right: 2rem; 
+  }
+
   .project-card {
     display: flex;
     flex-wrap: wrap;
@@ -229,5 +237,43 @@ toc_icon: "gamepad"
   </div>
 
 </div>
+
+# Small personal projects
+
+## 5. Interactive Sudoku Visualizer
+
+<div class="project-card">
+  <div class="project-image">
+    <img src="/assets/images/Sudoku.png" alt="Sudoku Pygame Interface">
+  </div>
+
+  <div class="project-info">
+    <p><em>A Python application that visualizes the Backtracking algorithm in real-time using Pygame.</em></p>
+    
+    <p><strong>The Concept:</strong><br>
+    Built using the **Pygame** engine, this tool allows users to manually input Sudoku puzzles via an interactive grid. The core feature is the <strong>Algorithm Visualization</strong>: upon triggering the solver, the application renders the recursive <strong>Backtracking</strong> process step-by-step. It demonstrates how the algorithm explores the state space, places tentative numbers, and "backtracks" when constraints are violated.</p>
+
+    <ul>
+      <li><strong>Stack:</strong> Python 3, Pygame.</li>
+      <li><strong>Key Algorithms:</strong> Recursive Backtracking with Step-Delay (for visualization), Real-time Constraint Checking.</li>
+    </ul>
+
+    <a href="https://github.com/FedericoCos/Sudoku" class="btn btn--inverse">View Source Code</a>
+  </div>
+</div>
+
+<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Algorithm Demo</h4>
+
+<div class="video-container">
+  <div style="width: 100%; max-width: 800px;">
+    <p><strong>Backtracking Visualization</strong></p>
+    <video width="100%" controls style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+      <source src="/assets/videos/Sudoku.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
+<hr>
 
 <hr>
