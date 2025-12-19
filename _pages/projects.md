@@ -90,6 +90,8 @@ toc_icon: "gamepad"
   </div>
 </div>
 
+<hr>
+
 ## 2. First Vulkan Engine
 
 <div class="project-card">
@@ -123,6 +125,8 @@ toc_icon: "gamepad"
     </video>
   </div>
 </div>
+
+<hr>
 
 # Engine Development
 
@@ -187,6 +191,8 @@ toc_icon: "gamepad"
   </div>
 </div>
 
+<hr>
+
 ## 4. OpenGL Desktop vs. Safety Critical (SC)
 
 <div class="project-card">
@@ -240,6 +246,8 @@ toc_icon: "gamepad"
 
 </div>
 
+<hr>
+
 # Small personal projects
 
 ## 5. Interactive Sudoku Visualizer
@@ -259,8 +267,6 @@ toc_icon: "gamepad"
       <li><strong>Stack:</strong> Python 3, Pygame.</li>
       <li><strong>Key Algorithms:</strong> Recursive Backtracking with Step-Delay (for visualization), Real-time Constraint Checking.</li>
     </ul>
-
-    <a href="https://github.com/FedericoCos/Sudoku" class="btn btn--inverse">View Source Code</a>
   </div>
 </div>
 
@@ -270,6 +276,43 @@ toc_icon: "gamepad"
   <div style="width: 100%; max-width: 800px;">
     <video width="100%" controls style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
       <source src="/assets/videos/Sudoku.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
+<hr>
+
+## 6. 2D Metaballs & Marching Squares
+
+<div class="project-card">
+  <div class="project-image">
+    <img src="/assets/images/metaballs.png" alt="Metaballs Simulation">
+  </div>
+
+  <div class="project-info">
+    <p><em>A high-performance simulation of organic isosurfaces using vectorized field calculations.</em></p>
+    
+    <p><strong>The Concept:</strong><br>
+    This project renders "Metaballs"—organic-looking blobs that merge smoothly when close to each other. It works by generating a scalar field based on the inverse-square law of the moving particles. To visualize the field in real-time, I implemented the <strong>Marching Squares</strong> algorithm, which reconstructs the contour geometry (isolines) from the underlying grid values.</p>
+
+    <p><strong>The Optimization:</strong><br>
+    Calculating distances for every pixel in a 1280x720 grid is computationally expensive in Python. I utilized <strong>NumPy vectorization</strong> and array broadcasting to process the entire scalar field matrix in parallel, achieving real-time framerates.</p>
+
+    <ul>
+      <li><strong>Stack:</strong> Python 3, Pygame, NumPy.</li>
+      <li><strong>Key Algorithms:</strong> Marching Squares, Scalar Field Generation.</li>
+    </ul>
+  </div>
+</div>
+
+<h4 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Simulation Demo</h4>
+
+<div class="video-container">
+  <div style="width: 100%; max-width: 800px;">
+    <p><strong>Real-Time Contouring</strong></p>
+    <video width="100%" controls style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+      <source src="/assets/videos/metaballs.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
