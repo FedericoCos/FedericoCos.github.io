@@ -159,7 +159,7 @@ sidebar: false
   </p>
 
   <div style="margin-top: 2rem;">
-    <a href="/projects/" class="btn-green"><i class="fas fa-code"></i> See My Code</a>
+    <a href="/projects/" class="btn-green"><i class="fas fa-code"></i> See My Projects</a>
     <a href="/cv/" class="btn btn--inverse" style="border-radius: 30px; padding: 12px 25px; margin-left: 10px;">View CV</a>
   </div>
 </div>
