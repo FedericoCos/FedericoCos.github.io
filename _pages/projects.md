@@ -51,9 +51,9 @@ toc_icon: "gamepad"
   }
 </style>
 
-## Game Development
+# Game Development
 
-### 1. Nailed It
+## 1. Nailed It
 
 <div class="project-card">
   <div class="project-image">
@@ -90,7 +90,7 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-### 2. First Vulkan Engine
+## 2. First Vulkan Engine
 
 <div class="project-card">
   <div class="project-image">
@@ -124,9 +124,9 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-## Engine Development
+# Engine Development
 
-### 3. Vulkan Path Tracer & Gaussian Splatting R&D
+## 3. Vulkan Path Tracer & Gaussian Splatting R&D
 
 <div class="project-card">
   <div class="project-image">
@@ -187,7 +187,7 @@ toc_icon: "gamepad"
   </div>
 </div>
 
-### 4. OpenGL Desktop vs. Safety Critical (SC)
+## 4. OpenGL Desktop vs. Safety Critical (SC)
 
 <div class="project-card">
   <div class="project-image">
@@ -228,7 +228,6 @@ toc_icon: "gamepad"
     <img src="/assets/images/cubes_10k_ES.png" alt="Frame Timing Analysis Graph" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); width: 100%;">
   </div>
 
-  ####
   <p><strong>Lighting & Shadow Artifacts</strong></p>
 
   <div class="video-item" style="flex: 1 1 45%;">
