@@ -11,7 +11,6 @@
     <!--First Section - About me-->
     <section id="about" style="display: flex; align-items: center; padding: 50px; gap: 40px;">
     <div id="tilt-container" style="perspective: 1000px; flex: 1; cursor: pointer; display: flex; justify-content: center;">
-        <img src="images/click.png" class="click-hint-icon" alt="Click to flip">
         <div id="card-inner">
             <div class="card-front">
                 <img id="tilt-image" src="images/me.jpg" alt="Your Name">
@@ -46,39 +45,57 @@
                 <img src="images/corridor_pc.png" id="Project 1" style="height: auto; object-fit: cover;">
                 <h3>Path Tracer & Gaussian Splatting</h3>
                 <p>Custom Vulkan engine with <span class="highlight_text">path tracing</span> capabilities. It simulates a <span class="highlight_text">toroidal sensor</span> to perform geometric and photometric acquisition and generates a synthetic dataset for a <span class="highlight_text">Gaussian Splatting</span> model.</p>
-                <p class="keywords">Keywords: Vulkan, Path Tracing, Gaussian Splatting, C++</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Vulkan</span>
+                    <span class="tech-tag">Path Tracing</span>
+                    <span class="tech-tag">Gaussian Splatting</span>
+                    <span class="tech-tag">C++</span>
+                </div>
             </div>
             <div class="project-card" onclick="selectProject(2)">
                 <img src="images/nailedit_wallpaper.png" id="Project 2" style="height: 200px; object-fit: cover; object-position: 0% 0%;">
                 <h3>Nailed-It</h3>
                 <p>2D platformer game developed in <span class="highlight_text">Unity</span>. Creates a novel gameplay by mixing Point-and-Shoot mechanics with classic platforming.</p>
-                <p class="keywords">Keywords: Unity2D, C#</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Unity2D</span>
+                    <span class="tech-tag">C#</span>
+                </div>
             </div>
             <div class="project-card" onclick="selectProject(3)">
                 <img src="images/first_wallpaper.png" id="Project 3" style="height: auto; object-fit: cover;">
                 <h3>First Raster Engine</h3>
                 <p>My very first <span class="highlight_text">Vulkan Engine</span>. Created to explore the <span class="highlight_text">rendering pipeline</span> and fundamental concepts of rasterization.</p>
-                <p class="keywords">Keywords: Vulkan, C++, Rasterization</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Vulkan</span>
+                    <span class="tech-tag">Rasterization</span>
+                    <span class="tech-tag">C++</span>
+                </div>
             </div>
             <div class="project-card" onclick="selectProject(4)">
                 <img src="images/bag_wallpaper.png" id="Project 4" style="height: auto; object-fit: cover;">
                 <h3>OpenGL-SC vs OpenGL-Desktop</h3>
                 <p>Deep dive into <span class="highlight_text">OpenGL-SC</span>, analyzing its strengths for <span class="highlight_text">safety critical</span> applications. Created test environments to profile and compare OpenGL-Desktop performances against its SC counterpart.</p>
-                <p class="keywords">Keywords: OpenGL, OpenGL-SC, C++, Python</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">OpenGL</span>
+                    <span class="tech-tag">OpenGL-SC</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">C++</span>
+                </div>
             </div>
             <div class="project-card" onclick="selectProject(5)">
                 <img src="images/myshelfie_wall.png" id="Project 5" style="height: auto; object-fit: cover;">
                 <h3>My Shelfie</h3>
                 <p>Digital version of a board game by <span class="highlight_text">Cranio Creations</span>. It supports both a <span class="highlight_text">CLI</span> and a <span class="highlight_text">GUI</span> version. It implements a <span class="highlight_text">client-server paradigm</span> to allow hosting multiple games concurrently.</p>
-                <p class="keywords">Keywords: Java, JavaFX, Maven</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">JavFX</span>
+                    <span class="tech-tag">Maven</span>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="project-details" class="details-container">
-        <div id="default-msg" class="project-detail-content active">
-            <p>Select a project to see details.</p>
-        </div>
 
         <div id="detail-1" class="project-detail-content">
             <div class="details-layout">
@@ -139,12 +156,6 @@
                             <img src="images/bistro_int_gs_1.png" alt="Result 3">
                             <p>Bistrot</p>
                         </div>
-                    </div>
-
-                    <div class="tech-stack">
-                        <span class="tech-tag">Vulkan</span>
-                        <span class="tech-tag">C++</span>
-                        <span class="tech-tag">GLSL</span>
                     </div>
                 </div>
             </div>
@@ -286,13 +297,6 @@
                     </div>
 
                     <p>Finally, I explored <span class="highlight_text">Lighting and Shadows</span>, where the absence of <span class="highlight_text">Vertex Array Objects (VAO)</span> in SC forced me to explicitly redefine data layouts for every frame. This highlighted the fundamental trade-off of this study: Desktop OpenGL prioritizes speed and flexibility, while SC deliberately sacrifices peak efficiency for <span class="highlight_text">determinism, stability, and certifiability</span>.</p>
-
-                    <div class="tech-stack">
-                        <span class="tech-tag">OpenGL-SC</span>
-                        <span class="tech-tag">C++</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">GLSL</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -313,7 +317,7 @@
 
                     <div class="detail-row">
                         <div class="polaroid tilt-left">
-                            <img src="images/shelfie_board.png" alt="Digital Board">
+                            <img src="images/myshelfie_wall.png" alt="Digital Board" style="object-fit: fill;";>
                             <p>The Board</p>
                         </div>
                         <p>The project is built on a strict <span class="highlight_text">MVC (Model-View-Controller)</span> architecture to decouple the game core from the user interfaces. To ensure connectivity across different environments, we implemented a hybrid communication layer supporting both <span class="highlight_text">RMI</span> and <span class="highlight_text">Sockets</span>. The server is designed to be highly concurrent, capable of hosting <span class="highlight_text">Multiple Games</span> simultaneously while maintaining isolated game states for each lobby.</p>
@@ -322,25 +326,17 @@
                     <div class="detail-row">
                         <p>One of the core challenges was achieving <span class="highlight_text">Disconnect Resilience</span>. In a distributed environment, a player's connection failure shouldn't ruin the experience for others. We developed a sophisticated heartbeat system and state-recovery mechanism that allows players to rejoin a match in progress. Furthermore, we integrated a <span class="highlight_text">Real-time Chat</span> system, supporting both global and private messaging, to preserve the social essence of the original board game.</p>
                         <div class="polaroid tilt-right">
-                            <img src="images/shelfie_gui.png" alt="GUI Interface">
-                            <p>JavaFX GUI</p>
+                            <img src="images/myshelfie_chat.png" alt="GUI Interface" style="object-fit: fill;">
+                            <p>In Game Chat</p>
                         </div>
                     </div>
 
                     <div class="detail-row">
                         <div class="polaroid tilt-left-small">
-                            <img src="images/shelfie_cli.png" alt="CLI Interface">
+                            <img src="images/TUI.png" alt="CLI Interface">
                             <p>Terminal TUI</p>
                         </div>
                         <p>To cater to all types of users, the game offers two distinct interfaces: a modern <span class="highlight_text">JavaFX GUI</span> featuring custom animations and a lightweight <span class="highlight_text">CLI (TUI)</span> for terminal enthusiasts. The CLI uses ANSI escape codes to render the board's colors and grid, while the GUI focuses on a faithful visual reproduction of the game's components.</p>
-                    </div>
-
-                    <div class="tech-stack">
-                        <span class="tech-tag">Java</span>
-                        <span class="tech-tag">JavaFX</span>
-                        <span class="tech-tag">RMI</span>
-                        <span class="tech-tag">Sockets</span>
-                        <span class="tech-tag">Maven</span>
                     </div>
                 </div>
             </div>

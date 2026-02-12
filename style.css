@@ -204,24 +204,29 @@ body {
 }
 
 .project-detail-content {
-    display: none; /* Hide all by default */
+    display: none;
     opacity: 0;
     transition: opacity 0.4s ease;
 }
 
 .project-detail-content.active {
-    display: block; /* Show only the active one */
+    display: block;
     opacity: 1;
 }
 
 .details-container {
+    display: none;
     margin-top: 40px;
     background: #2a2c31;
     border: 2px solid #1DA768;
     border-radius: 8px;
-    min-height: 50px; /* Space for the default message */
+    min-height: 50px;
     padding: 20px;
     transition: all 0.5s ease;
+}
+
+.details-container.visible {
+    display: block;
 }
 
 .details-layout {
@@ -231,6 +236,7 @@ body {
 
 .tech-stack {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
 }

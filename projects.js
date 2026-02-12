@@ -111,20 +111,15 @@ function selectProject(id) {
 
     allCards.forEach(card => card.classList.remove('is-selected'));
     allDetails.forEach(detail => detail.classList.remove('active'));
+    container.classList.remove('visible');
     
 
-    if (isClicked && lastId === id && moveDistance < threshold_mov) {
+    if ((isClicked && lastId === id && moveDistance < threshold_mov) || id == -1) {
         isClicked = false;
         lastId = -1;
-        document.getElementById('default-msg').classList.add('active');
         return;
     }
 
-    if(id == -1){
-        isClicked = false;
-        lastId = -1;
-        return;
-    }
     if(moveDistance >= threshold_mov){
         if(lastId >= 0){
             const lastImg = document.getElementById(`Project ${lastId}`);
@@ -132,6 +127,7 @@ function selectProject(id) {
             const lastDetails = document.getElementById(`detail-${lastId}`);
             lastCard.classList.add('is-selected');
             lastDetails.classList.add('active');
+            container.classList.add('visible');
         }
         return;
     }
@@ -145,8 +141,8 @@ function selectProject(id) {
         lastId = id;
         clickedCard.classList.add('is-selected');
         targetDetail.classList.add('active');
+        container.classList.add('visible');
         
-        // Optional: Smooth scroll to details
         container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 }
