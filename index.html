@@ -3,18 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <title>Federico Costantini - Portfolio</title>
 </head>
 <body>
+    <!--First Section - About me-->
     <section id="about" style="display: flex; align-items: center; padding: 50px; gap: 40px;">
-    <div style="flex: 1;">
-        <img src="image/me.jpg" alt="Your Name" style="width: 100%; border-radius: 8px;">
+    <div id="tilt-container" style="perspective: 1000px; flex: 1; cursor: pointer; display: flex; justify-content: center;">
+        <img src="images/click.png" class="click-hint-icon" alt="Click to flip">
+        <div id="card-inner">
+            <div class="card-front">
+                <img id="tilt-image" src="images/me.jpg" alt="Your Name">
+            </div>
+            <div class="card-back">
+                <img src="images/skills.png" alt="Skills" style="object-fit: cover;">
+            </div>
+        </div>
     </div>
-    <div style="flex: 1;">
-        <h1>Your Name</h1>
-        <p>Your description goes here. Write a brief introduction about who you are and what you do.</p>
+    <div style="flex: 1;" class="aboutme">
+        <h2 class="subtitle" style="font-size: 2.5rem; margin-bottom: 0; color:chocolate;">Welcome! I am</h2>
+        <h1 class="main-title" style="margin-top: 0;">Federico Costantini</h1>
+        <h2 class="subtitle">MSc Computer Science and Engineering</h2>
+        <p class="description">
+            I'm passionate about <span class="highlight_text">Graphics Programming</span> and <span class="highlight_text">Game Development</span>. 
+            I like building applications from the ground up and learning new things every day.
+        </p>
+
+        <p class="description">
+            Currently studying at <span class="highlight_text">Polytechnic University of Milan</span>, majoring in Computer Graphics with a minor in AI and Operational Research.
+        </p>
     </div>
 </section>
 
+
+<section id="projects" style="padding: 50px;">
+    <h2 class="main-title" style="font-size: 2.1rem; margin-bottom: 30px;">Featured Projects</h2>
+    
+    <div class="projects-carousel-wrapper" id="carousel-wrapper">
+        <div class="projects-container" id="projects-inner">
+            <div class="project-card" onclick="selectProject(1)">
+                <img src="images/corridor_pc.png" id="Project 1" style="height: auto; object-fit: cover;">
+                <h3>Path Tracer & Gaussian Splatting</h3>
+                <p>Custom Vulkan engine with <span class="highlight_text">path tracing</span> capabilities. It simulates a <span class="highlight_text">toroidal sensor</span> to perform geometric and photometric acquisition and generates a synthetic dataset for a <span class="highlight_text">Gaussian Splatting</span> model.</p>
+                <p class="keywords">Keywords: Vulkan, Path Tracing, Gaussian Splatting, C++</p>
+            </div>
+            <div class="project-card" onclick="selectProject(2)">
+                <img src="images/nailedit_wallpaper.png" id="Project 2" style="height: 200px; object-fit: cover; object-position: 0% 0%;">
+                <h3>Nailed-It</h3>
+                <p>2D platformer game developed in <span class="highlight_text">Unity</span>. Creates a novel gameplay by mixing Point-and-Shoot mechanics with classic platforming.</p>
+                <p class="keywords">Keywords: Unity2D, C#</p>
+            </div>
+            <div class="project-card" onclick="selectProject(3)">
+                <img src="images/first_wallpaper.png" id="Project 3" style="height: auto; object-fit: cover;">
+                <h3>First Raster Engine</h3>
+                <p>My very first <span class="highlight_text">Vulkan Engine</span>. Created to explore the <span class="highlight_text">rendering pipeline</span> and fundamental concepts of rasterization.</p>
+                <p class="keywords">Keywords: Vulkan, C++, Rasterization</p>
+            </div>
+            <div class="project-card" onclick="selectProject(4)">
+                <img src="images/bag_wallpaper.png" id="Project 4" style="height: auto; object-fit: cover;">
+                <h3>OpenGL-SC vs OpenGL-Desktop</h3>
+                <p>Deep dive into <span class="highlight_text">OpenGL-SC</span>, analyzing its strengths for <span class="highlight_text">safety critical</span> applications. Created test environments to profile and compare OpenGL-Desktop performances against its SC counterpart.</p>
+                <p class="keywords">Keywords: OpenGL, OpenGL-SC, C++, Python</p>
+            </div>
+            <div class="project-card" onclick="selectProject(5)">
+                <img src="images/myshelfie_wall.png" id="Project 5" style="height: auto; object-fit: cover;">
+                <h3>My Shelfie</h3>
+                <p>Digital version of a board game by <span class="highlight_text">Cranio Creations</span>. It supports both a <span class="highlight_text">CLI</span> and a <span class="highlight_text">GUI</span> version. It implements a <span class="highlight_text">client-server paradigm</span> to allow hosting multiple games concurrently.</p>
+                <p class="keywords">Keywords: Java, JavaFX, Maven</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="project-details" class="details-container">
+    </div>
+</section>
+
+
+<script src="script.js"></script>
+<script src="projects.js"></script>
 </body>
 </html>
