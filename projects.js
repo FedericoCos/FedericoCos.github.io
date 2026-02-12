@@ -1,7 +1,7 @@
 let isClicked = false;
 let lastId = -1;
 let moveDistance = 0;
-let threshold_mov = 0.3;
+let threshold_mov = 0.6;
 
 document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.getElementById('carousel-wrapper');
@@ -89,6 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     wrapper.addEventListener('mouseleave', (e) =>{
         isFreezed = false;
+        if(!isDragging){
+            moveDistance = 0;
+        }
     });
 
     window.addEventListener('mouseup', () => {
@@ -102,15 +105,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function selectProject(id) {
-    const details = document.getElementById('project-details');
     const allCards = document.querySelectorAll('.project-card');
+    const allDetails = document.querySelectorAll('.project-detail-content');
+    const container = document.getElementById('project-details');
+
     allCards.forEach(card => card.classList.remove('is-selected'));
+    allDetails.forEach(detail => detail.classList.remove('active'));
     
 
     if (isClicked && lastId === id && moveDistance < threshold_mov) {
         isClicked = false;
         lastId = -1;
-        details.innerHTML = `<p>Select a project to see details.</p>`;
+        document.getElementById('default-msg').classList.add('active');
         return;
     }
 
@@ -123,16 +129,24 @@ function selectProject(id) {
         if(lastId >= 0){
             const lastImg = document.getElementById(`Project ${lastId}`);
             const lastCard = lastImg.closest('.project-card');
+            const lastDetails = document.getElementById(`detail-${lastId}`);
             lastCard.classList.add('is-selected');
+            lastDetails.classList.add('active');
         }
         return;
     }
 
     const clickedImg = document.getElementById(`Project ${id}`);
     const clickedCard = clickedImg.closest('.project-card');
-    isClicked = true;
-    lastId = id;
-    clickedCard.classList.add('is-selected');
-    
-    details.innerHTML = `<h3>Project ${id} Detail View</h3><p>Extended documentation for project ${id} goes here.</p>`;
+    const targetDetail = document.getElementById(`detail-${id}`);
+
+    if (targetDetail) {
+        isClicked = true;
+        lastId = id;
+        clickedCard.classList.add('is-selected');
+        targetDetail.classList.add('active');
+        
+        // Optional: Smooth scroll to details
+        container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
 }

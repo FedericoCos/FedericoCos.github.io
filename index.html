@@ -22,7 +22,7 @@
         </div>
     </div>
     <div style="flex: 1;" class="aboutme">
-        <h2 class="subtitle" style="font-size: 2.5rem; margin-bottom: 0; color:chocolate;">Welcome! I am</h2>
+        <h2 class="subtitle" style="font-size: 3rem; margin-bottom: 0; color:chocolate;">Welcome! I am</h2>
         <h1 class="main-title" style="margin-top: 0;">Federico Costantini</h1>
         <h2 class="subtitle">MSc Computer Science and Engineering</h2>
         <p class="description">
@@ -38,7 +38,7 @@
 
 
 <section id="projects" style="padding: 50px;">
-    <h2 class="main-title" style="font-size: 2.1rem; margin-bottom: 30px;">Featured Projects</h2>
+    <h2 class="main-title" style="font-size: 2.5rem; margin-bottom: 30px;">Featured Projects</h2>
     
     <div class="projects-carousel-wrapper" id="carousel-wrapper">
         <div class="projects-container" id="projects-inner">
@@ -76,6 +76,276 @@
     </div>
 
     <div id="project-details" class="details-container">
+        <div id="default-msg" class="project-detail-content active">
+            <p>Select a project to see details.</p>
+        </div>
+
+        <div id="detail-1" class="project-detail-content">
+            <div class="details-layout">
+                <div class="details-text">
+                    <div class="detail-header">
+                        <h3>Path Tracer & Gaussian Splatting</h3>
+                        <div class="detail-actions">
+                            <button class="action-btn close-btn" onclick="selectProject(1)"><span>✕</span></button>
+                            <a href="#" target="_blank" class="action-btn link-btn"><span>View Project</span></a>
+                        </div>
+                    </div>
+
+                    <p>It is no secret that <span class="highlight_text">Path Tracing</span> is able to reproduce breathtaking visuals. Alongside <span class="highlight_text">Physical Based Rendering (PBR)</span> workflows, it is the go-to technique for simulating physically accurate scenes.
+                     However, the computational power needed for this technique is a dealbreaker for many commercial GPUs, especially if real time rendering is necessary. That's where this project comes in. 
+                    The idea is simple: place a sensor inside a path traced environment to scan it and generate a synthetic dataset for a <span class="highlight_text">Gaussian Splatting</span> model. This way, each scene can be reconstructed using Gaussian primitives, and thus exploiting well optimized rasterization techniques without losing the fidelity of the path tracer. Let's explore it in details! </p>
+                    
+                    <div class="detail-row">
+                        <p>First, we have the <span class="highlight_text">Graphics Engine</span>. It exploits Vulkan <span class="highlight_text">Hardware Accelerated Ray Tracing</span> to render images on screen. In order to make each perspective free of noise, many techniques have been employed. Most noticeably, <span class="highlight_text">Temporal Accumulation</span> is used to combine multiple frames together to smooth out the noise. <span class="highlight_text">Next Event Estimation (NEE)</span> is exploited to quickly light up scenes, and a <span class="highlight_text">Blue Noise texture</span> speeds up the whole process by generating high frequency noise, which is "cleaner" and easier to remove.
+                     The engine then uses either a <span class="highlight_text">Metallic-Roughness</span> PBR workflow or a <span class="highlight_text">Specular Glossiness</span> one to make light interact with each object realistically.</p>
+                        <img src="gifs/damn.gif" class="side-gif" alt="Engine Demo">
+                    </div>
+
+                    <p>Once the scene is fully rendered, a <span class="highlight_text">Toroidal Sensor</span> is placed in the environment. This has a dual usage. On one side, it scans the scene and produces a dense <span class="highlight_text">Point Cloud</span>. Several sampling techniques have been tested, ranging from a pure random sampling to a much more effective Halton sampling, all the way to custom <span class="highlight_text">Importance Sampling</span> methods. 
+                    On the other side, it performs photometric acquisition by placing a camera on the centerline of the torus and collecting different views of the scene.</p>
+
+                    <div class="polaroid-gallery">
+                        <div class="polaroid tilt-left">
+                            <img src="images/room_base.png" alt="Scan 1">
+                            <p>Base Scene</p>
+                        </div>
+                        <div class="polaroid tilt-right">
+                            <img src="images/room_point.png" alt="Scan 2">
+                            <p>Point Cloud</p>
+                        </div>
+                        <div class="polaroid tilt-left-small">
+                            <img src="images/room_view1.png" alt="Scan 3">
+                            <p>First view</p>
+                        </div>
+                        <div class="polaroid tilt-right-small">
+                            <img src="images/room_view2.png" alt="Scan 4">
+                            <p>Second view</p>
+                        </div>
+                    </div>
+
+                    <p>The collected data from the sensor serves as an initialization state for the training of a Gaussian Splatting model. All experiments were conducted with the vanilla version of the architecture.
+                         By dividing the geometric and photometric acquisition, the density of the generated point cloud is independent of the number of views collected. This allows the model to quickly converge to the optimal solution with a smaller dataset for training.  Here are some of the results.</p>
+
+                    <div class="polaroid-gallery">
+                        <div class="polaroid tilt-right">
+                            <img src="images/sponza_gs_1.png" alt="Result 1">
+                            <p>Sponza</p>
+                        </div>
+                        <div class="polaroid tilt-left">
+                            <img src="images/star_gs_1.png" alt="Result 2">
+                            <p>Behemoth</p>
+                        </div>
+                        <div class="polaroid tilt-right-small">
+                            <img src="images/bistro_int_gs_1.png" alt="Result 3">
+                            <p>Bistrot</p>
+                        </div>
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech-tag">Vulkan</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">GLSL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="detail-2" class="project-detail-content">
+            <div class="details-layout">
+                <div class="details-text">
+                    <div class="detail-header">
+                        <h3>Nailed-It</h3>
+                        <div class="detail-actions">
+                            <button class="action-btn close-btn" onclick="selectProject(2)"><span>✕</span></button>
+                            <a href="https://polimi-game-collective.itch.io/nailed-it" target="_blank" class="action-btn link-btn"><span>Play on Itch</span></a>
+                        </div>
+                    </div>
+
+                    <p>Developed for the Polimi "Game Design and Programming" course, <span class="highlight_text">Nailed-It</span> is a 2D platformer that tests both your reflexes and your aim. The gameplay mixes elements of a classic 2D platforming game with mechanics of Point-&-Shoot ones. As the <span class="highlight_text">Team Leader</span>, I guided a group of developers and artists to deliver a polished experience in just a couple of months. Beyond management, I served as the <span class="highlight_text">Gameplay Programmer</span>, <span class="highlight_text">Level Designer</span> and handled the <span class="highlight_text">Sound implementation</span>.</p>
+                    
+                    <div class="detail-row">
+                        <p>One of our core pillars was gameplay feeling. We decided to <span class="highlight_text">build the movement of our character completely from scratch</span>, without relying on any of Unity's pre-made scripts. This way, we perfectly tailored it to our desire, taking inspiration from well known games such as Hollow Knight, Celeste, and Super Meet Boy. Moreover, all collisions and physical interactions with the environment are custom and implemented through the use of Unity's <span class="highlight_text">Raycast system</span>.
+                         To capture the "weight" of the movement, we implemented custom variable jump heights, coyote time, and jump buffering, alongside other small quirks.</p>
+                        <video class="side-gif" autoplay loop muted playsinline>
+                            <source src="videos/nailed-it.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <p>The nail-shooting mechanic was particularly challenging, requiring a custom projectile system that interacts seamlessly with our manual collision detection. We exploited a secondary layer of colliders to handle the nailing, allowing for more permissive areas where shots are considered valid.
+                        Additionally, we developed many others' gameplay mechanics, such as a gliding system, a quick spawn, a soft "CTRL-Z" to undo last action,... 
+                    </p>
+
+                    <div class="polaroid-gallery">
+                        <div class="polaroid tilt-left">
+                            <img src="gifs/g1.gif" alt="Level Design">
+                            <p>Create Your Path</p>
+                        </div>
+                        <div class="polaroid tilt-right">
+                            <img src="gifs/g2.gif" alt="Point and Shoot">
+                            <p>Block The Obstacles</p>
+                        </div>
+                        <div class="polaroid tilt-left-small">
+                            <img src="gifs/g3.gif" alt="Boss Encounter">
+                            <p>Avoid The Blades</p>
+                        </div>
+                    </div>
+
+                    <p>Finally, I took charge of the <span class="highlight_text">Auditory Experience</span>. Every "thwack" of the nail and every footstep was designed to provide tactile feedback to the player. By integrating these sounds directly into our custom movement states, we ensured that the audio wasn't just an overlay, but a functional part of the gameplay loop.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="detail-3" class="project-detail-content">
+            <div class="details-layout">
+                <div class="details-text">
+                    <div class="detail-header">
+                        <h3>First Raster Engine</h3>
+                        <div class="detail-actions">
+                            <button class="action-btn close-btn" onclick="selectProject(3)"><span>✕</span></button>
+                            <a href="https://github.com/FedericoCos/ComputerGraphics/tree/main/Vulkan_tutorial" target="_blank" class="action-btn link-btn"><span>View Code</span></a>
+                        </div>
+                    </div>
+
+                    <p>What is the best way to learn <span class="highlight_text">Vulkan</span>? It's obvious: by making a game! This project represents my initial steps into the API, moving away from the "black-box" abstraction of legacy APIs to embrace the explicit control and verbosity of the <span class="highlight_text">Next-Gen Graphics API</span>. It was built following the industry-standard architecture to understand how modern GPUs actually "think".</p>
+                    
+                    <div class="detail-row">
+                        <p>As far as the "game" goes, it is a simple car racing simulator where you have to collect flags around the track in a short amount of time while avoid obstacles. While the physics implemented is simplistic, a peculiar aspect of the gameplay regards collision detection.
+                            I implemented a <span class="highlight_text">GJK collision detection algorithm</span> from scratch, so to make bumping into an obstacle extremely precise and efficient. More over, I programmed this system to consider specific section of an object's mesh: this way I could check only the bases of trees for collisions, since the car can't leave the ground.
+                        </p>
+                        <video class="side-gif" autoplay loop muted playsinline>
+                            <source src="videos/CG_video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <p>From a more technical point of view, this project allowed me to explore basic Graphics Programming concepts. I had to deal with <span class="highlight_text">Render Passes</span>, <span class="highlight_text">Buffers</span> and <span class="highlight_text">Samplers</span>, among the many. As performance was a major aspect of this project, I exploited Vulkan's <span class="highlight_text">Push Constants</span> for fast data exchange between the CPU and the GPU.
+                    This was also my first time creating shaders for the <span class="highlight_text">Rendering Pipeline</span>. I tested a variety of light implementation and responses, based on the objects in the scene, going from a simple <span class="highlight_text">Phong model</span> to a more sophisticated <span class="highlight_text">Cook-Torrance model</span>.</p>
+
+                    <div class="polaroid-gallery">
+                        <div class="polaroid tilt-left">
+                            <img src="images/menu.png" alt="Hello Triangle">
+                            <p>Car Selection</p>
+                        </div>
+                        <div class="polaroid tilt-right">
+                            <img src="images/ferrari_game.png" alt="Rotating Cube">
+                            <p>In Game Car</p>
+                        </div>
+                        <div class="polaroid tilt-left-small">
+                            <img src="images/first_person_view.png" alt="Depth Testing">
+                            <p>First Person Camera</p>
+                        </div>
+                    </div>
+
+                    <p>By the end of this project, I had a fully functional rasterizer capable of rendering 3D models. This technical foundation was essential for moving toward much more complex projects.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div id="detail-4" class="project-detail-content">
+            <div class="details-layout">
+                <div class="details-text">
+                    <div class="detail-header">
+                        <h3>OpenGL-SC vs OpenGL-Desktop</h3>
+                        <div class="detail-actions">
+                            <button class="action-btn close-btn" onclick="selectProject(4)"><span>✕</span></button>
+                            <a href="opengl.pdf" target="_blank" class="action-btn link-btn"><span>View Report</span></a>
+                        </div>
+                    </div>
+
+                    <p>In safety-critical domains like <span class="highlight_text">avionics</span> or <span class="highlight_text">automotive</span>, unpredictability is unacceptable. This research project explores the core differences between the flexible Desktop version of OpenGL and its deterministic counterpart: <span class="highlight_text">OpenGL-SC</span>. By carving out a restricted subset of functions, SC ensures that every draw call behaves exactly as written, facilitating the rigorous <span class="highlight_text">static analysis</span> and certification required for life-critical systems.</p>
+                    
+                    <div class="detail-row">
+                        <video class="side-gif" autoplay loop muted playsinline>
+                            <source src="videos/cubes.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>To quantify the trade-offs, I conducted a series of experiments, starting with the <span class="highlight_text">"World of Cubes"</span> scenario. I compared Desktop <span class="highlight_text">Instance Rendering</span>—which squeezes performance through GPU-side loops—against SC's requirement for explicit, single draw calls. The results were telling: while Desktop OpenGL achieved higher raw FPS, the SC implementation provided a far more <span class="highlight_text">stable frame rate</span>, directly aligning with the requirement for predictable timing in real-time systems.</p>
+                    </div>
+
+                    <p>One of the most interesting challenges was emulating <span class="highlight_text">Compute Shaders</span>. Since OpenGL-SC 2.0 lacks native compute support, I had to "fake" the computation using a <span class="highlight_text">Fragment Shader</span> pass on a full-screen quad. I used an animated Menger sponge fractal to stress the GPU, discovering that while native compute dispatches are faster, the emulated approach offers a meaningful <span class="highlight_text">Worst Case Execution Time (WCET)</span> estimate, as its execution is fully defined at compile time.</p>
+
+                    <div class="polaroid-gallery">
+                        <div class="polaroid tilt-right">
+                            <img src="images/menger_world(1).png" alt="Menger Sponge">
+                            <p>Menger Sponge</p>
+                        </div>
+                        <div class="polaroid tilt-left-small">
+                            <img src="images/ThirdScene(1).png" alt="Shadow Comparison">
+                            <p>Shadows & Lights</p>
+                        </div>
+                        <div class="polaroid tilt-right-small">
+                            <img src="images/plot_timings_2_SC.png" alt="FPS Graph" style="object-fit: fill;">
+                            <p>Timing Analysis Example</p>
+                        </div>
+                    </div>
+
+                    <p>Finally, I explored <span class="highlight_text">Lighting and Shadows</span>, where the absence of <span class="highlight_text">Vertex Array Objects (VAO)</span> in SC forced me to explicitly redefine data layouts for every frame. This highlighted the fundamental trade-off of this study: Desktop OpenGL prioritizes speed and flexibility, while SC deliberately sacrifices peak efficiency for <span class="highlight_text">determinism, stability, and certifiability</span>.</p>
+
+                    <div class="tech-stack">
+                        <span class="tech-tag">OpenGL-SC</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">GLSL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="detail-5" class="project-detail-content">
+            <div class="details-layout">
+                <div class="details-text">
+                    <div class="detail-header">
+                        <h3>My Shelfie</h3>
+                        <div class="detail-actions">
+                            <button class="action-btn close-btn" onclick="selectProject(5)"><span>✕</span></button>
+                            <a href="https://github.com/FedericoCos/MyShelfie" target="_blank" class="action-btn link-btn"><span>View Code</span></a>
+                        </div>
+                    </div>
+
+                    <p>Developed for the "Software Engineering" course at Polimi, <span class="highlight_text">My Shelfie</span> is a digital adaptation of the popular board game by Cranio Creations. It implements the complete rulebook, managing everything from tile placement validation to complex scoring systems across a network.</p>
+
+                    <div class="detail-row">
+                        <div class="polaroid tilt-left">
+                            <img src="images/shelfie_board.png" alt="Digital Board">
+                            <p>The Board</p>
+                        </div>
+                        <p>The project is built on a strict <span class="highlight_text">MVC (Model-View-Controller)</span> architecture to decouple the game core from the user interfaces. To ensure connectivity across different environments, we implemented a hybrid communication layer supporting both <span class="highlight_text">RMI</span> and <span class="highlight_text">Sockets</span>. The server is designed to be highly concurrent, capable of hosting <span class="highlight_text">Multiple Games</span> simultaneously while maintaining isolated game states for each lobby.</p>
+                    </div>
+
+                    <div class="detail-row">
+                        <p>One of the core challenges was achieving <span class="highlight_text">Disconnect Resilience</span>. In a distributed environment, a player's connection failure shouldn't ruin the experience for others. We developed a sophisticated heartbeat system and state-recovery mechanism that allows players to rejoin a match in progress. Furthermore, we integrated a <span class="highlight_text">Real-time Chat</span> system, supporting both global and private messaging, to preserve the social essence of the original board game.</p>
+                        <div class="polaroid tilt-right">
+                            <img src="images/shelfie_gui.png" alt="GUI Interface">
+                            <p>JavaFX GUI</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-row">
+                        <div class="polaroid tilt-left-small">
+                            <img src="images/shelfie_cli.png" alt="CLI Interface">
+                            <p>Terminal TUI</p>
+                        </div>
+                        <p>To cater to all types of users, the game offers two distinct interfaces: a modern <span class="highlight_text">JavaFX GUI</span> featuring custom animations and a lightweight <span class="highlight_text">CLI (TUI)</span> for terminal enthusiasts. The CLI uses ANSI escape codes to render the board's colors and grid, while the GUI focuses on a faithful visual reproduction of the game's components.</p>
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">JavaFX</span>
+                        <span class="tech-tag">RMI</span>
+                        <span class="tech-tag">Sockets</span>
+                        <span class="tech-tag">Maven</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 

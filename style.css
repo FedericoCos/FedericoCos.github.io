@@ -82,7 +82,7 @@ body {
 
 .main-title {
     font-family: 'Press Start 2P', cursive;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     color: #fff;
     margin-bottom: 10px;
     line-height: 1.2;
@@ -90,17 +90,16 @@ body {
 
 .subtitle {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: chocolate;
     margin-top: 0;
 }
 
 .description {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 700;
     line-height: 1.6;
     color: #ffffff;
-    max-width: 600px;
 }
 
 .highlight_text{
@@ -202,4 +201,203 @@ body {
 
 .keywords{
     font-weight: bold;
+}
+
+.project-detail-content {
+    display: none; /* Hide all by default */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-detail-content.active {
+    display: block; /* Show only the active one */
+    opacity: 1;
+}
+
+.details-container {
+    margin-top: 40px;
+    background: #2a2c31;
+    border: 2px solid #1DA768;
+    border-radius: 8px;
+    min-height: 50px; /* Space for the default message */
+    padding: 20px;
+    transition: all 0.5s ease;
+}
+
+.details-layout {
+    display: flex;
+    gap: 30px;
+}
+
+.tech-stack {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tech-tag {
+    background: chocolate;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.details-layout {
+    display: flex;
+    gap: 30px;
+    width: 100%; 
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.detail-header h3 {
+    margin: 0;
+}
+
+.detail-actions {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 15px;
+    align-items: center;
+}
+
+.details-text {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.details-text h3{
+    font-size: 2.2rem;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.action-btn {
+    background: transparent;
+    border: 1px solid chocolate;
+    color: white;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    background: chocolate;
+    color: #1F2022;
+}
+
+.close-btn {
+    border-color: #ff4d4d; /* Subtle red for close */
+    color: #ff4d4d;
+}
+
+.close-btn:hover {
+    background: #ff4d4d;
+    color: white;
+}
+
+.link-btn {
+    border-color: #1DA768; /* Green for GitHub/Link */
+    color: #1DA768;
+}
+
+.link-btn:hover {
+    background: #1DA768;
+    color: white;
+}
+
+/* Layout for Text + GIF */
+.detail-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.detail-row p {
+    flex: 2;
+}
+
+.side-gif {
+    flex: 1;
+    max-width: 400px;
+    border-radius: 8px;
+    border: 2px solid chocolate;
+}
+
+/* Polaroid Gallery Styles */
+.polaroid-gallery {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 30px 0;
+    gap: 20px;
+}
+
+.polaroid {
+    background: #9c9898; /* Off-white Polaroid paper */
+    padding: 12px 12px 0 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+    width: 272px; 
+}
+
+.polaroid img {
+    width: 100%;
+    height: 238px;
+    object-fit: cover;
+}
+
+/* Caption style using your cursive font */
+.polaroid p {
+    font-family: 'Press Start 2P', cursive;
+    color: #222;
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+/* Tilts */
+.tilt-left { transform: rotate(-5deg); }
+.tilt-right { transform: rotate(5deg); }
+.tilt-left-small { transform: rotate(-2deg); }
+.tilt-right-small { transform: rotate(3deg); }
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.1);
+    z-index: 5;
+}
+
+/* Adjustments for the second gallery (no caption) */
+.polaroid:not(:has(p)) {
+    padding-bottom: 12px;
+}
+
+#detail-2 .link-btn {
+    border-color: #ff244a;
+    color: #ff244a;
+}
+
+#detail-2 .link-btn:hover {
+    background: #ff244a;
+    color: white;
 }
