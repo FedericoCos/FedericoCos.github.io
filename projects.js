@@ -108,6 +108,7 @@ function selectProject(id) {
     const allCards = document.querySelectorAll('.project-card');
     const allDetails = document.querySelectorAll('.project-detail-content');
     const container = document.getElementById('project-details');
+    const projectsSection = document.getElementById('projects');
 
     allCards.forEach(card => card.classList.remove('is-selected'));
     allDetails.forEach(detail => detail.classList.remove('active'));
@@ -117,6 +118,7 @@ function selectProject(id) {
     if ((isClicked && lastId === id && moveDistance < threshold_mov) || id == -1) {
         isClicked = false;
         lastId = -1;
+        projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         return;
     }
 

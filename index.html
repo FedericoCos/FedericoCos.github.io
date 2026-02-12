@@ -8,6 +8,18 @@
     <title>Federico Costantini - Portfolio</title>
 </head>
 <body>
+    <nav id="dynamic-island" class="nav-island at-top">
+        <div class="nav-links">
+            <div class="nav-indicator"></div>
+            <a href="#about" class="nav-item active">About</a>
+            <a href="#projects" class="nav-item">Projects</a>
+            <a href="#info" class="nav-item">Info</a>
+            <a href="#blog" class="nav-item">Blog</a>
+            <a href="#contact" class="nav-item">Contact</a>
+        </div>
+    </nav>
+
+
     <!--First Section - About me-->
     <section id="about" style="display: flex; align-items: center; padding: 50px; gap: 40px;">
     <div id="tilt-container" style="perspective: 1000px; flex: 1; cursor: pointer; display: flex; justify-content: center;">
@@ -104,7 +116,7 @@
                         <h3>Path Tracer & Gaussian Splatting</h3>
                         <div class="detail-actions">
                             <button class="action-btn close-btn" onclick="selectProject(1)"><span>✕</span></button>
-                            <a href="#" target="_blank" class="action-btn link-btn"><span>View Project</span></a>
+                            <a href="https://github.com/FedericoCos/PathTracer_GaussianSplatting" target="_blank" class="action-btn link-btn"><span>View Project</span></a>
                         </div>
                     </div>
 
@@ -216,7 +228,7 @@
                         <h3>First Raster Engine</h3>
                         <div class="detail-actions">
                             <button class="action-btn close-btn" onclick="selectProject(3)"><span>✕</span></button>
-                            <a href="https://github.com/FedericoCos/ComputerGraphics/tree/main/Vulkan_tutorial" target="_blank" class="action-btn link-btn"><span>View Code</span></a>
+                            <a href="https://github.com/FedericoCos/FirstRasterEngine" target="_blank" class="action-btn link-btn"><span>View Code</span></a>
                         </div>
                     </div>
 
@@ -265,7 +277,7 @@
                         <h3>OpenGL-SC vs OpenGL-Desktop</h3>
                         <div class="detail-actions">
                             <button class="action-btn close-btn" onclick="selectProject(4)"><span>✕</span></button>
-                            <a href="opengl.pdf" target="_blank" class="action-btn link-btn"><span>View Report</span></a>
+                            <a href="resources/opengl.pdf" target="_blank" class="action-btn link-btn"><span>View Report</span></a>
                         </div>
                     </div>
 
@@ -346,7 +358,132 @@
 </section>
 
 
+<section id="info" class="timeline-section">
+    <h2 class="main-title" style="text-align: center; margin-bottom: 60px;">Experience & Education</h2>
+    
+    <div class="timeline-container">
+
+        <div class="timeline-item left-content">
+            <div class="timeline-visual">
+                <div class="polaroid tilt-left">
+                    <img src="images/MSC.jpeg" alt="Education">
+                    <p>Polimi</p>
+                </div>
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-info">
+                <span class="timeline-date">2023 - Present</span>
+                <h3>MSc in Computer Science</h3>
+                <p>Specializing in <span class="highlight_text">Computer Graphics</span> and Game Development. Focusing on advanced rendering techniques and real-time applications.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right-content">
+            <div class="timeline-visual">
+                <div class="polaroid tilt-right">
+                    <img src="images/healthyreply_logo.jpg" alt="Experience">
+                    <p>Reply</p>
+                </div>
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-info">
+                <span class="timeline-date">2023 - 2024</span>
+                <h3>Junior Full Stack Developer</h3>
+                <p>Developed and maintained software products for the <span class="highlight_text">public healthcare organization</span> in Lombardia, Italy.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item left-content">
+            <div class="timeline-visual">
+                <div class="polaroid tilt-left-small">
+                    <img src="images/grad.jpeg" alt="Degree">
+                    <p>Graduation</p>
+                </div>
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-info">
+                <span class="timeline-date">2020 - 2023</span>
+                <h3>BSc in Computer Engineering</h3>
+                <p>Completed undergraduate studies in <span class="highlight_text">Computer Science and Engineering</span> at Polytechnic University of Milan</p>
+            </div>
+        </div>
+
+
+        <div class="timeline-item right-content">
+            <div class="timeline-visual">
+                <div class="polaroid tilt-right-small">
+                    <img src="images/banzi.jpg" alt="Experience">
+                    <p>High School</p>
+                </div>
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-info">
+                <span class="timeline-date">2015 - 2020</span>
+                <h3>High School</h3>
+                <p>Studied at <span class="highlight_text">Giulietta Banzi Bazoli</span> scientific high school.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item left-content">
+            <div class="timeline-visual">
+                <div class="polaroid tilt-left">
+                    <img src="images/usa.jpg" alt="Experience">
+                    <p>USA</p>
+                </div>
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-info">
+                <span class="timeline-date">2018 - 2019</span>
+                <h3>AFS Intercultural Programs</h3>
+                <p>Completed my fourth year of high school at <span class="highlight_text">Conard High School</span>, West Hartford, CT. 
+                Here is where I took my first course in Computer Science.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="blog" class="blog-section">
+    <h2 class="main-title" style="text-align: center; margin-bottom: 40px;">The Dev Board</h2>
+    <div id="blackboard" class="blackboard">
+        </div>
+    <div id="board-overlay" class="board-overlay"></div>
+</section>
+
+
+<section id="contact" class="contact-section">
+    <div class="contact-header">
+        <h2 class="main-title">Let's Connect</h2>
+        <p class="subtitle">Reach out through any of these platforms</p>
+    </div>
+
+    <div class="contact-grid">
+        <a href="mailto:fedecosta1234@gmail.com" class="contact-card">
+            <div class="contact-icon">✉</div>
+            <span class="contact-label">Email</span>
+            <span class="contact-value">fedecosta1234@gmail.com</span>
+        </a>
+
+        <a href="https://www.linkedin.com/in/federico-costantini-12b209284/" target="_blank" class="contact-card">
+            <div class="contact-icon">in</div>
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">Federico Costantini</span>
+        </a>
+
+        <a href="https://github.com/FedericoCos" target="_blank" class="contact-card">
+            <div class="contact-icon">git</div>
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">@FedericoCos</span>
+        </a>
+    </div>
+</section>
+
+
 <script src="script.js"></script>
 <script src="projects.js"></script>
+<script src="info.js"></script>
+<script src="blog.js"></script>
+<script src="contact.js"></script>
+<script src="nav.js"></script>
 </body>
 </html>

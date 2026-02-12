@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "image": "blog/enginebase.png",
+        "title": "General Purpose Raster Graphic Engine",
+        "content": "Working on a Vulkan raster engine that abstracts the intricacies of the API while maintaing high flexibility. It will serve as the base Engine for multiple small projects.",
+        "keywords": ["Vulkan", "C++", "Graphic Engine"],
+        "x": 100,
+        "y": 50,
+        "rotation": -3
+    },
+    {
+        "id": 2,
+        "image": "",
+        "title": "Graduation Day",
+        "content": "About to conclude my studies at Polytechnic University of Milan. Graduation is scheduled for March 26.",
+        "keywords": ["Grad day", "MSc"],
+        "x": 800,
+        "y": 200,
+        "rotation": 2
+    }
+]
