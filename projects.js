@@ -2,10 +2,12 @@ let isClicked = false;
 let lastId = -1;
 let moveDistance = 0;
 let threshold_mov = 0.6;
+let isGridLayout = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.getElementById('carousel-wrapper');
     const inner = document.getElementById('projects-inner');
+    const toggleBtn = document.getElementById('layout-toggle-btn');
     
     let scrollPos = 0;
     let isDragging = false;
@@ -15,13 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const speed = 0.4;
     const gap = 20;
 
-    const items = [...inner.children];
-    items.forEach(item => {
+    const originalCards = [...inner.children];
+
+    originalCards.forEach(item => {
         const clone = item.cloneNode(true);
+        clone.classList.add('clone');
         inner.appendChild(clone);
     });
 
-    // Helper to get card width + gap
     const getCardWidth = () => {
         const card = inner.firstElementChild;
         return card ? card.offsetWidth + gap : 0;
@@ -36,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
             inner.appendChild(inner.firstElementChild);
         }
         
-        // Moving Right: If the scroll position goes positive
         if (scrollPos > 0) {
             const lastCard = inner.lastElementChild;
             scrollPos -= cardWidth;
@@ -47,20 +49,75 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function animate() {
-        if (!isDragging && !isFreezed && (!isClicked || hasMoved)) {
+        if (!isGridLayout && !isDragging && !isFreezed && (!isClicked || hasMoved)) {
             scrollPos -= speed;
             recycle();
         }
         requestAnimationFrame(animate);
     }
 
-    // Start only after window load to ensure offsetWidth is not 0
     window.addEventListener('load', () => {
         animate();
     });
 
-    // Dragging Logic
+    toggleBtn.addEventListener('click', () => {
+        const firstRects = originalCards.map(card => card.getBoundingClientRect());
+        const firstWrapperHeight = wrapper.offsetHeight;
+
+        isGridLayout = !isGridLayout;
+        if (isGridLayout) {
+            toggleBtn.innerText = 'Show Slider';
+            wrapper.classList.add('grid-layout-wrapper');
+            inner.classList.add('grid-layout');
+            inner.style.transform = 'none';
+            
+            originalCards.forEach(card => inner.appendChild(card));
+            const clones = Array.from(inner.children).filter(c => c.classList.contains('clone'));
+            clones.forEach(clone => inner.appendChild(clone));
+        } else {
+            toggleBtn.innerText = 'Show Grid';
+            wrapper.classList.remove('grid-layout-wrapper');
+            inner.classList.remove('grid-layout');
+            scrollPos = 0;
+            inner.style.transform = `translateX(${scrollPos}px)`;
+        }
+
+        const lastWrapperHeight = wrapper.offsetHeight;
+
+        wrapper.style.transition = 'none';
+        wrapper.style.height = `${firstWrapperHeight}px`;
+
+        originalCards.forEach((card, i) => {
+            const lastRect = card.getBoundingClientRect();
+            const deltaX = firstRects[i].left - lastRect.left;
+            const deltaY = firstRects[i].top - lastRect.top;
+
+            card.style.transition = 'none';
+            card.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+        });
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                wrapper.style.transition = 'height 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                wrapper.style.height = `${lastWrapperHeight}px`;
+
+                originalCards.forEach(card => {
+                    card.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease';
+                    card.style.transform = 'translate(0, 0)';
+                });
+
+                setTimeout(() => {
+                    wrapper.style.height = 'auto';
+                    originalCards.forEach(card => {
+                        card.style.transform = '';
+                    });
+                }, 600);
+            });
+        });
+    });
+
     wrapper.addEventListener('mousedown', (e) => {
+        if (isGridLayout) return;
         hasMoved = false;
         isDragging = true;
         isFreezed = true;
@@ -70,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
+        if (!isDragging || isGridLayout) return;
         e.preventDefault();
         const x = e.pageX;
         const currentMove = x - startX;
@@ -84,10 +141,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     wrapper.addEventListener('mouseover', (e) => {
+        if (isGridLayout) return;
         isFreezed = true;
     });
 
     wrapper.addEventListener('mouseleave', (e) =>{
+        if (isGridLayout) return;
         isFreezed = false;
         if(!isDragging){
             moveDistance = 0;
@@ -95,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('mouseup', () => {
-        if (!isDragging) return;
+        if (!isDragging || isGridLayout) return;
         isDragging = false;
         if (moveDistance > 5) {
             inner.style.pointerEvents = 'none';
@@ -114,15 +173,14 @@ function selectProject(id) {
     allDetails.forEach(detail => detail.classList.remove('active'));
     container.classList.remove('visible');
     
-
-    if ((isClicked && lastId === id && moveDistance < threshold_mov) || id == -1) {
+    if ((isClicked && lastId === id && moveDistance < threshold_mov && !isGridLayout) || id == -1 || (isClicked && lastId === id && isGridLayout)) {
         isClicked = false;
         lastId = -1;
         projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         return;
     }
 
-    if(moveDistance >= threshold_mov){
+    if(moveDistance >= threshold_mov && !isGridLayout){
         if(lastId >= 0){
             const lastImg = document.getElementById(`Project ${lastId}`);
             const lastCard = lastImg.closest('.project-card');
@@ -145,6 +203,8 @@ function selectProject(id) {
         targetDetail.classList.add('active');
         container.classList.add('visible');
         
-        container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        setTimeout(() => {
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 10);
     }
 }
