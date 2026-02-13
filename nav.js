@@ -68,6 +68,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         lastScrollY = currentScroll;
+        const scrollPosition = window.innerHeight + window.scrollY;
+        const scrollHeight = document.documentElement.scrollHeight;
+        
+        if (scrollPosition >= scrollHeight - 50) {
+            const contactItem = document.querySelector('.nav-item[href="#contact"]');
+            if (contactItem) {
+                navItems.forEach(item => item.classList.remove('active'));
+                contactItem.classList.add('active');
+                updateIndicator(contactItem);
+            }
+        }
     }, { passive: true });
 
     // REMOVED: mousemove listener so it only reappears on scroll up
@@ -82,21 +93,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.scrollY > 100) resetIdleTimer();
     });
 
-    // Intersection Observer for section tracking
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            // We only update if the section is significantly visible
             if (entry.isIntersecting) {
                 const id = entry.target.getAttribute('id');
-                navItems.forEach(item => {
-                    item.classList.remove('active');
-                    if (item.getAttribute('href') === `#${id}`) {
-                        item.classList.add('active');
-                        updateIndicator(item);
-                    }
-                });
+                const targetItem = document.querySelector(`.nav-item[href="#${id}"]`);
+                
+                if (targetItem) {
+                    // Remove active from all, then add to the one currently entering
+                    navItems.forEach(item => item.classList.remove('active'));
+                    targetItem.classList.add('active');
+                    updateIndicator(targetItem);
+                }
             }
         });
-    }, { rootMargin: '-40% 0px -40% 0px' });
+    }, { 
+        // rootMargin: Top, Right, Bottom, Left
+        // -20% Top and -20% Bottom creates a "sweet spot" in the middle 60% of the screen
+        rootMargin: '-20% 0px -20% 0px',
+        threshold: 0.15 // Trigger when at least 15% of the section is in that sweet spot
+    });
 
     sections.forEach(section => sectionObserver.observe(section));
 
