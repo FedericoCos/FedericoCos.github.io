@@ -507,6 +507,10 @@ body {
         flex-direction: column;
     }
 
+    .details-container {
+        transition: none !important;
+    }
+
     .detail-header {
         flex-direction: column-reverse;
         align-items: stretch;

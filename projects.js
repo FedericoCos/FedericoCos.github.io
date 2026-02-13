@@ -174,11 +174,19 @@ function selectProject(id) {
     allDetails.forEach(detail => detail.classList.remove('active'));
     container.classList.remove('visible');
     
+    const isMobileQuery = window.matchMedia("(max-width: 768px)").matches;
+
     if ((isClicked && lastId === id && moveDistance < threshold_mov && !isGridLayout) || id == -1 || (isClicked && lastId === id && isGridLayout)) {
         isClicked = false;
         lastId = -1;
-        const targetY = projectsSection.getBoundingClientRect().top + window.pageYOffset;
-        window.scrollTo({ top: targetY, behavior: 'smooth' });
+        
+        if (isMobileQuery) {
+            const header = projectsSection.querySelector('.projects-header');
+            header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            const targetY = projectsSection.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
+        }
         return;
     }
 
@@ -205,13 +213,18 @@ function selectProject(id) {
         targetDetail.classList.add('active');
         container.classList.add('visible');
         
+        const delay = isMobileQuery ? 10 : 120;
+        
         setTimeout(() => {
-            const targetY = anchor.getBoundingClientRect().top + window.pageYOffset;
-            
-            window.scrollTo({ 
-                top: targetY, 
-                behavior: 'smooth' 
-            });
-        }, 80);
+            if (isMobileQuery) {
+                anchor.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
+            } else {
+                const targetY = anchor.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({ 
+                    top: targetY, 
+                    behavior: 'smooth' 
+                });
+            }
+        }, delay);
     }
 }
