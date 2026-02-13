@@ -9,15 +9,29 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentX = 0;
     let currentY = 0;
 
+
     tiltContainer.addEventListener('mousemove', (e) => {
         if (isTransitioning) return;
         
-        const rect = tiltContainer.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        
-        targetX = (e.clientX - centerX) / rect.width;
-        targetY = (e.clientY - centerY) / rect.height;
+        const currentRect = tiltContainer.getBoundingClientRect();
+        const paddingX = currentRect.width * 0.02; // 15% internal margin
+        const paddingY = currentRect.height * 0.02;
+        const mouseX = e.clientX - currentRect.left;
+        const mouseY = e.clientY - currentRect.top;
+
+        // Check if mouse is within the "image space" (internal area)
+        if (mouseX > paddingX && mouseX < currentRect.width - paddingX &&
+            mouseY > paddingY && mouseY < currentRect.height - paddingY) {
+            
+            const centerX = currentRect.width / 2;
+            const centerY = currentRect.height / 2;
+            
+            targetX = (mouseX - centerX) / (currentRect.width - 2 * paddingX);
+            targetY = (mouseY - centerY) / (currentRect.height - 2 * paddingY);
+        } else {
+            targetX = 0;
+            targetY = 0;
+        }
     });
 
     tiltContainer.addEventListener('mouseleave', () => {
@@ -44,11 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function lerpTilt() {
         if (!isTransitioning) {
-            currentX += (targetX - currentX) * 0.05;
-            currentY += (targetY - currentY) * 0.05;
+            // Speed reduced from 0.05 to 0.02 for slower tilting
+            currentX += (targetX - currentX) * 0.02;
+            currentY += (targetY - currentY) * 0.02;
 
             const baseRotY = isFlipped ? 180 : 0;
-            const tiltX = currentY * -25; 
+            const tiltX = currentY * -25;
             const tiltY = currentX * 25 + baseRotY;
             
             card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.02)`;
