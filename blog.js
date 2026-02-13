@@ -159,11 +159,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             pos3 = clientX;
             pos4 = clientY;
+
+            if (e.type === 'touchstart') {
+                document.body.classList.add('no-scroll');
+            }
             
-            document.onmouseup = onEnd;
-            document.ontouchend = onEnd;
-            document.onmousemove = onMove;
-            document.ontouchmove = onMove;
+            document.addEventListener('mousemove', onMove);
+            document.addEventListener('touchmove', onMove, { passive: false });
+            document.addEventListener('mouseup', onEnd);
+            document.addEventListener('touchend', onEnd);
         };
 
         const onMove = (e) => {
@@ -185,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let newTop = el.offsetTop - pos2;
                 let newLeft = el.offsetLeft - pos1;
                 
-                const padding = 10;
+                const padding = 15;
                 const bW = board.offsetWidth, bH = board.offsetHeight;
                 const eW = el.offsetWidth, eH = el.offsetHeight;
 
@@ -200,17 +204,22 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const onEnd = () => {
-            document.onmouseup = null;
-            document.ontouchend = null;
-            document.onmousemove = null;
-            document.ontouchmove = null;
+            document.removeEventListener('mousemove', onMove);
+            document.removeEventListener('touchmove', onMove);
+            document.removeEventListener('mouseup', onEnd);
+            document.removeEventListener('touchend', onEnd);
+
+            if (!currentlyZoomed) {
+                document.body.classList.remove('no-scroll');
+            }
+
             el.dataset.origLeft = parseInt(el.style.left);
             el.dataset.origTop = parseInt(el.style.top);
             setTimeout(() => { isDragging = false; }, 50);
         };
 
-        el.onmousedown = onStart;
-        el.ontouchstart = onStart;
+        el.addEventListener('mousedown', onStart);
+        el.addEventListener('touchstart', onStart, { passive: true });
 
         el.addEventListener('mouseup', () => {
             el.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease';

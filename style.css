@@ -64,6 +64,9 @@ body {
     color: #fff;
     margin-bottom: 10px;
     line-height: 1.2;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .subtitle {
@@ -293,6 +296,9 @@ body {
     border-radius: 4px;
     font-size: 0.8rem;
     font-family: 'Press Start 2P', cursive;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    max-width: 100%;
 }
 
 .details-layout {
@@ -330,9 +336,12 @@ body {
     line-height: 1.6;
 }
 
-.details-text h3{
+.details-text h3 {
     font-size: 2.2rem;
     font-family: 'Press Start 2P', cursive;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .action-btn {
@@ -426,6 +435,8 @@ body {
     text-align: center;
     margin: 10px 0;
     font-weight: bold;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 /* Tilts */
@@ -668,6 +679,8 @@ body {
     font-family: 'Press Start 2P', cursive;
     font-size: 1.4rem;
     margin: 10px 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .timeline-info p {
@@ -997,7 +1010,8 @@ body.no-scroll {
     border-radius: 30px;
     transition: color 0.3s ease;
     z-index: 2;
-    white-space: nowrap;
+    white-space: normal;
+    text-align: center;
 }
 
 .nav-item.active {
