@@ -558,10 +558,6 @@ body {
         gap: 40px !important;
     }
 
-    .projects-container.grid-layout .project-card {
-        width: calc(100vw - 80px) !important;
-        max-width: none !important;
-    }
 }
 
 
@@ -1197,8 +1193,10 @@ body.no-scroll {
 
     /* Grid Layout adjustment for smaller cards */
     .projects-container.grid-layout .project-card {
-        width: 280px !important; /* Maintain smaller size even in grid mode */
-        max-width: 280px !important;
+        width: calc(100vw - 80px) !important;
+        max-width: none !important;
+        margin: 0 auto;
+        padding: 15px !important;
     }
 
     /* 2. Responsive Header and Two-Line Button */
