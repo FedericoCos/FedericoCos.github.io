@@ -249,6 +249,17 @@ function selectProject(id) {
     const targetDetail = document.getElementById(`detail-${id}`);
 
     if (targetDetail) {
+        const lazyMedia = targetDetail.querySelectorAll('[data-src]');
+        lazyMedia.forEach(media => {
+            if (media.tagName === 'SOURCE') {
+                const video = media.closest('video');
+                media.src = media.dataset.src;
+                video.load(); // Forces the video to start loading now
+            } else {
+                media.src = media.dataset.src;
+            }
+            media.removeAttribute('data-src'); // Clean up
+        });
         isClicked = true;
         lastId = id;
         clickedCard.classList.add('is-selected');

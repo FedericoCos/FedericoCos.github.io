@@ -25,10 +25,10 @@
         <div id="tilt-container">
             <div id="card-inner">
                 <div class="card-front">
-                    <img id="tilt-image" src="images/me.jpg" alt="Your Name">
+                    <img id="tilt-image" src="images/me.webp" alt="Your Name">
                 </div>
                 <div class="card-back">
-                    <img src="images/skills.png" alt="Skills" style="object-fit: cover;">
+                    <img src="images/skills.webp" alt="Skills" style="object-fit: cover;">
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@
     <div class="projects-carousel-wrapper" id="carousel-wrapper">
         <div class="projects-container" id="projects-inner">
             <div class="project-card" onclick="selectProject(1)">
-                <img src="images/corridor_pc.png" id="Project 1">
+                <img src="images/corridor_pc.webp" id="Project 1">
                 <h3>Path Tracer & Gaussian Splatting</h3>
                 <p>Custom Vulkan engine with <span class="highlight_text">path tracing</span> capabilities. It simulates a <span class="highlight_text">toroidal sensor</span> to perform geometric and photometric acquisition and generates a synthetic dataset for a <span class="highlight_text">Gaussian Splatting</span> model.</p>
                 <div class="tech-stack">
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="project-card" onclick="selectProject(2)">
-                <img src="images/nailedit_wallpaper.png" id="Project 2">
+                <img src="images/nailedit_wallpaper.webp" id="Project 2">
                 <h3>Nailed-It</h3>
                 <p>2D platformer game developed in <span class="highlight_text">Unity</span>. Creates a novel gameplay by mixing Point-and-Shoot mechanics with classic platforming.</p>
                 <div class="tech-stack">
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="project-card" onclick="selectProject(3)">
-                <img src="images/first_wallpaper.png" id="Project 3">
+                <img src="images/first_wallpaper.webp" id="Project 3">
                 <h3>First Raster Engine</h3>
                 <p>My very first <span class="highlight_text">Vulkan Engine</span>. Created to explore the <span class="highlight_text">rendering pipeline</span> and fundamental concepts of rasterization.</p>
                 <div class="tech-stack">
@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="project-card" onclick="selectProject(4)">
-                <img src="images/bag_wallpaper.png" id="Project 4">
+                <img src="images/bag_wallpaper.webp" id="Project 4">
                 <h3>OpenGL-SC vs OpenGL-Desktop</h3>
                 <p>Deep dive into <span class="highlight_text">OpenGL-SC</span>, analyzing its strengths for <span class="highlight_text">safety critical</span> applications. Created test environments to profile and compare OpenGL-Desktop performances against its SC counterpart.</p>
                 <div class="tech-stack">
@@ -98,7 +98,7 @@
                 </div>
             </div>
             <div class="project-card" onclick="selectProject(5)">
-                <img src="images/myshelfie_wall.png" id="Project 5">
+                <img src="images/myshelfie_wall.webp" id="Project 5">
                 <h3>My Shelfie</h3>
                 <p>Digital version of a board game by <span class="highlight_text">Cranio Creations</span>. It supports both a <span class="highlight_text">CLI</span> and a <span class="highlight_text">GUI</span> version. It implements a <span class="highlight_text">client-server paradigm</span> to allow hosting multiple games concurrently.</p>
                 <div class="tech-stack">
@@ -130,7 +130,9 @@
                     <div class="detail-row">
                         <p>First, we have the <span class="highlight_text">Graphics Engine</span>. It exploits Vulkan <span class="highlight_text">Hardware Accelerated Ray Tracing</span> to render images on screen. In order to make each perspective free of noise, many techniques have been employed. Most noticeably, <span class="highlight_text">Temporal Accumulation</span> is used to combine multiple frames together to smooth out the noise. <span class="highlight_text">Next Event Estimation (NEE)</span> is exploited to quickly light up scenes, and a <span class="highlight_text">Blue Noise texture</span> speeds up the whole process by generating high frequency noise, which is "cleaner" and easier to remove.
                      The engine then uses either a <span class="highlight_text">Metallic-Roughness</span> PBR workflow or a <span class="highlight_text">Specular Glossiness</span> one to make light interact with each object realistically.</p>
-                        <img src="gifs/damn.gif" class="side-gif" alt="Engine Demo">
+                        <video class="side-gif" autoplay loop muted playsinline>
+                            <source data-src="gifs/damn.mp4" type="video/mp4">
+                        </video>
                     </div>
 
                     <p>Once the scene is fully rendered, a <span class="highlight_text">Toroidal Sensor</span> is placed in the environment. This has a dual usage. On one side, it scans the scene and produces a dense <span class="highlight_text">Point Cloud</span>. Several sampling techniques have been tested, ranging from a pure random sampling to a much more effective Halton sampling, all the way to custom <span class="highlight_text">Importance Sampling</span> methods. 
@@ -138,19 +140,19 @@
 
                     <div class="polaroid-gallery">
                         <div class="polaroid tilt-left">
-                            <img src="images/room_base.png" alt="Scan 1">
+                            <img data-src="images/room_base.webp" alt="Scan 1">
                             <p>Base Scene</p>
                         </div>
                         <div class="polaroid tilt-right">
-                            <img src="images/room_point.png" alt="Scan 2">
+                            <img data-src="images/room_point.webp" alt="Scan 2">
                             <p>Point Cloud</p>
                         </div>
                         <div class="polaroid tilt-left-small">
-                            <img src="images/room_view1.png" alt="Scan 3">
+                            <img data-src="images/room_view1.webp" alt="Scan 3">
                             <p>First view</p>
                         </div>
                         <div class="polaroid tilt-right-small">
-                            <img src="images/room_view2.png" alt="Scan 4">
+                            <img data-src="images/room_view2.webp" alt="Scan 4">
                             <p>Second view</p>
                         </div>
                     </div>
@@ -160,15 +162,15 @@
 
                     <div class="polaroid-gallery">
                         <div class="polaroid tilt-right">
-                            <img src="images/sponza_gs_1.png" alt="Result 1">
+                            <img data-src="images/sponza_gs_1.webp" alt="Result 1">
                             <p>Sponza</p>
                         </div>
                         <div class="polaroid tilt-left">
-                            <img src="images/star_gs_1.png" alt="Result 2">
+                            <img data-src="images/star_gs_1.webp" alt="Result 2">
                             <p>Behemoth</p>
                         </div>
                         <div class="polaroid tilt-right-small">
-                            <img src="images/bistro_int_gs_1.png" alt="Result 3">
+                            <img data-src="images/bistro_int_gs_1.webp" alt="Result 3">
                             <p>Bistrot</p>
                         </div>
                     </div>
@@ -193,7 +195,7 @@
                         <p>One of our core pillars was gameplay feeling. We decided to <span class="highlight_text">build the movement of our character completely from scratch</span>, without relying on any of Unity's pre-made scripts. This way, we perfectly tailored it to our desire, taking inspiration from well known games such as Hollow Knight, Celeste, and Super Meet Boy. Moreover, all collisions and physical interactions with the environment are custom and implemented through the use of Unity's <span class="highlight_text">Raycast system</span>.
                          To capture the "weight" of the movement, we implemented custom variable jump heights, coyote time, and jump buffering, alongside other small quirks.</p>
                         <video class="side-gif" autoplay loop muted playsinline>
-                            <source src="videos/nailed-it.mp4" type="video/mp4">
+                            <source data-src="videos/nailed-it.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -204,15 +206,21 @@
 
                     <div class="polaroid-gallery">
                         <div class="polaroid tilt-left">
-                            <img src="gifs/g1.gif" alt="Level Design">
+                            <video class="gallery-video" autoplay loop muted playsinline style="width: 100%; height: 238px; object-fit: cover;">
+                                <source data-src="gifs/g1.mp4" type="video/mp4">
+                            </video>
                             <p>Create Your Path</p>
                         </div>
                         <div class="polaroid tilt-right">
-                            <img src="gifs/g2.gif" alt="Point and Shoot">
+                            <video class="gallery-video" autoplay loop muted playsinline style="width: 100%; height: 238px; object-fit: cover;">
+                                <source data-src="gifs/g2.mp4" type="video/mp4">
+                            </video>
                             <p>Block The Obstacles</p>
                         </div>
                         <div class="polaroid tilt-left-small">
-                            <img src="gifs/g3.gif" alt="Boss Encounter">
+                            <video class="gallery-video" autoplay loop muted playsinline style="width: 100%; height: 238px; object-fit: cover;">
+                                <source data-src="gifs/g3.mp4" type="video/mp4">
+                            </video>
                             <p>Avoid The Blades</p>
                         </div>
                     </div>
@@ -242,7 +250,7 @@
                             I implemented a <span class="highlight_text">GJK collision detection algorithm</span> from scratch, so to make bumping into an obstacle extremely precise and efficient. More over, I programmed this system to consider specific section of an object's mesh: this way I could check only the bases of trees for collisions, since the car can't leave the ground.
                         </p>
                         <video class="side-gif" autoplay loop muted playsinline>
-                            <source src="videos/CG_video.mp4" type="video/mp4">
+                            <source data-src="videos/CG_video.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -252,15 +260,15 @@
 
                     <div class="polaroid-gallery">
                         <div class="polaroid tilt-left">
-                            <img src="images/menu.png" alt="Hello Triangle">
+                            <img data-src="images/menu.webp" alt="Hello Triangle">
                             <p>Car Selection</p>
                         </div>
                         <div class="polaroid tilt-right">
-                            <img src="images/ferrari_game.png" alt="Rotating Cube">
+                            <img data-src="images/ferrari_game.webp" alt="Rotating Cube">
                             <p>In Game Car</p>
                         </div>
                         <div class="polaroid tilt-left-small">
-                            <img src="images/first_person_view.png" alt="Depth Testing">
+                            <img data-src="images/first_person_view.webp" alt="Depth Testing">
                             <p>First Person Camera</p>
                         </div>
                     </div>
@@ -288,7 +296,7 @@
                     
                     <div class="detail-row">
                         <video class="side-gif" autoplay loop muted playsinline>
-                            <source src="videos/cubes.mp4" type="video/mp4">
+                            <source data-src="videos/cubes.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <p>To quantify the trade-offs, I conducted a series of experiments, starting with the <span class="highlight_text">"World of Cubes"</span> scenario. I compared Desktop <span class="highlight_text">Instance Rendering</span>—which squeezes performance through GPU-side loops—against SC's requirement for explicit, single draw calls. The results were telling: while Desktop OpenGL achieved higher raw FPS, the SC implementation provided a far more <span class="highlight_text">stable frame rate</span>, directly aligning with the requirement for predictable timing in real-time systems.</p>
@@ -298,15 +306,15 @@
 
                     <div class="polaroid-gallery">
                         <div class="polaroid tilt-right">
-                            <img src="images/menger_world(1).png" alt="Menger Sponge">
+                            <img data-src="images/menger_world(1).webp" alt="Menger Sponge">
                             <p>Menger Sponge</p>
                         </div>
                         <div class="polaroid tilt-left-small">
-                            <img src="images/ThirdScene(1).png" alt="Shadow Comparison">
+                            <img data-src="images/ThirdScene(1).webp" alt="Shadow Comparison">
                             <p>Shadows & Lights</p>
                         </div>
                         <div class="polaroid tilt-right-small">
-                            <img src="images/plot_timings_2_SC.png" alt="FPS Graph" style="object-fit: fill;">
+                            <img data-src="images/plot_timings_2_SC.webp" alt="FPS Graph" style="object-fit: fill;">
                             <p>Timing Analysis Example</p>
                         </div>
                     </div>
@@ -332,7 +340,7 @@
 
                     <div class="detail-row">
                         <div class="polaroid tilt-left">
-                            <img src="images/myshelfie_wall.png" alt="Digital Board" style="object-fit: fill;";>
+                            <img data-src="images/myshelfie_wall.webp" alt="Digital Board" style="object-fit: fill;";>
                             <p>The Board</p>
                         </div>
                         <p>The project is built on a strict <span class="highlight_text">MVC (Model-View-Controller)</span> architecture to decouple the game core from the user interfaces. To ensure connectivity across different environments, we implemented a hybrid communication layer supporting both <span class="highlight_text">RMI</span> and <span class="highlight_text">Sockets</span>. The server is designed to be highly concurrent, capable of hosting <span class="highlight_text">Multiple Games</span> simultaneously while maintaining isolated game states for each lobby.</p>
@@ -341,14 +349,14 @@
                     <div class="detail-row">
                         <p>One of the core challenges was achieving <span class="highlight_text">Disconnect Resilience</span>. In a distributed environment, a player's connection failure shouldn't ruin the experience for others. We developed a sophisticated heartbeat system and state-recovery mechanism that allows players to rejoin a match in progress. Furthermore, we integrated a <span class="highlight_text">Real-time Chat</span> system, supporting both global and private messaging, to preserve the social essence of the original board game.</p>
                         <div class="polaroid tilt-right">
-                            <img src="images/myshelfie_chat.png" alt="GUI Interface" style="object-fit: fill;">
+                            <img data-src="images/myshelfie_chat.webp" alt="GUI Interface" style="object-fit: fill;">
                             <p>In Game Chat</p>
                         </div>
                     </div>
 
                     <div class="detail-row">
                         <div class="polaroid tilt-left-small">
-                            <img src="images/TUI.png" alt="CLI Interface">
+                            <img data-src="images/TUI.webp" alt="CLI Interface">
                             <p>Terminal TUI</p>
                         </div>
                         <p>To cater to all types of users, the game offers two distinct interfaces: a modern <span class="highlight_text">JavaFX GUI</span> featuring custom animations and a lightweight <span class="highlight_text">CLI (TUI)</span> for terminal enthusiasts. The CLI uses ANSI escape codes to render the board's colors and grid, while the GUI focuses on a faithful visual reproduction of the game's components.</p>
@@ -391,7 +399,7 @@
         <div class="timeline-item right-content">
             <div class="timeline-visual">
                 <div class="polaroid tilt-right">
-                    <img src="images/healthyreply_logo.jpg" alt="Experience">
+                    <img src="images/healthyreply_logo.webp" alt="Experience">
                     <p>Reply</p>
                 </div>
             </div>
@@ -422,7 +430,7 @@
         <div class="timeline-item right-content">
             <div class="timeline-visual">
                 <div class="polaroid tilt-right-small">
-                    <img src="images/banzi.jpg" alt="Experience">
+                    <img src="images/banzi.webp" alt="Experience">
                     <p>High School</p>
                 </div>
             </div>
@@ -437,7 +445,7 @@
         <div class="timeline-item left-content">
             <div class="timeline-visual">
                 <div class="polaroid tilt-left">
-                    <img src="images/usa.jpg" alt="Experience">
+                    <img src="images/usa.webp" alt="Experience">
                     <p>USA</p>
                 </div>
             </div>
