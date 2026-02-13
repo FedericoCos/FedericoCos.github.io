@@ -694,6 +694,16 @@ body {
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+    .timeline-visual .polaroid {
+        width: 200px;
+    }
+    
+    .timeline-visual .polaroid img {
+        height: 175px;
+    }
+}
+
 
 
 
@@ -1037,5 +1047,34 @@ body.no-scroll {
     }
     .details-text h3 {
         font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-island {
+        width: calc(100% - 30px);
+        left: 50%;
+        transform: translateX(-50%);
+        box-sizing: border-box;
+        padding: 4px;
+    }
+
+    .nav-island.hidden {
+        transform: translateX(-50%) translateY(-120%);
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: space-evenly;
+        gap: 2px;
+    }
+
+    .nav-item {
+        padding: 10px 4px;
+        font-size: 0.45rem;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
