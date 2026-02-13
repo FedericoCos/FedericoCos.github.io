@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "image": "blog/enginebase.png",
+        "image": "blog/enginebase.webp",
         "title": "General Purpose Raster Graphic Engine",
         "content": "Working on a Vulkan raster engine that abstracts the intricacies of the API while maintaing high flexibility. It will serve as the base Engine for multiple small projects.",
         "keywords": ["Vulkan", "C++", "Graphic Engine"],
