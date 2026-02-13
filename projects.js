@@ -98,11 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-                wrapper.style.transition = 'height 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                wrapper.style.transition = 'height 1.0s cubic-bezier(0.4, 0, 0.2, 1)';
                 wrapper.style.height = `${lastWrapperHeight}px`;
 
                 originalCards.forEach(card => {
-                    card.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease';
+                    card.style.transition = 'transform 1.0s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease';
                     card.style.transform = 'translate(0, 0)';
                 });
 
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     originalCards.forEach(card => {
                         card.style.transform = '';
                     });
-                }, 600);
+                }, 1000);
             });
         });
     });
@@ -168,6 +168,7 @@ function selectProject(id) {
     const allDetails = document.querySelectorAll('.project-detail-content');
     const container = document.getElementById('project-details');
     const projectsSection = document.getElementById('projects');
+    const anchor = document.getElementById('scroll-anchor');
 
     allCards.forEach(card => card.classList.remove('is-selected'));
     allDetails.forEach(detail => detail.classList.remove('active'));
@@ -176,7 +177,8 @@ function selectProject(id) {
     if ((isClicked && lastId === id && moveDistance < threshold_mov && !isGridLayout) || id == -1 || (isClicked && lastId === id && isGridLayout)) {
         isClicked = false;
         lastId = -1;
-        projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const targetY = projectsSection.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: targetY, behavior: 'smooth' });
         return;
     }
 
@@ -204,7 +206,12 @@ function selectProject(id) {
         container.classList.add('visible');
         
         setTimeout(() => {
-            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 10);
+            const targetY = anchor.getBoundingClientRect().top + window.pageYOffset;
+            
+            window.scrollTo({ 
+                top: targetY, 
+                behavior: 'smooth' 
+            });
+        }, 80);
     }
 }
