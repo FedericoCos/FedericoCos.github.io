@@ -194,7 +194,7 @@ body {
 }
 
 .project-card {
-    width: 500px;
+    width: 400px;
     background: #41434B;
     border: 1px solid #1DA768;
     border-radius: 8px;
@@ -497,7 +497,7 @@ body {
     }
 
     .project-card {
-        width: calc(100vw - 80px) !important;
+        max-width: 100px;
         max-width: none !important;
         flex-shrink: 0;
     }
@@ -692,15 +692,20 @@ body {
 .blackboard {
     position: relative;
     width: 100%;
-    height: 700px;
+    height: 70vh;
+    min-height: 500px;
+    max-height: 850px;
     background: #1a1b1d;
     border: 4px solid #2a2c31; 
     border-radius: 12px;
-    /* Changed to visible to allow the post-it to scale outside the board */
     overflow: visible; 
     box-shadow: inset 0 0 30px rgba(0,0,0,0.7);
     margin: 0 auto;
     max-width: 1200px;
+}
+
+.blog-section {
+    padding: 100px 50px;
 }
 
 .post-it {
@@ -783,6 +788,44 @@ body.no-scroll {
     display: block; 
     margin-bottom: 15px;
     background: #1a1b1d; /* Placeholder background */
+}
+
+@media (max-width: 768px) {
+    .blackboard {
+        width: 100%;
+        height: 500px;
+        box-sizing: border-box;
+        border-width: 2px;
+    }
+
+    .blog-section {
+        padding: 40px 15px;
+    }
+    
+    .post-it {
+        width: 160px !important;
+    }
+    
+    .post-it h3 {
+        font-size: 0.8rem !important;
+        margin-bottom: 5px !important;
+    }
+    
+    .post-it p {
+        font-size: 0.7rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 10px !important;
+    }
+
+    .post-it img {
+        height: 100px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .post-it .tech-tag {
+        font-size: 0.45rem !important;
+        padding: 2px 6px !important;
+    }
 }
 
 

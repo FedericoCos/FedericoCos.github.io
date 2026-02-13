@@ -18,12 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const postIt = document.createElement('div');
         postIt.className = 'post-it';
         postIt.dataset.origRotation = data.rotation;
-        postIt.dataset.origLeft = data.x;
-        postIt.dataset.origTop = data.y;
-        
-        postIt.style.left = `${data.x}px`;
-        postIt.style.top = `${data.y}px`;
-        postIt.style.transform = `rotate(${data.rotation}deg)`;
 
         const imgHtml = data.image ? `<img src="${data.image}" alt="${data.title}">` : '';
 
@@ -42,7 +36,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
         makeDraggable(postIt);
         board.appendChild(postIt);
+
+        // Clamps the post-it position within the board's visible area with an internal padding
+        setTimeout(() => {
+            const padding = 15;
+            const bW = board.offsetWidth;
+            const bH = board.offsetHeight;
+            const pW = postIt.offsetWidth;
+            const pH = postIt.offsetHeight;
+
+            // Check original data against current board dimensions to prevent off-screen placement
+            let startX = Math.max(padding, Math.min(data.x, bW - pW - padding));
+            let startY = Math.max(padding, Math.min(data.y, bH - pH - padding));
+
+            postIt.dataset.origLeft = startX;
+            postIt.dataset.origTop = startY;
+            
+            postIt.style.left = `${startX}px`;
+            postIt.style.top = `${startY}px`;
+            postIt.style.transform = `rotate(${data.rotation}deg)`;
+        }, 0);
     }
+
+    window.addEventListener('resize', () => {
+        const postIts = document.querySelectorAll('.post-it');
+        const padding = 15;
+        const bW = board.offsetWidth;
+        const bH = board.offsetHeight;
+
+        postIts.forEach(el => {
+            if (el.classList.contains('zoomed')) return;
+            
+            const pW = el.offsetWidth;
+            const pH = el.offsetHeight;
+            
+            let newLeft = Math.max(padding, Math.min(parseInt(el.style.left), bW - pW - padding));
+            let newTop = Math.max(padding, Math.min(parseInt(el.style.top), bH - pH - padding));
+
+            el.style.left = `${newLeft}px`;
+            el.style.top = `${newTop}px`;
+            el.dataset.origLeft = newLeft;
+            el.dataset.origTop = newTop;
+        });
+    });
 
     function toggleZoom(el) {
         if (currentlyZoomed === el) {
@@ -69,7 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
             el.classList.add('zoomed');
             overlay.classList.add('active');
             
-            el.style.transform = `translate(${diffX}px, ${diffY}px) scale(1.5) rotate(0deg)`;
+            const scale = window.innerWidth <= 768 ? 1.2 : 1.5;
+            el.style.transform = `translate(${diffX}px, ${diffY}px) scale(${scale}) rotate(0deg)`;
             currentlyZoomed = el;
         }
     }
@@ -107,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let dragThreshold = 5;
         let moveX = 0, moveY = 0;
 
-        el.onmousedown = (e) => {
+        const onStart = (e) => {
             if (el.classList.contains('zoomed')) return;
             isDragging = false;
             moveX = 0; 
@@ -117,47 +154,68 @@ document.addEventListener('DOMContentLoaded', () => {
             all.forEach(p => p.style.zIndex = 10);
             el.style.zIndex = 100;
 
-            pos3 = e.clientX;
-            pos4 = e.clientY;
+            const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+            const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+            pos3 = clientX;
+            pos4 = clientY;
             
-            document.onmouseup = () => {
-                document.onmouseup = null;
-                document.onmousemove = null;
-                el.dataset.origLeft = parseInt(el.style.left);
-                el.dataset.origTop = parseInt(el.style.top);
-                setTimeout(() => { isDragging = false; }, 50);
-            };
-
-            document.onmousemove = (e) => {
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                moveX += Math.abs(pos1);
-                moveY += Math.abs(pos2);
-                
-                if (moveX > dragThreshold || moveY > dragThreshold) isDragging = true;
-
-                if (isDragging) {
-                    el.style.transition = 'none';
-                    let newTop = el.offsetTop - pos2;
-                    let newLeft = el.offsetLeft - pos1;
-                    
-                    const bW = board.offsetWidth, bH = board.offsetHeight;
-                    const eW = el.offsetWidth, eH = el.offsetHeight;
-
-                    if (newTop < 0) newTop = 0;
-                    if (newLeft < 0) newLeft = 0;
-                    if (newTop + eH > bH) newTop = bH - eH;
-                    if (newLeft + eW > bW) newLeft = bW - eW;
-
-                    el.style.top = newTop + "px";
-                    el.style.left = newLeft + "px";
-                }
-            };
+            document.onmouseup = onEnd;
+            document.ontouchend = onEnd;
+            document.onmousemove = onMove;
+            document.ontouchmove = onMove;
         };
 
+        const onMove = (e) => {
+            const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+            const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+            pos1 = pos3 - clientX;
+            pos2 = pos4 - clientY;
+            pos3 = clientX;
+            pos4 = clientY;
+            moveX += Math.abs(pos1);
+            moveY += Math.abs(pos2);
+            
+            if (moveX > dragThreshold || moveY > dragThreshold) isDragging = true;
+
+            if (isDragging) {
+                if (e.type.includes('touch')) e.preventDefault();
+                el.style.transition = 'none';
+                let newTop = el.offsetTop - pos2;
+                let newLeft = el.offsetLeft - pos1;
+                
+                const padding = 10;
+                const bW = board.offsetWidth, bH = board.offsetHeight;
+                const eW = el.offsetWidth, eH = el.offsetHeight;
+
+                if (newTop < padding) newTop = padding;
+                if (newLeft < padding) newLeft = padding;
+                if (newTop + eH > bH - padding) newTop = bH - eH - padding;
+                if (newLeft + eW > bW - padding) newLeft = bW - eW - padding;
+
+                el.style.top = newTop + "px";
+                el.style.left = newLeft + "px";
+            }
+        };
+
+        const onEnd = () => {
+            document.onmouseup = null;
+            document.ontouchend = null;
+            document.onmousemove = null;
+            document.ontouchmove = null;
+            el.dataset.origLeft = parseInt(el.style.left);
+            el.dataset.origTop = parseInt(el.style.top);
+            setTimeout(() => { isDragging = false; }, 50);
+        };
+
+        el.onmousedown = onStart;
+        el.ontouchstart = onStart;
+
         el.addEventListener('mouseup', () => {
+            el.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease';
+        });
+        el.addEventListener('touchend', () => {
             el.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease';
         });
     }
