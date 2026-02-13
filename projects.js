@@ -30,6 +30,48 @@ document.addEventListener('DOMContentLoaded', () => {
         return card ? card.offsetWidth + gap : 0;
     };
 
+    const onStart = (e) => {
+        if (isGridLayout) return;
+        hasMoved = false;
+        isDragging = true;
+        isFreezed = true;
+        moveDistance = 0;
+        startX = e.pageX || e.touches[0].pageX;
+        inner.style.transition = 'none';
+    };
+
+    const onMove = (e) => {
+        if (!isDragging || isGridLayout) return;
+        const x = e.pageX || e.touches[0].pageX;
+        const currentMove = x - startX;
+        startX = x;
+        moveDistance += Math.abs(currentMove);
+        if(moveDistance >= threshold_mov){
+            hasMoved = true;
+            if (e.cancelable) e.preventDefault();
+        }
+        scrollPos += currentMove;
+        recycle();
+    };
+
+    const onEnd = () => {
+        if (!isDragging || isGridLayout) return;
+        isDragging = false;
+        if (moveDistance > 5) {
+            inner.style.pointerEvents = 'none';
+            setTimeout(() => { inner.style.pointerEvents = 'auto'; }, 50);
+        }
+    };
+
+    wrapper.addEventListener('mousedown', onStart);
+    wrapper.addEventListener('touchstart', onStart, { passive: false });
+
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('touchmove', onMove, { passive: false });
+
+    window.addEventListener('mouseup', onEnd);
+    window.addEventListener('touchend', onEnd);
+
     function recycle() {
         const cardWidth = getCardWidth();
         if (cardWidth === 0) return;
