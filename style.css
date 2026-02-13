@@ -5,10 +5,26 @@ body {
     margin: 0;
 }
 
+#about {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 180px 50px 120px;
+    gap: 40px;
+}
+
+#tilt-container {
+    flex: 1 1 450px;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+}
+
 #card-inner {
     width: 85%;
-    position: relative;
     transform-style: preserve-3d;
+    cursor: pointer;
 }
 
 .card-front, .card-back {
@@ -25,7 +41,6 @@ body {
     left: 0;
     height: 100%;
     background: #353b50;
-    color: #e0e0e0;
     transform: rotateY(180deg);
     padding: 20px;
     box-sizing: border-box;
@@ -36,49 +51,12 @@ body {
 #tilt-image {
     width: 100%;
     display: block;
-    border-radius: 8px;
-}
-
-.skills-grid {
-    display: flex;
-    flex-flow: column wrap;
-    max-height: 100%;       
-    gap: 10px 40px;         
-    width: 100%;
-}
-
-.skill {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 40%;
-    break-inside: avoid;
-}
-
-.skill-name {
-    font-size: 0.9rem;
-    font-weight: bold;
-    text-align: left;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 10px;
-    background: #333;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.fill {
-    height: 100%;
     border-radius: 5px;
 }
 
-.dark_blue_bar { background: #00599C; }
-.light_blue_bar { background: #3776AB; }
-.red_bar { background: #AC162C; }
-
-
+.aboutme {
+    flex: 1 1 450px !important;
+}
 
 .main-title {
     font-family: 'Press Start 2P', cursive;
@@ -89,8 +67,9 @@ body {
 }
 
 .subtitle {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: 1.8rem;
     color: chocolate;
     margin-top: 0;
 }
@@ -106,19 +85,15 @@ body {
     color: chocolate;
 }
 
-.click-hint-icon {
-    width: 40px;
-    height: 40px;
-    margin-top: auto;
-    margin-right: 25px;
-    opacity: 0.5;
-    transition: opacity 0.3s ease;
-    transform: none !important;
+@media (max-width: 768px) {
+    #about {
+        padding: 120px 25px 80px;
+    }
+    .aboutme {
+        text-align: center;
+    }
 }
 
-#tilt-container:hover .click-hint-icon {
-    opacity: 1;
-}
 
 
 
@@ -827,8 +802,4 @@ body.no-scroll {
     pointer-events: none;
     left: 0;
     width: 0;
-}
-
-#about {
-    padding-top: 120px !important;
 }
