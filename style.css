@@ -1078,3 +1078,83 @@ body.no-scroll {
         justify-content: center;
     }
 }
+
+
+@media (max-width: 768px) {
+    /* 1. Reduce all text globally and specifically */
+    html {
+        font-size: 14px; /* Slight global reduction */
+    }
+
+    .main-title {
+        font-size: 1.8rem !important; /* Scaled down from 2.8rem */
+    }
+
+    .subtitle {
+        font-size: 1.4rem !important; /* Scaled down from 1.8rem */
+    }
+
+    .description, 
+    .project-card p, 
+    .details-text, 
+    .timeline-info p {
+        font-size: 1.05rem !important; /* Scaled down from 1.3rem */
+        line-height: 1.5;
+    }
+
+    /* 2. Reduce Project Overview Polaroids */
+    .project-detail-content .polaroid {
+        width: 180px !important; /* Smaller footprint for project details */
+        padding: 8px 8px 0 8px;
+    }
+
+    .project-detail-content .polaroid img {
+        height: 150px !important;
+    }
+
+    .project-detail-content .polaroid p {
+        font-size: 0.8rem !important;
+        margin: 8px 0;
+    }
+
+    .timeline-item {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 10px; /* Reduced gap since the dot has its own margin */
+        margin-bottom: 80px; /* Space between different experience entries */
+    }
+
+    .left-content, 
+    .right-content {
+        flex-direction: column !important; /* Unified direction for both sides */
+    }
+
+    .timeline-info {
+        width: 100% !important;
+        text-align: center;
+        order: 1;
+    }
+
+    .timeline-dot {
+        position: relative !important;
+        left: auto !important;
+        transform: none !important;
+        /* Balanced vertical spacing: 30px top and bottom */
+        margin: 30px 0 !important; 
+        order: 2;
+        /* Ensure it's centered if the container flexes */
+        display: block; 
+    }
+
+    .timeline-visual {
+        width: 100% !important;
+        display: flex;
+        justify-content: center;
+        order: 3;
+    }
+
+    .timeline-item:not(:first-child) .timeline-dot::before,
+    .timeline-item:not(:last-child) .timeline-dot::after {
+        display: none !important;
+    }
+}
