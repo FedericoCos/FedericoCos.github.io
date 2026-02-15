@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const onEnd = () => {
         if (!isDragging || isGridLayout) return;
         isDragging = false;
+        isFreezed = false;
         if (moveDistance > 5) {
             inner.style.pointerEvents = 'none';
             setTimeout(() => { inner.style.pointerEvents = 'auto'; }, 50);
@@ -198,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('mouseup', () => {
         if (!isDragging || isGridLayout) return;
         isDragging = false;
+        isFreezed = false;
         if (moveDistance > 5) {
             inner.style.pointerEvents = 'none';
             setTimeout(() => { inner.style.pointerEvents = 'auto'; }, 50);
