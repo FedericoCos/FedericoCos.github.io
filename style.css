@@ -466,7 +466,7 @@ body {
 }
 
 .project-card p {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 700;
     line-height: 1.6;
     color: #ffffff;
@@ -1099,7 +1099,6 @@ body.no-scroll {
     }
 
     .description, 
-    .project-card p, 
     .details-text, 
     .timeline-info p {
         font-size: 1.05rem !important; /* Scaled down from 1.3rem */
