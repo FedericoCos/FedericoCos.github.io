@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isFreezed = false;
     let hasMoved = false;
     let startX;
-    const speed = 1.5;
+    const speed = window.matchMedia("(max-width: 768px)").matches ? 1.0 : 1.5;
     const gap = 20;
 
     const originalCards = [...inner.children];

@@ -397,7 +397,8 @@ body {
 }
 
 .side-gif {
-    flex: 1;
+    height: auto;
+    flex: none;
     max-width: 400px;
     border-radius: 8px;
     border: 2px solid chocolate;
