@@ -3,6 +3,7 @@ let lastId = -1;
 let moveDistance = 0;
 let threshold_mov = 0.6;
 let isGridLayout = false;
+let isFreezed = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.getElementById('carousel-wrapper');
@@ -11,10 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let scrollPos = 0;
     let isDragging = false;
-    let isFreezed = false;
     let hasMoved = false;
     let startX;
-    const speed = window.matchMedia("(max-width: 768px)").matches ? 1.0 : 1.5;
+    const speed = window.matchMedia("(max-width: 768px)").matches ? 1.0 : 1.3;
     const gap = 20;
 
     const originalCards = [...inner.children];
@@ -223,6 +223,7 @@ function selectProject(id) {
     if ((isClicked && lastId === id && moveDistance < threshold_mov && !isGridLayout) || id == -1 || (isClicked && lastId === id && isGridLayout)) {
         isClicked = false;
         lastId = -1;
+        isFreezed = false;
         
         if (isMobileQuery) {
             const header = projectsSection.querySelector('.projects-header');
@@ -256,11 +257,11 @@ function selectProject(id) {
             if (media.tagName === 'SOURCE') {
                 const video = media.closest('video');
                 media.src = media.dataset.src;
-                video.load(); // Forces the video to start loading now
+                video.load(); 
             } else {
                 media.src = media.dataset.src;
             }
-            media.removeAttribute('data-src'); // Clean up
+            media.removeAttribute('data-src'); 
         });
         isClicked = true;
         lastId = id;
