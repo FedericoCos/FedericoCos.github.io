@@ -107,6 +107,16 @@
                     <span class="tech-tag">Maven</span>
                 </div>
             </div>
+            <div class="project-card" onclick="selectProject(6)">
+                <img src="images/menger.webp" id="Project 6">
+                <h3>Real-Time Menger Sponge</h3>
+                <p>A Vulkan-based engine designed to render the <span class="highlight_text">Menger Sponge</span> fractal in real-time. Features massive <span class="highlight_text">Instance Rendering</span>, an autonomous <span class="highlight_text">Cinematic Camera</span>, and a custom <span class="highlight_text">Light Culling</span> system.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Vulkan</span>
+                    <span class="tech-tag">C++</span>
+                    <span class="tech-tag">GLSL</span>
+                </div>
+            </div>
         </div>
     </div>
     <div id="scroll-anchor" style="height: 0; margin: 0; padding: 0; visibility: hidden; clear: both;"></div>
@@ -361,6 +371,51 @@
                         </div>
                         <p>To cater to all types of users, the game offers two distinct interfaces: a modern <span class="highlight_text">JavaFX GUI</span> featuring custom animations and a lightweight <span class="highlight_text">CLI (TUI)</span> for terminal enthusiasts. The CLI uses ANSI escape codes to render the board's colors and grid, while the GUI focuses on a faithful visual reproduction of the game's components.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="detail-6" class="project-detail-content">
+            <div class="details-layout">
+                <div class="details-text">
+                    <div class="detail-header">
+                        <h3>Real-Time Menger Sponge</h3>
+                        <div class="detail-actions">
+                            <button class="action-btn close-btn" onclick="selectProject(-1)"><span>✕</span></button>
+                            <a href="https://github.com/FedericoCos/Menger" target="_blank" class="action-btn link-btn"><span>View Code</span></a>
+                        </div>
+                    </div>
+
+                    <p>Have you ever tried rendering a fractal in real-time? It gets out of hand quickly! The <span class="highlight_text">Menger Sponge</span> grows exponentially with each step, which means rendering millions of cubes. This project was born to push Vulkan's memory and execution control to the limit, rendering this massive geometry at interactive frame rates using <span class="highlight_text">Instance Rendering</span>.</p>
+                    
+                    <div class="detail-row">
+                        <p>To truly appreciate the sheer scale of the fractal, I built a custom <span class="highlight_text">Autonomous Camera System</span>. Instead of just manually flying around, the camera actively queries the grid to find empty spaces. It then interpolates its position and rotation, taking you on a seamless, collision-free dive deep into the geometric voids.</p>
+                        <video class="side-gif" autoplay loop muted playsinline>
+                            <source data-src="videos/mini_menger.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="detail-row">
+                        <div class="polaroid tilt-left">
+                            <video class="gallery-video" autoplay loop muted playsinline >
+                                <source data-src="videos/menger_look.mp4" type="video/mp4">
+                            </video>
+                            <p>Fractal Geometry</p>
+                        </div>
+                        <p>Another major hurdle was lighting. As the fractal subdivision grows, thousands of point lights end up scattered throughout the empty spaces. To keep the GPU from melting, I implemented a custom <span class="highlight_text">Simil-Deferred Shading</span> approach. The CPU pre-computes an influence radius for each light and maps them to only the cubes they actually affect. These connections are packed tightly into <span class="highlight_text">SSBOs</span>.</p>
+                    </div>
+
+                    <div class="detail-row">
+                        <p>Down in the fragment shader, each instance simply looks up its specific offset in the buffer. This means it only calculates lighting for the exact point lights that matter, drastically reducing the rendering overhead and keeping the frame rate stable even when rendering thousands of lights.</p>
+                        <div class="polaroid tilt-right">
+                            <video class="gallery-video" autoplay loop muted playsinline >
+                                <source data-src="videos/menger_rot.mp4" type="video/mp4">
+                            </video>
+                            <p>Inside a level 5 Sponge</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
