@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root Console — Federico Costantini</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="brand-logo">FC / ROOT</a>
+            <div class="admin-header-actions">
+                <span id="admin-status" class="status-pill">Unauthenticated</span>
+                <button id="btn-download-json" class="btn btn-secondary btn-sm">Download JSON</button>
+                <button id="btn-publish-github" class="btn btn-primary btn-sm">Publish to GitHub</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="container">
+            <div class="admin-panel auth-panel">
+                <h2 class="admin-heading">Repository Authentication</h2>
+                <p class="admin-subtext">Provide a GitHub Personal Access Token with Contents Read/Write access to publish directly from this interface. Your token is kept only in browser session memory.</p>
+                <div class="form-grid-3">
+                    <div class="form-group">
+                        <label>Repository Owner</label>
+                        <input type="text" id="gh-owner" value="FedericoCos" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Repository Name</label>
+                        <input type="text" id="gh-repo" value="FedericoCos.github.io" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label>GitHub Personal Access Token</label>
+                        <input type="password" id="gh-token" placeholder="github_pat_..." class="form-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="tab-projects">Projects</button>
+                <button class="tab-btn" data-tab="tab-articles">Articles &amp; WebGL</button>
+                <button class="tab-btn" data-tab="tab-experience">Experience &amp; Education</button>
+            </div>
+
+            <div id="tab-projects" class="tab-pane active">
+                <div class="admin-split">
+                    <div class="admin-sidebar">
+                        <div class="sidebar-top">
+                            <h3>Projects</h3>
+                            <button id="btn-new-project" class="btn btn-secondary btn-sm">+ New</button>
+                        </div>
+                        <div id="admin-project-list" class="admin-item-list"></div>
+                    </div>
+                    <div class="admin-editor">
+                        <div class="editor-header">
+                            <h3 id="project-editor-title">Edit Project</h3>
+                            <button id="btn-delete-project" class="btn btn-danger btn-sm">Delete</button>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label>ID (URL Slug)</label>
+                                <input type="text" id="proj-id" class="form-input" placeholder="vulkan-render-graph">
+                            </div>
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" id="proj-title" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Cover Image Path</label>
+                                <input type="text" id="proj-image" class="form-input" placeholder="images/cover.webp">
+                            </div>
+                            <div class="form-group">
+                                <label>Tags (Comma Separated)</label>
+                                <input type="text" id="proj-tags" class="form-input" placeholder="Vulkan, C++, GLSL">
+                            </div>
+                            <div class="form-group">
+                                <label>External Link URL</label>
+                                <input type="text" id="proj-link" class="form-input" placeholder="https://github.com/...">
+                            </div>
+                            <div class="form-group">
+                                <label>External Link Label</label>
+                                <input type="text" id="proj-link-text" class="form-input" placeholder="View Source">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Card Summary (Supports **bold**)</label>
+                            <textarea id="proj-summary" rows="2" class="form-input"></textarea>
+                        </div>
+                        <div class="blocks-header">
+                            <label>Content Blocks</label>
+                            <div class="block-add-bar">
+                                <button class="btn btn-secondary btn-xs" onclick="addProjectBlock('paragraph')">+ Paragraph</button>
+                                <button class="btn btn-secondary btn-xs" onclick="addProjectBlock('split')">+ Media Split</button>
+                                <button class="btn btn-secondary btn-xs" onclick="addProjectBlock('gallery')">+ Gallery</button>
+                                <button class="btn btn-secondary btn-xs" onclick="addProjectBlock('code')">+ Code</button>
+                            </div>
+                        </div>
+                        <div id="proj-blocks-container" class="blocks-container"></div>
+                        <div class="editor-footer">
+                            <button id="btn-save-project" class="btn btn-primary">Apply Changes to Memory</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-articles" class="tab-pane">
+                <div class="admin-split">
+                    <div class="admin-sidebar">
+                        <div class="sidebar-top">
+                            <h3>Articles</h3>
+                            <div class="sidebar-btn-group">
+                                <button id="btn-new-article" class="btn btn-secondary btn-sm">+ New</button>
+                            </div>
+                        </div>
+                        <div id="admin-article-list" class="admin-item-list"></div>
+                    </div>
+                    <div class="admin-editor">
+                        <div class="editor-header">
+                            <h3 id="article-editor-title">Edit Article</h3>
+                            <button id="btn-delete-article" class="btn btn-danger btn-sm">Delete</button>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label>ID (URL Slug)</label>
+                                <input type="text" id="art-id" class="form-input" placeholder="raymarching-sdf">
+                            </div>
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" id="art-title" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Publication Date</label>
+                                <input type="text" id="art-date" class="form-input" placeholder="2026-11-02">
+                            </div>
+                            <div class="form-group">
+                                <label>Tags (Comma Separated)</label>
+                                <input type="text" id="art-tags" class="form-input" placeholder="WebGL, GLSL, Raymarching">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Card Summary (Supports **bold**)</label>
+                            <textarea id="art-summary" rows="2" class="form-input"></textarea>
+                        </div>
+                        <div class="blocks-header">
+                            <label>Article Blocks (Supports Interactive WebGL)</label>
+                            <div class="block-add-bar">
+                                <button class="btn btn-secondary btn-xs" onclick="addArticleBlock('paragraph')">+ Paragraph</button>
+                                <button class="btn btn-secondary btn-xs" onclick="addArticleBlock('webgl')">+ WebGL Canvas</button>
+                                <button class="btn btn-secondary btn-xs" onclick="addArticleBlock('code')">+ Code</button>
+                                <button class="btn btn-secondary btn-xs" onclick="addArticleBlock('split')">+ Media Split</button>
+                                <button class="btn btn-secondary btn-xs" onclick="addArticleBlock('gallery')">+ Gallery</button>
+                                <button class="btn btn-secondary btn-xs" onclick="addArticleBlock('formula')">+ Formula</button>
+                            </div>
+                        </div>
+                        <div id="art-blocks-container" class="blocks-container"></div>
+                        <div class="editor-footer">
+                            <button id="btn-save-article" class="btn btn-primary">Apply Changes to Memory</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-experience" class="tab-pane">
+                <div class="admin-split">
+                    <div class="admin-sidebar">
+                        <div class="sidebar-top">
+                            <h3>Timeline Entries</h3>
+                            <button id="btn-new-exp" class="btn btn-secondary btn-sm">+ New</button>
+                        </div>
+                        <div id="admin-exp-list" class="admin-item-list"></div>
+                    </div>
+                    <div class="admin-editor">
+                        <div class="editor-header">
+                            <h3>Edit Timeline Entry</h3>
+                            <button id="btn-delete-exp" class="btn btn-danger btn-sm">Delete</button>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label>Period</label>
+                                <input type="text" id="exp-period" class="form-input" placeholder="2023 - Present">
+                            </div>
+                            <div class="form-group">
+                                <label>Role / Degree</label>
+                                <input type="text" id="exp-role" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Organization / University</label>
+                                <input type="text" id="exp-org" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select id="exp-category" class="form-input">
+                                    <option value="Education">Education</option>
+                                    <option value="Experience">Experience</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description (Supports **bold**)</label>
+                            <textarea id="exp-desc" rows="3" class="form-input"></textarea>
+                        </div>
+                        <div class="editor-footer">
+                            <button id="btn-save-exp" class="btn btn-primary">Apply Changes to Memory</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

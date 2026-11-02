@@ -3,553 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Federico Costantini — Graphics & Systems Programmer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-    <title>Federico Costantini - Portfolio</title>
 </head>
 <body>
-    <nav id="dynamic-island" class="nav-island at-top">
-        <div class="nav-links">
-            <div class="nav-indicator"></div>
-            <a href="#about" class="nav-item active">Home</a>
-            <a href="#projects" class="nav-item">Projects</a>
-            <a href="#blog" class="nav-item">Blog</a>
-            <a href="#info" class="nav-item">Info</a>
-            <a href="#contact" class="nav-item">Contact</a>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="brand-logo">FC</a>
+            <nav class="site-nav">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#articles" id="nav-articles" class="nav-link hidden">Articles</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-
-    <!--First Section - About me-->
-    <section id="about">
-        <div id="tilt-container">
-            <div id="card-inner">
-                <div class="card-front">
-                    <img id="tilt-image" src="images/me.webp" alt="Your Name">
-                </div>
-                <div class="card-back">
-                    <img src="images/skills.webp" alt="Skills" style="object-fit: cover;">
-                </div>
-            </div>
-        </div>
-        <div style="flex: 1;" class="aboutme">
-            <h2 class="subtitle" style="margin-bottom: 0; font-size: 2.8rem;">Welcome! I am</h2>
-            <h1 class="main-title" style="margin-top: 0;">Federico Costantini</h1>
-            <h2 class="subtitle">MSc Computer Science and Engineering</h2>
-            <p class="description">
-                I'm passionate about <span class="highlight_text">Graphics Programming</span> and <span class="highlight_text">Game Development</span>. 
-                I like building applications from the ground up and learning new things every day.
-            </p>
-
-            <p class="description">
-                Currently studying at <span class="highlight_text">Polytechnic University of Milan</span>, majoring in Computer Graphics with a minor in AI and Operational Research.
-            </p>
-        </div>
-    </section>
-
-
-<section id="projects" style="padding: 50px;">
-    <div class="projects-header">
-        <h2 class="main-title" style="font-size: 2.5rem; margin-bottom: 0;">Featured Projects</h2>
-        <button id="layout-toggle-btn" class="action-btn">Show Grid</button>
-    </div>
-    
-    <div class="projects-carousel-wrapper" id="carousel-wrapper">
-        <div class="projects-container" id="projects-inner">
-            <div class="project-card" onclick="selectProject(1)">
-                <img src="images/corridor_pc.webp" id="Project 1">
-                <h3>Path Tracer & Gaussian Splatting</h3>
-                <p>Custom Vulkan engine with <span class="highlight_text">path tracing</span> capabilities. It simulates a <span class="highlight_text">toroidal sensor</span> to perform geometric and photometric acquisition and generates a synthetic dataset for a <span class="highlight_text">Gaussian Splatting</span> model.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Vulkan</span>
-                    <span class="tech-tag">Path Tracing</span>
-                    <span class="tech-tag">Gaussian Splatting</span>
-                    <span class="tech-tag">C++</span>
-                </div>
-            </div>
-            <div class="project-card" onclick="selectProject(2)">
-                <img src="images/nailedit_wallpaper.webp" id="Project 2">
-                <h3>Nailed-It</h3>
-                <p>2D platformer game developed in <span class="highlight_text">Unity</span>. Creates a novel gameplay by mixing Point-and-Shoot mechanics with classic platforming.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Unity2D</span>
-                    <span class="tech-tag">C#</span>
-                </div>
-            </div>
-            <div class="project-card" onclick="selectProject(3)">
-                <img src="images/first_wallpaper.webp" id="Project 3">
-                <h3>First Raster Engine</h3>
-                <p>My very first <span class="highlight_text">Vulkan Engine</span>. Created to explore the <span class="highlight_text">rendering pipeline</span> and fundamental concepts of rasterization.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Vulkan</span>
-                    <span class="tech-tag">Rasterization</span>
-                    <span class="tech-tag">C++</span>
-                </div>
-            </div>
-            <div class="project-card" onclick="selectProject(4)">
-                <img src="images/bag_wallpaper.webp" id="Project 4">
-                <h3>OpenGL-SC vs OpenGL-Desktop</h3>
-                <p>Deep dive into <span class="highlight_text">OpenGL-SC</span>, analyzing its strengths for <span class="highlight_text">safety critical</span> applications. Created test environments to profile and compare OpenGL-Desktop performances against its SC counterpart.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">OpenGL</span>
-                    <span class="tech-tag">OpenGL-SC</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">C++</span>
-                </div>
-            </div>
-            <div class="project-card" onclick="selectProject(5)">
-                <img src="images/myshelfie_wall.webp" id="Project 5">
-                <h3>My Shelfie</h3>
-                <p>Digital version of a board game by <span class="highlight_text">Cranio Creations</span>. It supports both a <span class="highlight_text">CLI</span> and a <span class="highlight_text">GUI</span> version. It implements a <span class="highlight_text">client-server paradigm</span> to allow hosting multiple games concurrently.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Java</span>
-                    <span class="tech-tag">JavFX</span>
-                    <span class="tech-tag">Maven</span>
-                </div>
-            </div>
-            <div class="project-card" onclick="selectProject(6)">
-                <img src="images/menger.webp" id="Project 6">
-                <h3>Real-Time Menger Sponge</h3>
-                <p>A Vulkan-based engine designed to render the <span class="highlight_text">Menger Sponge</span> fractal in real-time. Features massive <span class="highlight_text">Instance Rendering</span>, an autonomous <span class="highlight_text">Cinematic Camera</span>, and a custom <span class="highlight_text">Light Culling</span> system.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Vulkan</span>
-                    <span class="tech-tag">C++</span>
-                    <span class="tech-tag">GLSL</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="scroll-anchor" style="height: 0; margin: 0; padding: 0; visibility: hidden; clear: both;"></div>
-    <div id="project-details" class="details-container">
-
-        <div id="detail-1" class="project-detail-content">
-            <div class="details-layout">
-                <div class="details-text">
-                    <div class="detail-header">
-                        <h3>Path Tracer & Gaussian Splatting</h3>
-                        <div class="detail-actions">
-                            <button class="action-btn close-btn" onclick="selectProject(-1)"><span>✕</span></button>
-                            <a href="https://github.com/FedericoCos/PathTracer_GaussianSplatting" target="_blank" class="action-btn link-btn"><span>View Project</span></a>
-                        </div>
-                    </div>
-
-                    <p>It is no secret that <span class="highlight_text">Path Tracing</span> is able to reproduce breathtaking visuals. Alongside <span class="highlight_text">Physical Based Rendering (PBR)</span> workflows, it is the go-to technique for simulating physically accurate scenes.
-                     However, the computational power needed for this technique is a dealbreaker for many commercial GPUs, especially if real time rendering is necessary. That's where this project comes in. 
-                    The idea is simple: place a sensor inside a path traced environment to scan it and generate a synthetic dataset for a <span class="highlight_text">Gaussian Splatting</span> model. This way, each scene can be reconstructed using Gaussian primitives, and thus exploiting well optimized rasterization techniques without losing the fidelity of the path tracer. Let's explore it in details! </p>
-                    
-                    <div class="detail-row">
-                        <p>First, we have the <span class="highlight_text">Graphics Engine</span>. It exploits Vulkan <span class="highlight_text">Hardware Accelerated Ray Tracing</span> to render images on screen. In order to make each perspective free of noise, many techniques have been employed. Most noticeably, <span class="highlight_text">Temporal Accumulation</span> is used to combine multiple frames together to smooth out the noise. <span class="highlight_text">Next Event Estimation (NEE)</span> is exploited to quickly light up scenes, and a <span class="highlight_text">Blue Noise texture</span> speeds up the whole process by generating high frequency noise, which is "cleaner" and easier to remove.
-                     The engine then uses either a <span class="highlight_text">Metallic-Roughness</span> PBR workflow or a <span class="highlight_text">Specular Glossiness</span> one to make light interact with each object realistically.</p>
-                        <video class="side-gif" autoplay loop muted playsinline>
-                            <source data-src="gifs/damn.mp4" type="video/mp4">
-                        </video>
-                    </div>
-
-                    <p>Once the scene is fully rendered, a <span class="highlight_text">Toroidal Sensor</span> is placed in the environment. This has a dual usage. On one side, it scans the scene and produces a dense <span class="highlight_text">Point Cloud</span>. Several sampling techniques have been tested, ranging from a pure random sampling to a much more effective Halton sampling, all the way to custom <span class="highlight_text">Importance Sampling</span> methods. 
-                    On the other side, it performs photometric acquisition by placing a camera on the centerline of the torus and collecting different views of the scene.</p>
-
-                    <div class="polaroid-gallery">
-                        <div class="polaroid tilt-left">
-                            <img data-src="images/room_base.webp" alt="Scan 1">
-                            <p>Base Scene</p>
-                        </div>
-                        <div class="polaroid tilt-right">
-                            <img data-src="images/room_point.webp" alt="Scan 2">
-                            <p>Point Cloud</p>
-                        </div>
-                        <div class="polaroid tilt-left-small">
-                            <img data-src="images/room_view1.webp" alt="Scan 3">
-                            <p>First view</p>
-                        </div>
-                        <div class="polaroid tilt-right-small">
-                            <img data-src="images/room_view2.webp" alt="Scan 4">
-                            <p>Second view</p>
-                        </div>
-                    </div>
-
-                    <p>The collected data from the sensor serves as an initialization state for the training of a Gaussian Splatting model. All experiments were conducted with the vanilla version of the architecture.
-                         By dividing the geometric and photometric acquisition, the density of the generated point cloud is independent of the number of views collected. This allows the model to quickly converge to the optimal solution with a smaller dataset for training.  Here are some of the results.</p>
-
-                    <div class="polaroid-gallery">
-                        <div class="polaroid tilt-right">
-                            <img data-src="images/sponza_gs_1.webp" alt="Result 1">
-                            <p>Sponza</p>
-                        </div>
-                        <div class="polaroid tilt-left">
-                            <img data-src="images/star_gs_1.webp" alt="Result 2">
-                            <p>Behemoth</p>
-                        </div>
-                        <div class="polaroid tilt-right-small">
-                            <img data-src="images/bistro_int_gs_1.webp" alt="Result 3">
-                            <p>Bistrot</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="detail-2" class="project-detail-content">
-            <div class="details-layout">
-                <div class="details-text">
-                    <div class="detail-header">
-                        <h3>Nailed-It</h3>
-                        <div class="detail-actions">
-                            <button class="action-btn close-btn" onclick="selectProject(-1)"><span>✕</span></button>
-                            <a href="https://polimi-game-collective.itch.io/nailed-it" target="_blank" class="action-btn link-btn"><span>Play on Itch</span></a>
-                        </div>
-                    </div>
-
-                    <p>Developed for the Polimi "Game Design and Programming" course, <span class="highlight_text">Nailed-It</span> is a 2D platformer that tests both your reflexes and your aim. The gameplay mixes elements of a classic 2D platforming game with mechanics of Point-&-Shoot ones. As the <span class="highlight_text">Team Leader</span>, I guided a group of developers and artists to deliver a polished experience in just a couple of months. Beyond management, I served as the <span class="highlight_text">Gameplay Programmer</span>, <span class="highlight_text">Level Designer</span> and handled the <span class="highlight_text">Sound implementation</span>.</p>
-                    
-                    <div class="detail-row">
-                        <p>One of our core pillars was gameplay feeling. We decided to <span class="highlight_text">build the movement of our character completely from scratch</span>, without relying on any of Unity's pre-made scripts. This way, we perfectly tailored it to our desire, taking inspiration from well known games such as Hollow Knight, Celeste, and Super Meet Boy. Moreover, all collisions and physical interactions with the environment are custom and implemented through the use of Unity's <span class="highlight_text">Raycast system</span>.
-                         To capture the "weight" of the movement, we implemented custom variable jump heights, coyote time, and jump buffering, alongside other small quirks.</p>
-                        <video class="side-gif" autoplay loop muted playsinline>
-                            <source data-src="videos/nailed-it.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-
-                    <p>The nail-shooting mechanic was particularly challenging, requiring a custom projectile system that interacts seamlessly with our manual collision detection. We exploited a secondary layer of colliders to handle the nailing, allowing for more permissive areas where shots are considered valid.
-                        Additionally, we developed many others' gameplay mechanics, such as a gliding system, a quick spawn, a soft "CTRL-Z" to undo last action,... 
+    <main>
+        <section id="about" class="section hero-section">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <p class="eyebrow">MSc Computer Science &amp; Engineering</p>
+                    <h1 class="hero-title">Federico Costantini</h1>
+                    <p class="hero-description">
+                        Graphics programmer and software engineer focused on <strong>real-time rendering</strong>, <strong>low-level graphics APIs</strong>, and <strong>game engine architecture</strong>.
                     </p>
-
-                    <div class="polaroid-gallery">
-                        <div class="polaroid tilt-left">
-                            <video class="gallery-video" autoplay loop muted playsinline >
-                                <source data-src="gifs/g1.mp4" type="video/mp4">
-                            </video>
-                            <p>Create Your Path</p>
-                        </div>
-                        <div class="polaroid tilt-right">
-                            <video class="gallery-video" autoplay loop muted playsinline >
-                                <source data-src="gifs/g2.mp4" type="video/mp4">
-                            </video>
-                            <p>Block The Obstacles</p>
-                        </div>
-                        <div class="polaroid tilt-left-small">
-                            <video class="gallery-video" autoplay loop muted playsinline >
-                                <source data-src="gifs/g3.mp4" type="video/mp4">
-                            </video>
-                            <p>Avoid The Blades</p>
-                        </div>
-                    </div>
-
-                    <p>Finally, I took charge of the <span class="highlight_text">Auditory Experience</span>. Every "thwack" of the nail and every footstep was designed to provide tactile feedback to the player. By integrating these sounds directly into our custom movement states, we ensured that the audio wasn't just an overlay, but a functional part of the gameplay loop.</p>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div id="detail-3" class="project-detail-content">
-            <div class="details-layout">
-                <div class="details-text">
-                    <div class="detail-header">
-                        <h3>First Raster Engine</h3>
-                        <div class="detail-actions">
-                            <button class="action-btn close-btn" onclick="selectProject(-1)"><span>✕</span></button>
-                            <a href="https://github.com/FedericoCos/FirstRasterEngine" target="_blank" class="action-btn link-btn"><span>View Code</span></a>
-                        </div>
-                    </div>
-
-                    <p>What is the best way to learn <span class="highlight_text">Vulkan</span>? It's obvious: by making a game! This project represents my initial steps into the API, moving away from the "black-box" abstraction of legacy APIs to embrace the explicit control and verbosity of the <span class="highlight_text">Next-Gen Graphics API</span>. It was built following the industry-standard architecture to understand how modern GPUs actually "think".</p>
-                    
-                    <div class="detail-row">
-                        <p>As far as the "game" goes, it is a simple car racing simulator where you have to collect flags around the track in a short amount of time while avoid obstacles. While the physics implemented is simplistic, a peculiar aspect of the gameplay regards collision detection.
-                            I implemented a <span class="highlight_text">GJK collision detection algorithm</span> from scratch, so to make bumping into an obstacle extremely precise and efficient. More over, I programmed this system to consider specific section of an object's mesh: this way I could check only the bases of trees for collisions, since the car can't leave the ground.
-                        </p>
-                        <video class="side-gif" autoplay loop muted playsinline>
-                            <source data-src="videos/CG_video.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-
-                    <p>From a more technical point of view, this project allowed me to explore basic Graphics Programming concepts. I had to deal with <span class="highlight_text">Render Passes</span>, <span class="highlight_text">Buffers</span> and <span class="highlight_text">Samplers</span>, among the many. As performance was a major aspect of this project, I exploited Vulkan's <span class="highlight_text">Push Constants</span> for fast data exchange between the CPU and the GPU.
-                    This was also my first time creating shaders for the <span class="highlight_text">Rendering Pipeline</span>. I tested a variety of light implementation and responses, based on the objects in the scene, going from a simple <span class="highlight_text">Phong model</span> to a more sophisticated <span class="highlight_text">Cook-Torrance model</span>.</p>
-
-                    <div class="polaroid-gallery">
-                        <div class="polaroid tilt-left">
-                            <img data-src="images/menu.webp" alt="Hello Triangle">
-                            <p>Car Selection</p>
-                        </div>
-                        <div class="polaroid tilt-right">
-                            <img data-src="images/ferrari_game.webp" alt="Rotating Cube">
-                            <p>In Game Car</p>
-                        </div>
-                        <div class="polaroid tilt-left-small">
-                            <img data-src="images/first_person_view.webp" alt="Depth Testing">
-                            <p>First Person Camera</p>
-                        </div>
-                    </div>
-
-                    <p>By the end of this project, I had a fully functional rasterizer capable of rendering 3D models. This technical foundation was essential for moving toward much more complex projects.</p>
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <div id="detail-4" class="project-detail-content">
-            <div class="details-layout">
-                <div class="details-text">
-                    <div class="detail-header">
-                        <h3>OpenGL-SC vs OpenGL-Desktop</h3>
-                        <div class="detail-actions">
-                            <button class="action-btn close-btn" onclick="selectProject(-1)"><span>✕</span></button>
-                            <a href="resources/opengl.pdf" target="_blank" class="action-btn link-btn"><span>View Report</span></a>
-                        </div>
-                    </div>
-
-                    <p>In safety-critical domains like <span class="highlight_text">avionics</span> or <span class="highlight_text">automotive</span>, unpredictability is unacceptable. This research project explores the core differences between the flexible Desktop version of OpenGL and its deterministic counterpart: <span class="highlight_text">OpenGL-SC</span>. By carving out a restricted subset of functions, SC ensures that every draw call behaves exactly as written, facilitating the rigorous <span class="highlight_text">static analysis</span> and certification required for life-critical systems.</p>
-                    
-                    <div class="detail-row">
-                        <video class="side-gif" autoplay loop muted playsinline>
-                            <source data-src="videos/cubes.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <p>To quantify the trade-offs, I conducted a series of experiments, starting with the <span class="highlight_text">"World of Cubes"</span> scenario. I compared Desktop <span class="highlight_text">Instance Rendering</span>—which squeezes performance through GPU-side loops—against SC's requirement for explicit, single draw calls. The results were telling: while Desktop OpenGL achieved higher raw FPS, the SC implementation provided a far more <span class="highlight_text">stable frame rate</span>, directly aligning with the requirement for predictable timing in real-time systems.</p>
-                    </div>
-
-                    <p>One of the most interesting challenges was emulating <span class="highlight_text">Compute Shaders</span>. Since OpenGL-SC 2.0 lacks native compute support, I had to "fake" the computation using a <span class="highlight_text">Fragment Shader</span> pass on a full-screen quad. I used an animated Menger sponge fractal to stress the GPU, discovering that while native compute dispatches are faster, the emulated approach offers a meaningful <span class="highlight_text">Worst Case Execution Time (WCET)</span> estimate, as its execution is fully defined at compile time.</p>
-
-                    <div class="polaroid-gallery">
-                        <div class="polaroid tilt-right">
-                            <img data-src="images/menger_world(1).webp" alt="Menger Sponge">
-                            <p>Menger Sponge</p>
-                        </div>
-                        <div class="polaroid tilt-left-small">
-                            <img data-src="images/ThirdScene(1).webp" alt="Shadow Comparison">
-                            <p>Shadows & Lights</p>
-                        </div>
-                        <div class="polaroid tilt-right-small">
-                            <img data-src="images/plot_timings_2_SC.webp" alt="FPS Graph" style="object-fit: fill;">
-                            <p>Timing Analysis Example</p>
-                        </div>
-                    </div>
-
-                    <p>Finally, I explored <span class="highlight_text">Lighting and Shadows</span>, where the absence of <span class="highlight_text">Vertex Array Objects (VAO)</span> in SC forced me to explicitly redefine data layouts for every frame. This highlighted the fundamental trade-off of this study: Desktop OpenGL prioritizes speed and flexibility, while SC deliberately sacrifices peak efficiency for <span class="highlight_text">determinism, stability, and certifiability</span>.</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div id="detail-5" class="project-detail-content">
-            <div class="details-layout">
-                <div class="details-text">
-                    <div class="detail-header">
-                        <h3>My Shelfie</h3>
-                        <div class="detail-actions">
-                            <button class="action-btn close-btn" onclick="selectProject(-1)"><span>✕</span></button>
-                            <a href="https://github.com/FedericoCos/MyShelfie" target="_blank" class="action-btn link-btn"><span>View Code</span></a>
-                        </div>
-                    </div>
-
-                    <p>Developed for the "Software Engineering" course at Polimi, <span class="highlight_text">My Shelfie</span> is a digital adaptation of the popular board game by Cranio Creations. It implements the complete rulebook, managing everything from tile placement validation to complex scoring systems across a network.</p>
-
-                    <div class="detail-row">
-                        <div class="polaroid tilt-left">
-                            <img data-src="images/myshelfie_wall.webp" alt="Digital Board" style="object-fit: fill;";>
-                            <p>The Board</p>
-                        </div>
-                        <p>The project is built on a strict <span class="highlight_text">MVC (Model-View-Controller)</span> architecture to decouple the game core from the user interfaces. To ensure connectivity across different environments, we implemented a hybrid communication layer supporting both <span class="highlight_text">RMI</span> and <span class="highlight_text">Sockets</span>. The server is designed to be highly concurrent, capable of hosting <span class="highlight_text">Multiple Games</span> simultaneously while maintaining isolated game states for each lobby.</p>
-                    </div>
-
-                    <div class="detail-row">
-                        <p>One of the core challenges was achieving <span class="highlight_text">Disconnect Resilience</span>. In a distributed environment, a player's connection failure shouldn't ruin the experience for others. We developed a sophisticated heartbeat system and state-recovery mechanism that allows players to rejoin a match in progress. Furthermore, we integrated a <span class="highlight_text">Real-time Chat</span> system, supporting both global and private messaging, to preserve the social essence of the original board game.</p>
-                        <div class="polaroid tilt-right">
-                            <img data-src="images/myshelfie_chat.webp" alt="GUI Interface" style="object-fit: fill;">
-                            <p>In Game Chat</p>
-                        </div>
-                    </div>
-
-                    <div class="detail-row">
-                        <div class="polaroid tilt-left-small">
-                            <img data-src="images/TUI.webp" alt="CLI Interface">
-                            <p>Terminal TUI</p>
-                        </div>
-                        <p>To cater to all types of users, the game offers two distinct interfaces: a modern <span class="highlight_text">JavaFX GUI</span> featuring custom animations and a lightweight <span class="highlight_text">CLI (TUI)</span> for terminal enthusiasts. The CLI uses ANSI escape codes to render the board's colors and grid, while the GUI focuses on a faithful visual reproduction of the game's components.</p>
+                    <p class="hero-description">
+                        Studying at <strong>Polytechnic University of Milan</strong>, majoring in Computer Graphics with a minor in Artificial Intelligence and Operational Research.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="https://github.com/FedericoCos" target="_blank" rel="noopener" class="btn btn-secondary">GitHub Profile</a>
                     </div>
                 </div>
+                <div class="hero-portrait-wrap">
+                    <img src="images/me.webp" alt="Federico Costantini" class="hero-portrait">
+                </div>
             </div>
-        </div>
+        </section>
 
-
-        <div id="detail-6" class="project-detail-content">
-            <div class="details-layout">
-                <div class="details-text">
-                    <div class="detail-header">
-                        <h3>Real-Time Menger Sponge</h3>
-                        <div class="detail-actions">
-                            <button class="action-btn close-btn" onclick="selectProject(-1)"><span>✕</span></button>
-                            <a href="https://github.com/FedericoCos/Menger" target="_blank" class="action-btn link-btn"><span>View Code</span></a>
-                        </div>
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <span class="section-kicker">01 / PORTFOLIO</span>
+                        <h2 class="section-title">Selected Projects</h2>
                     </div>
+                </div>
+                <div id="projects-grid" class="card-grid"></div>
+            </div>
+        </section>
 
-                    <p>Have you ever tried rendering a fractal in real-time? It gets out of hand quickly! The <span class="highlight_text">Menger Sponge</span> grows exponentially with each step, which means rendering millions of cubes. This project was born to push Vulkan's memory and execution control to the limit, rendering this massive geometry at interactive frame rates using <span class="highlight_text">Instance Rendering</span>.</p>
-                    
-                    <div class="detail-row">
-                        <p>To truly appreciate the sheer scale of the fractal, I built a custom <span class="highlight_text">Autonomous Camera System</span>. Instead of just manually flying around, the camera actively queries the grid to find empty spaces. It then interpolates its position and rotation, taking you on a seamless, collision-free dive deep into the geometric voids.</p>
-                        <video class="side-gif" autoplay loop muted playsinline>
-                            <source data-src="videos/mini_menger.mp4" type="video/mp4">
-                        </video>
+        <section id="articles" class="section hidden">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <span class="section-kicker">02 / TECHNICAL WRITING</span>
+                        <h2 class="section-title">Articles &amp; Research Notes</h2>
                     </div>
+                </div>
+                <div id="articles-grid" class="card-grid"></div>
+            </div>
+        </section>
 
-                    <div class="detail-row">
-                        <div class="polaroid tilt-left">
-                            <video class="gallery-video" autoplay loop muted playsinline >
-                                <source data-src="videos/menger_look.mp4" type="video/mp4">
-                            </video>
-                            <p>Fractal Geometry</p>
-                        </div>
-                        <p>Another major hurdle was lighting. As the fractal subdivision grows, thousands of point lights end up scattered throughout the empty spaces. To keep the GPU from melting, I implemented a custom <span class="highlight_text">Simil-Deferred Shading</span> approach. The CPU pre-computes an influence radius for each light and maps them to only the cubes they actually affect. These connections are packed tightly into <span class="highlight_text">SSBOs</span>.</p>
+        <section id="experience" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <span class="section-kicker">03 / BACKGROUND</span>
+                        <h2 class="section-title">Experience &amp; Education</h2>
                     </div>
+                </div>
+                <div id="timeline-list" class="timeline-list"></div>
+            </div>
+        </section>
 
-                    <div class="detail-row">
-                        <p>Down in the fragment shader, each instance simply looks up its specific offset in the buffer. This means it only calculates lighting for the exact point lights that matter, drastically reducing the rendering overhead and keeping the frame rate stable even when rendering thousands of lights.</p>
-                        <div class="polaroid tilt-right">
-                            <video class="gallery-video" autoplay loop muted playsinline >
-                                <source data-src="videos/menger_rot.mp4" type="video/mp4">
-                            </video>
-                            <p>Inside a level 5 Sponge</p>
-                        </div>
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <span class="section-kicker">04 / CONNECT</span>
+                        <h2 class="section-title">Get in Touch</h2>
                     </div>
-
+                </div>
+                <div class="contact-list">
+                    <a href="mailto:fedecosta1234@gmail.com" class="contact-item">
+                        <span class="contact-meta">Email</span>
+                        <span class="contact-link-text">fedecosta1234@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/federico-costantini-12b209284/" target="_blank" rel="noopener" class="contact-item">
+                        <span class="contact-meta">LinkedIn</span>
+                        <span class="contact-link-text">Federico Costantini</span>
+                    </a>
+                    <a href="https://github.com/FedericoCos" target="_blank" rel="noopener" class="contact-item">
+                        <span class="contact-meta">GitHub</span>
+                        <span class="contact-link-text">@FedericoCos</span>
+                    </a>
                 </div>
             </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <span>&copy; 2026 Federico Costantini</span>
+            <a href="admin.html" class="footer-admin-link">Root Console</a>
         </div>
+    </footer>
 
-    </div>
-</section>
-
-<section id="blog" class="blog-section">
-    <h2 class="main-title" style="text-align: center; margin-bottom: 40px;">The Dev Board</h2>
-    <div id="blackboard" class="blackboard">
-        </div>
-    <div id="board-overlay" class="board-overlay"></div>
-</section>
-
-
-<section id="info" class="timeline-section">
-    <h2 class="main-title" style="text-align: center; margin-bottom: 60px;">Experience & Education</h2>
-    
-    <div class="timeline-container">
-
-        <div class="timeline-item left-content">
-            <div class="timeline-visual">
-                <div class="polaroid tilt-left">
-                    <img src="images/MSC.jpeg" alt="Education">
-                    <p>Polimi</p>
-                </div>
-            </div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-info">
-                <span class="timeline-date">2023 - Present</span>
-                <h3>MSc in Computer Science</h3>
-                <p>Specializing in <span class="highlight_text">Computer Graphics</span> and Game Development. Focusing on advanced rendering techniques and real-time applications.</p>
-            </div>
-        </div>
-
-        <div class="timeline-item right-content">
-            <div class="timeline-visual">
-                <div class="polaroid tilt-right">
-                    <img src="images/healthyreply_logo.webp" alt="Experience">
-                    <p>Reply</p>
-                </div>
-            </div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-info">
-                <span class="timeline-date">2023 - 2024</span>
-                <h3>Junior Full Stack Developer</h3>
-                <p>Developed and maintained software products for the <span class="highlight_text">public healthcare organization</span> in Lombardia, Italy.</p>
-            </div>
-        </div>
-
-        <div class="timeline-item left-content">
-            <div class="timeline-visual">
-                <div class="polaroid tilt-left-small">
-                    <img src="images/grad.jpeg" alt="Degree">
-                    <p>Graduation</p>
-                </div>
-            </div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-info">
-                <span class="timeline-date">2020 - 2023</span>
-                <h3>BSc in Computer Engineering</h3>
-                <p>Completed undergraduate studies in <span class="highlight_text">Computer Science and Engineering</span> at Polytechnic University of Milan</p>
-            </div>
-        </div>
-
-
-        <div class="timeline-item right-content">
-            <div class="timeline-visual">
-                <div class="polaroid tilt-right-small">
-                    <img src="images/banzi.webp" alt="Experience">
-                    <p>High School</p>
-                </div>
-            </div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-info">
-                <span class="timeline-date">2015 - 2020</span>
-                <h3>High School</h3>
-                <p>Studied at <span class="highlight_text">Giulietta Banzi Bazoli</span> scientific high school.</p>
-            </div>
-        </div>
-
-        <div class="timeline-item left-content">
-            <div class="timeline-visual">
-                <div class="polaroid tilt-left">
-                    <img src="images/usa.webp" alt="Experience">
-                    <p>USA</p>
-                </div>
-            </div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-info">
-                <span class="timeline-date">2018 - 2019</span>
-                <h3>AFS Intercultural Programs</h3>
-                <p>Completed my fourth year of high school at <span class="highlight_text">Conard High School</span>, West Hartford, CT. 
-                Here is where I took my first course in Computer Science.</p>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-
-<section id="contact" class="contact-section">
-    <div class="contact-header">
-        <h2 class="main-title">Let's Connect</h2>
-        <p class="subtitle">Reach out through any of these platforms</p>
-    </div>
-
-    <div class="contact-grid">
-        <a href="mailto:fedecosta1234@gmail.com" class="contact-card">
-            <div class="contact-icon">✉</div>
-            <span class="contact-label">Email</span>
-            <span class="contact-value">fedecosta1234@gmail.com</span>
-        </a>
-
-        <a href="https://www.linkedin.com/in/federico-costantini-12b209284/" target="_blank" class="contact-card">
-            <div class="contact-icon">in</div>
-            <span class="contact-label">LinkedIn</span>
-            <span class="contact-value">Federico Costantini</span>
-        </a>
-
-        <a href="https://github.com/FedericoCos" target="_blank" class="contact-card">
-            <div class="contact-icon">git</div>
-            <span class="contact-label">GitHub</span>
-            <span class="contact-value">@FedericoCos</span>
-        </a>
-    </div>
-</section>
-
-
-<script src="script.js"></script>
-<script src="projects.js"></script>
-<script src="info.js"></script>
-<script src="blog.js"></script>
-<script src="contact.js"></script>
-<script src="nav.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

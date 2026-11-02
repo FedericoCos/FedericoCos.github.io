@@ -1,0 +1,239 @@
+{
+    "articles": [],
+    "projects": [
+        {
+            "id": "path-tracer-gaussian-splatting",
+            "title": "Path Tracer & Gaussian Splatting",
+            "image": "images/corridor_pc.webp",
+            "tags": ["Vulkan", "Path Tracing", "Gaussian Splatting", "C++"],
+            "link": "https://github.com/FedericoCos/PathTracer_GaussianSplatting",
+            "linkText": "View Repository",
+            "summary": "Custom Vulkan engine with **path tracing** capabilities. Simulates a **toroidal sensor** to perform geometric and photometric acquisition and generates a synthetic dataset for a **Gaussian Splatting** model.",
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "text": "**Path Tracing** alongside **Physically Based Rendering (PBR)** workflows is the standard technique for simulating physically accurate scenes. However, the computational budget required makes real-time execution challenging on commercial GPUs. This project places a virtual sensor inside a path-traced environment to scan it and generate a synthetic dataset for a **Gaussian Splatting** model, reconstructing scenes with Gaussian primitives for fast rasterization without sacrificing path-traced fidelity."
+                },
+                {
+                    "type": "split",
+                    "mediaType": "video",
+                    "src": "gifs/damn.mp4",
+                    "caption": "Hardware-Accelerated Vulkan Path Tracer",
+                    "text": "The **Graphics Engine** uses Vulkan **Hardware-Accelerated Ray Tracing**. To eliminate Monte Carlo noise across perspectives, **Temporal Accumulation** blends frames over time, **Next Event Estimation (NEE)** accelerates direct lighting convergence, and a **Blue Noise texture** shifts residual error into high frequencies. Both **Metallic-Roughness** and **Specular-Glossiness** PBR workflows are supported."
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Once the scene converges, a **Toroidal Sensor** performs dual acquisition: it samples the scene to generate a dense **Point Cloud** using Uniform, Halton, or custom **Importance Sampling**, and captures multi-view photometric images along the centerline of the torus."
+                },
+                {
+                    "type": "gallery",
+                    "items": [
+                        { "mediaType": "image", "src": "images/room_base.webp", "caption": "Base Scene" },
+                        { "mediaType": "image", "src": "images/room_point.webp", "caption": "Generated Point Cloud" },
+                        { "mediaType": "image", "src": "images/room_view1.webp", "caption": "Sensor View 1" },
+                        { "mediaType": "image", "src": "images/room_view2.webp", "caption": "Sensor View 2" }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Decoupling geometric and photometric acquisition makes point cloud density independent of the number of camera views, enabling the Gaussian Splatting model to converge rapidly with a compact training set."
+                },
+                {
+                    "type": "gallery",
+                    "items": [
+                        { "mediaType": "image", "src": "images/sponza_gs_1.webp", "caption": "Sponza Reconstruction" },
+                        { "mediaType": "image", "src": "images/star_gs_1.webp", "caption": "Behemoth Reconstruction" },
+                        { "mediaType": "image", "src": "images/bistro_int_gs_1.webp", "caption": "Bistro Reconstruction" }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "nailed-it",
+            "title": "Nailed-It",
+            "image": "images/nailedit_wallpaper.webp",
+            "tags": ["Unity2D", "C#"],
+            "link": "https://polimi-game-collective.itch.io/nailed-it",
+            "linkText": "Play on Itch.io",
+            "summary": "2D platformer developed in **Unity** combining precision platforming with custom point-and-shoot nail physics.",
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "text": "Developed for the Polytechnic University of Milan Game Design and Programming course, **Nailed-It** combines 2D precision platforming with projectile-based environment manipulation. As **Team Leader**, **Gameplay Programmer**, **Level Designer**, and **Audio Programmer**, I coordinated developers and artists from prototype to release."
+                },
+                {
+                    "type": "split",
+                    "mediaType": "video",
+                    "src": "videos/nailed-it.mp4",
+                    "caption": "Custom Raycast Character Controller",
+                    "text": "Character locomotion and collision detection were **written from scratch** using Unity's **Raycast system** rather than built-in rigidbody physics. The controller implements variable jump heights, coyote time, and jump buffering inspired by Celeste and Hollow Knight."
+                },
+                {
+                    "type": "paragraph",
+                    "text": "The projectile system uses a dedicated secondary collider layer for nail attachment alongside mechanics for gliding, rapid respawning, and state-rewind."
+                },
+                {
+                    "type": "gallery",
+                    "items": [
+                        { "mediaType": "video", "src": "gifs/g1.mp4", "caption": "Create Your Path" },
+                        { "mediaType": "video", "src": "gifs/g2.mp4", "caption": "Block Obstacles" },
+                        { "mediaType": "video", "src": "gifs/g3.mp4", "caption": "Hazard Navigation" }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "first-raster-engine",
+            "title": "First Raster Engine",
+            "image": "images/first_wallpaper.webp",
+            "tags": ["Vulkan", "Rasterization", "C++"],
+            "link": "https://github.com/FedericoCos/FirstRasterEngine",
+            "linkText": "View Code",
+            "summary": "Custom **Vulkan Engine** built to explore explicit GPU memory management, the **rendering pipeline**, and 3D collision detection.",
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "text": "Built from scratch in C++ and **Vulkan**, this engine implements explicit command buffer recording, swapchain recreation, render passes, descriptor sets, and **Push Constants** for low-overhead CPU-to-GPU data transfers."
+                },
+                {
+                    "type": "split",
+                    "mediaType": "video",
+                    "src": "videos/CG_video.mp4",
+                    "caption": "Real-Time Gameplay & GJK Collisions",
+                    "text": "On top of the renderer, I built a time-trial racing game featuring a custom **GJK collision detection algorithm** restricted to lower mesh sub-volumes for efficient obstacle tests, paired with **Phong** and **Cook-Torrance** shading models."
+                },
+                {
+                    "type": "gallery",
+                    "items": [
+                        { "mediaType": "image", "src": "images/menu.webp", "caption": "Vehicle Selection" },
+                        { "mediaType": "image", "src": "images/ferrari_game.webp", "caption": "Third-Person Camera" },
+                        { "mediaType": "image", "src": "images/first_person_view.webp", "caption": "Cockpit Camera" }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "opengl-sc-vs-desktop",
+            "title": "OpenGL-SC vs OpenGL-Desktop",
+            "image": "images/bag_wallpaper.webp",
+            "tags": ["OpenGL", "OpenGL-SC", "Python", "C++"],
+            "link": "resources/opengl.pdf",
+            "linkText": "View Technical Report",
+            "summary": "Comparative benchmark and determinism study of **OpenGL-SC** versus **OpenGL-Desktop** for **safety-critical** avionics and automotive systems.",
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "text": "Safety-critical systems in **avionics** and **automotive** domains require deterministic execution and static analyzability. This research benchmarks standard Desktop OpenGL against **OpenGL-SC** (Safety Critical) across instancing, compute workloads, and dynamic lighting."
+                },
+                {
+                    "type": "split",
+                    "mediaType": "video",
+                    "src": "videos/cubes.mp4",
+                    "caption": "World of Cubes Benchmark",
+                    "text": "Comparing Desktop **Instance Rendering** against OpenGL-SC explicit draw calls demonstrated that while Desktop OpenGL achieves higher peak throughput, OpenGL-SC delivers tighter frame-time variance and predictable **Worst-Case Execution Time (WCET)**."
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Because OpenGL-SC 2.0 omits native **Compute Shaders** and **Vertex Array Objects (VAOs)**, general-purpose fractal workloads were emulated via full-screen fragment passes and explicit per-frame vertex attribute binding."
+                },
+                {
+                    "type": "gallery",
+                    "items": [
+                        { "mediaType": "image", "src": "images/menger_world(1).webp", "caption": "Fragment-Emulated Menger Fractal" },
+                        { "mediaType": "image", "src": "images/ThirdScene(1).webp", "caption": "Shadow & Lighting Pass" },
+                        { "mediaType": "image", "src": "images/plot_timings_2_SC.webp", "caption": "Frame-Time Stability Distribution" }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "my-shelfie",
+            "title": "My Shelfie",
+            "image": "images/myshelfie_wall.webp",
+            "tags": ["Java", "JavaFX", "Maven"],
+            "link": "https://github.com/FedericoCos/MyShelfie",
+            "linkText": "View Code",
+            "summary": "Distributed client-server implementation of the **Cranio Creations** board game supporting **RMI**, **TCP Sockets**, **JavaFX GUI**, and **ANSI CLI**.",
+            "blocks": [
+                {
+                    "type": "paragraph",
+                    "text": "Engineered using a strict **Model-View-Controller (MVC)** architecture, **My Shelfie** hosts concurrent multi-player lobbies over a hybrid **Java RMI** and **TCP Socket** networking layer with automated heartbeat detection and disconnect state recovery."
+                },
+                {
+                    "type": "gallery",
+                    "items": [
+                        { "mediaType": "image", "src": "images/myshelfie_wall.webp", "caption": "JavaFX Graphical Interface" },
+                        { "mediaType": "image", "src": "images/myshelfie_chat.webp", "caption": "Real-Time Lobby Chat" },
+                        { "mediaType": "image", "src": "images/TUI.webp", "caption": "ANSI Terminal Interface (TUI)" }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "real-time-menger-sponge",
+            "title": "Real-Time Menger Sponge",
+            "image": "images/menger.webp",
+            "tags": ["Vulkan", "C++", "GLSL"],
+            "link": "https://github.com/FedericoCos/Menger",
+            "linkText": "View Code",
+            "summary": "Vulkan engine rendering recursive **Menger Sponge** fractals in real time via **Instance Rendering**, **SSBO Light Culling**, and an **Autonomous Camera**.",
+            "blocks": [
+                {
+                    "type": "split",
+                    "mediaType": "video",
+                    "src": "videos/mini_menger.mp4",
+                    "caption": "Autonomous Pathfinding Camera",
+                    "text": "The **Menger Sponge** geometry scales exponentially with subdivision depth. Using Vulkan **Instance Rendering**, the engine renders millions of cubes while an **Autonomous Camera System** queries the spatial grid to interpolate collision-free trajectories through the fractal voids."
+                },
+                {
+                    "type": "paragraph",
+                    "text": "To support thousands of dynamic point lights without frame-rate degradation, the CPU pre-computes light influence radii and packs per-instance light indices into **Shader Storage Buffer Objects (SSBOs)** so each fragment evaluates only affecting lights."
+                },
+                {
+                    "type": "gallery",
+                    "items": [
+                        { "mediaType": "video", "src": "videos/menger_look.mp4", "caption": "Recursive Fractal Geometry" },
+                        { "mediaType": "video", "src": "videos/menger_rot.mp4", "caption": "Level-5 Interior Light Culling" }
+                    ]
+                }
+            ]
+        }
+    ],
+    "experience": [
+        {
+            "period": "2023 - Present",
+            "role": "MSc in Computer Science & Engineering",
+            "organization": "Polytechnic University of Milan",
+            "category": "Education",
+            "description": "Specializing in **Computer Graphics** and Game Development, with a minor in Artificial Intelligence and Operational Research."
+        },
+        {
+            "period": "2023 - 2024",
+            "role": "Junior Full Stack Developer",
+            "organization": "Reply",
+            "category": "Experience",
+            "description": "Developed and maintained enterprise software platforms for the **public healthcare organization** in Lombardy, Italy."
+        },
+        {
+            "period": "2020 - 2023",
+            "role": "BSc in Computer Engineering",
+            "organization": "Polytechnic University of Milan",
+            "category": "Education",
+            "description": "Completed undergraduate coursework in **Computer Science and Engineering**."
+        },
+        {
+            "period": "2018 - 2019",
+            "role": "International Exchange Program",
+            "organization": "AFS Intercultural Programs — Conard High School (CT, USA)",
+            "category": "Education",
+            "description": "Completed fourth year of high school in West Hartford, Connecticut, taking my first formal coursework in **Computer Science**."
+        },
+        {
+            "period": "2015 - 2020",
+            "role": "Scientific High School Diploma",
+            "organization": "Liceo Scientifico Giulietta Banzi Bazoli",
+            "category": "Education",
+            "description": "Completed scientific high school curriculum in Lecce, Italy."
+        }
+    ]
+}
