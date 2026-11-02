@@ -61,14 +61,34 @@ async function syncSessionPreview(writeToDisk = false) {
     }
 }
 
+const ORDER_CONFIG = {
+    projects:   { listId: 'admin-project-list', getActive: () => activeProjectIndex, setActive: v => { activeProjectIndex = v; } },
+    articles:   { listId: 'admin-article-list', getActive: () => activeArticleIndex, setActive: v => { activeArticleIndex = v; } },
+    experience: { listId: 'admin-exp-list',     getActive: () => activeExpIndex,     setActive: v => { activeExpIndex = v; } }
+};
+
+function adminListItemHTML(key, idx, total, label, isActive, selectFn) {
+    return `
+        <div class="admin-list-item ${isActive ? 'active' : ''}" draggable="true" data-list="${key}" data-index="${idx}" onclick="${selectFn}(${idx})">
+            <span class="admin-drag-handle" title="Drag to reorder">&#8942;&#8942;</span>
+            <span class="admin-item-label">${escapeHTML(label)}</span>
+            <span class="admin-order-btns">
+                <button type="button" class="order-btn" title="Move up" ${idx === 0 ? 'disabled' : ''}
+                    onclick="event.stopPropagation(); moveAdminItem('${key}', ${idx}, ${idx - 1})">&#9650;</button>
+                <button type="button" class="order-btn" title="Move down" ${idx === total - 1 ? 'disabled' : ''}
+                    onclick="event.stopPropagation(); moveAdminItem('${key}', ${idx}, ${idx + 2})">&#9660;</button>
+            </span>
+        </div>
+    `;
+}
+
 function renderAdminSidebarLists() {
     const projList = document.getElementById('admin-project-list');
     if (projList) {
-        projList.innerHTML = siteData.projects.map((p, idx) => `
-            <div class="admin-list-item ${idx === activeProjectIndex ? 'active' : ''}" onclick="selectAdminProject(${idx})">
-                ${p.title || 'Untitled Project'}
-            </div>
-        `).join('');
+        const n = siteData.projects.length;
+        projList.innerHTML = siteData.projects.map((p, idx) =>
+            adminListItemHTML('projects', idx, n, p.title || 'Untitled Project', idx === activeProjectIndex, 'selectAdminProject')
+        ).join('');
     }
 
     const artList = document.getElementById('admin-article-list');
@@ -76,22 +96,100 @@ function renderAdminSidebarLists() {
         if (siteData.articles.length === 0) {
             artList.innerHTML = `<div class="card-meta">No articles (Section hidden on site)</div>`;
         } else {
-            artList.innerHTML = siteData.articles.map((a, idx) => `
-                <div class="admin-list-item ${idx === activeArticleIndex ? 'active' : ''}" onclick="selectAdminArticle(${idx})">
-                    ${a.title || 'Untitled Article'}
-                </div>
-            `).join('');
+            const n = siteData.articles.length;
+            artList.innerHTML = siteData.articles.map((a, idx) =>
+                adminListItemHTML('articles', idx, n, a.title || 'Untitled Article', idx === activeArticleIndex, 'selectAdminArticle')
+            ).join('');
         }
     }
 
     const expList = document.getElementById('admin-exp-list');
     if (expList) {
-        expList.innerHTML = siteData.experience.map((e, idx) => `
-            <div class="admin-list-item ${idx === activeExpIndex ? 'active' : ''}" onclick="selectAdminExp(${idx})">
-                ${e.role || 'Untitled'} (${e.period || ''})
-            </div>
-        `).join('');
+        const n = siteData.experience.length;
+        expList.innerHTML = siteData.experience.map((e, idx) =>
+            adminListItemHTML('experience', idx, n, `${e.role || 'Untitled'} (${e.period || ''})`, idx === activeExpIndex, 'selectAdminExp')
+        ).join('');
     }
+}
+
+// Moves the item at `from` so it ends up just before original index `insertPos`
+// (insertPos === array length means "to the end"). The editor form is left
+// untouched, so unsaved edits to the open item are not lost.
+window.moveAdminItem = function(key, from, insertPos) {
+    const arr = siteData[key];
+    const cfg = ORDER_CONFIG[key];
+    if (!Array.isArray(arr) || !cfg || from < 0 || from >= arr.length) return;
+
+    insertPos = Math.max(0, Math.min(arr.length, insertPos));
+    const to = insertPos > from ? insertPos - 1 : insertPos;
+    if (to === from) return;
+
+    const activeItem = arr[cfg.getActive()];
+    const [item] = arr.splice(from, 1);
+    arr.splice(to, 0, item);
+
+    const newActive = arr.indexOf(activeItem);
+    cfg.setActive(newActive >= 0 ? newActive : 0);
+
+    renderAdminSidebarLists();
+    syncSessionPreview();
+    updateStatus('Order updated (Apply or Publish to save)', true);
+};
+
+function initOrderDragAndDrop() {
+    let drag = null;
+    const ITEM = '.admin-list-item[data-index]';
+
+    Object.entries(ORDER_CONFIG).forEach(([key, cfg]) => {
+        const list = document.getElementById(cfg.listId);
+        if (!list) return;
+
+        const clearMarks = () => list.querySelectorAll('.dragging, .drop-before, .drop-after')
+            .forEach(el => el.classList.remove('dragging', 'drop-before', 'drop-after'));
+
+        const isAfter = (e, item) => {
+            const rect = item.getBoundingClientRect();
+            return e.clientY > rect.top + rect.height / 2;
+        };
+
+        list.addEventListener('dragstart', e => {
+            const item = e.target.closest && e.target.closest(ITEM);
+            if (!item) return;
+            drag = { key, from: Number(item.dataset.index) };
+            item.classList.add('dragging');
+            if (e.dataTransfer) {
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', String(drag.from)); // required by Firefox
+            }
+        });
+
+        list.addEventListener('dragover', e => {
+            if (!drag || drag.key !== key) return;
+            const item = e.target.closest(ITEM);
+            if (!item) return;
+            e.preventDefault();
+            list.querySelectorAll('.drop-before, .drop-after')
+                .forEach(el => el.classList.remove('drop-before', 'drop-after'));
+            item.classList.add(isAfter(e, item) ? 'drop-after' : 'drop-before');
+        });
+
+        list.addEventListener('drop', e => {
+            if (!drag || drag.key !== key) return;
+            const item = e.target.closest(ITEM);
+            if (!item) return;
+            e.preventDefault();
+            const insertPos = Number(item.dataset.index) + (isAfter(e, item) ? 1 : 0);
+            const from = drag.from;
+            drag = null;
+            clearMarks();
+            window.moveAdminItem(key, from, insertPos);
+        });
+
+        list.addEventListener('dragend', () => {
+            drag = null;
+            clearMarks();
+        });
+    });
 }
 
 function buildBlockEditorHTML(block, idx, prefix) {
@@ -353,6 +451,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById(btn.dataset.tab).classList.add('active');
         });
     });
+
+    initOrderDragAndDrop();
 
     const savedToken = sessionStorage.getItem('fc_gh_pat');
     if (savedToken) {

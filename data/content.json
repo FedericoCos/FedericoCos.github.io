@@ -5,9 +5,14 @@
             "id": "path-tracer-gaussian-splatting",
             "title": "Path Tracer & Gaussian Splatting",
             "image": "images/corridor_pc.webp",
-            "tags": ["Vulkan", "Path Tracing", "Gaussian Splatting", "C++"],
-            "link": "https://github.com/FedericoCos/PathTracer_GaussianSplatting",
-            "linkText": "View Repository",
+            "tags": [
+                "Vulkan",
+                "Path Tracing",
+                "Gaussian Splatting",
+                "C++"
+            ],
+            "link": "https://www.scs-europe.net/dlib/2026/ecms2026acceptedpapers/0762_3dmod_ecms2026_0127.pdf",
+            "linkText": "View Pubblication",
             "summary": "Custom Vulkan engine with **path tracing** capabilities. Simulates a **toroidal sensor** to perform geometric and photometric acquisition and generates a synthetic dataset for a **Gaussian Splatting** model.",
             "blocks": [
                 {
@@ -23,27 +28,55 @@
                 },
                 {
                     "type": "paragraph",
-                    "text": "Once the scene converges, a **Toroidal Sensor** performs dual acquisition: it samples the scene to generate a dense **Point Cloud** using Uniform, Halton, or custom **Importance Sampling**, and captures multi-view photometric images along the centerline of the torus."
+                    "text": "Once the scene converges, a **Toroidal Sensor** performs dual acquisition: it samples the scene to generate a dense **Point Cloud** using several **Sampling** techniques (Halton, Uniform, Stratified, importance sampling methods, etc.), and captures multi-view photometric images along the centerline of the torus."
                 },
                 {
                     "type": "gallery",
                     "items": [
-                        { "mediaType": "image", "src": "images/room_base.webp", "caption": "Base Scene" },
-                        { "mediaType": "image", "src": "images/room_point.webp", "caption": "Generated Point Cloud" },
-                        { "mediaType": "image", "src": "images/room_view1.webp", "caption": "Sensor View 1" },
-                        { "mediaType": "image", "src": "images/room_view2.webp", "caption": "Sensor View 2" }
+                        {
+                            "mediaType": "image",
+                            "src": "images/room_base.webp",
+                            "caption": "Base Scene"
+                        },
+                        {
+                            "mediaType": "image",
+                            "src": "images/room_point.webp",
+                            "caption": "Generated Point Cloud"
+                        },
+                        {
+                            "mediaType": "image",
+                            "src": "images/room_view1.webp",
+                            "caption": "Sensor View 1"
+                        },
+                        {
+                            "mediaType": "image",
+                            "src": "images/room_view2.webp",
+                            "caption": "Sensor View 2"
+                        }
                     ]
                 },
                 {
                     "type": "paragraph",
-                    "text": "Decoupling geometric and photometric acquisition makes point cloud density independent of the number of camera views, enabling the Gaussian Splatting model to converge rapidly with a compact training set."
+                    "text": "Decoupling geometric and photometric acquisition makes point cloud density independent of the number of camera views, enabling the Gaussian Splatting model to converge rapidly with a compact training set without sacrificing visual fidelity. Additionally, the convergence speed of the model shrinks as it does not need to perform heavy refinement steps such as the Adaptive Density Control (ADC), since the number of primitives is fixed by the acquisition phase. All the results of this project have been presented in the ECMS conference 2026."
                 },
                 {
                     "type": "gallery",
                     "items": [
-                        { "mediaType": "image", "src": "images/sponza_gs_1.webp", "caption": "Sponza Reconstruction" },
-                        { "mediaType": "image", "src": "images/star_gs_1.webp", "caption": "Behemoth Reconstruction" },
-                        { "mediaType": "image", "src": "images/bistro_int_gs_1.webp", "caption": "Bistro Reconstruction" }
+                        {
+                            "mediaType": "image",
+                            "src": "images/sponza_gs_1.webp",
+                            "caption": "Sponza Reconstruction"
+                        },
+                        {
+                            "mediaType": "image",
+                            "src": "images/star_gs_1.webp",
+                            "caption": "Behemoth Reconstruction"
+                        },
+                        {
+                            "mediaType": "image",
+                            "src": "images/bistro_int_gs_1.webp",
+                            "caption": "Bistro Reconstruction"
+                        }
                     ]
                 }
             ]
@@ -52,7 +85,10 @@
             "id": "nailed-it",
             "title": "Nailed-It",
             "image": "images/nailedit_wallpaper.webp",
-            "tags": ["Unity2D", "C#"],
+            "tags": [
+                "Unity2D",
+                "C#"
+            ],
             "link": "https://polimi-game-collective.itch.io/nailed-it",
             "linkText": "Play on Itch.io",
             "summary": "2D platformer developed in **Unity** combining precision platforming with custom point-and-shoot nail physics.",
@@ -66,7 +102,7 @@
                     "mediaType": "video",
                     "src": "videos/nailed-it.mp4",
                     "caption": "Custom Raycast Character Controller",
-                    "text": "Character locomotion and collision detection were **written from scratch** using Unity's **Raycast system** rather than built-in rigidbody physics. The controller implements variable jump heights, coyote time, and jump buffering inspired by Celeste and Hollow Knight."
+                    "text": "Character movement and collision detection were **written from scratch** using Unity's **Raycast system** rather than built-in rigidbody physics. The controller implements variable jump heights, coyote time, and jump buffering inspired by Celeste and Hollow Knight."
                 },
                 {
                     "type": "paragraph",
@@ -75,9 +111,62 @@
                 {
                     "type": "gallery",
                     "items": [
-                        { "mediaType": "video", "src": "gifs/g1.mp4", "caption": "Create Your Path" },
-                        { "mediaType": "video", "src": "gifs/g2.mp4", "caption": "Block Obstacles" },
-                        { "mediaType": "video", "src": "gifs/g3.mp4", "caption": "Hazard Navigation" }
+                        {
+                            "mediaType": "video",
+                            "src": "gifs/g1.mp4",
+                            "caption": "Create Your Path"
+                        },
+                        {
+                            "mediaType": "video",
+                            "src": "gifs/g2.mp4",
+                            "caption": "Block Obstacles"
+                        },
+                        {
+                            "mediaType": "video",
+                            "src": "gifs/g3.mp4",
+                            "caption": "Hazard Navigation"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "real-time-menger-sponge",
+            "title": "Real-Time Menger Sponge",
+            "image": "images/menger.webp",
+            "tags": [
+                "Vulkan",
+                "C++",
+                "GLSL"
+            ],
+            "link": "https://github.com/FedericoCos/Menger",
+            "linkText": "View Code",
+            "summary": "Vulkan engine rendering recursive **Menger Sponge** fractals in real time via **Instance Rendering**, **SSBO Light Culling**, and an **Autonomous Camera**.",
+            "blocks": [
+                {
+                    "type": "split",
+                    "mediaType": "video",
+                    "src": "videos/mini_menger.mp4",
+                    "caption": "Autonomous Pathfinding Camera",
+                    "text": "The **Menger Sponge** geometry scales exponentially with subdivision depth. Using Vulkan **Instance Rendering**, the engine renders millions of cubes while an **Autonomous Camera System** queries the spatial grid to interpolate collision-free trajectories through the fractal voids."
+                },
+                {
+                    "type": "paragraph",
+                    "text": "To support thousands of dynamic point lights without frame-rate degradation, the CPU pre-computes light influence radii and packs per-instance light indices into **Shader Storage Buffer Objects (SSBOs)** so each fragment evaluates only affecting lights."
+                },
+                {
+                    "type": "gallery",
+                    "items": [
+                        {
+                            "mediaType": "video",
+                            "src": "videos/menger_look.mp4",
+                            "caption": "Recursive Fractal Geometry"
+                        },
+                        {
+                            "mediaType": "video",
+                            "src": "videos/menger_rot.mp4",
+                            "caption": "Level-5 Interior Light Culling"
+                        }
                     ]
                 }
             ]
@@ -86,7 +175,11 @@
             "id": "first-raster-engine",
             "title": "First Raster Engine",
             "image": "images/first_wallpaper.webp",
-            "tags": ["Vulkan", "Rasterization", "C++"],
+            "tags": [
+                "Vulkan",
+                "Rasterization",
+                "C++"
+            ],
             "link": "https://github.com/FedericoCos/FirstRasterEngine",
             "linkText": "View Code",
             "summary": "Custom **Vulkan Engine** built to explore explicit GPU memory management, the **rendering pipeline**, and 3D collision detection.",
@@ -100,14 +193,26 @@
                     "mediaType": "video",
                     "src": "videos/CG_video.mp4",
                     "caption": "Real-Time Gameplay & GJK Collisions",
-                    "text": "On top of the renderer, I built a time-trial racing game featuring a custom **GJK collision detection algorithm** restricted to lower mesh sub-volumes for efficient obstacle tests, paired with **Phong** and **Cook-Torrance** shading models."
+                    "text": "On top of the renderer, I built a time-trial racing game featuring a custom **GJK collision detection algorithm** restricted to lower mesh sub-volumes for efficient obstacle tests. Lighting is implemented exploiting **Phong** and **Cook-Torrance** shading models."
                 },
                 {
                     "type": "gallery",
                     "items": [
-                        { "mediaType": "image", "src": "images/menu.webp", "caption": "Vehicle Selection" },
-                        { "mediaType": "image", "src": "images/ferrari_game.webp", "caption": "Third-Person Camera" },
-                        { "mediaType": "image", "src": "images/first_person_view.webp", "caption": "Cockpit Camera" }
+                        {
+                            "mediaType": "image",
+                            "src": "images/menu.webp",
+                            "caption": "Vehicle Selection"
+                        },
+                        {
+                            "mediaType": "image",
+                            "src": "images/ferrari_game.webp",
+                            "caption": "Third-Person Camera"
+                        },
+                        {
+                            "mediaType": "image",
+                            "src": "images/first_person_view.webp",
+                            "caption": "Cockpit Camera"
+                        }
                     ]
                 }
             ]
@@ -116,7 +221,12 @@
             "id": "opengl-sc-vs-desktop",
             "title": "OpenGL-SC vs OpenGL-Desktop",
             "image": "images/bag_wallpaper.webp",
-            "tags": ["OpenGL", "OpenGL-SC", "Python", "C++"],
+            "tags": [
+                "OpenGL",
+                "OpenGL-SC",
+                "Python",
+                "C++"
+            ],
             "link": "resources/opengl.pdf",
             "linkText": "View Technical Report",
             "summary": "Comparative benchmark and determinism study of **OpenGL-SC** versus **OpenGL-Desktop** for **safety-critical** avionics and automotive systems.",
@@ -139,9 +249,21 @@
                 {
                     "type": "gallery",
                     "items": [
-                        { "mediaType": "image", "src": "images/menger_world(1).webp", "caption": "Fragment-Emulated Menger Fractal" },
-                        { "mediaType": "image", "src": "images/ThirdScene(1).webp", "caption": "Shadow & Lighting Pass" },
-                        { "mediaType": "image", "src": "images/plot_timings_2_SC.webp", "caption": "Frame-Time Stability Distribution" }
+                        {
+                            "mediaType": "image",
+                            "src": "images/menger_world(1).webp",
+                            "caption": "Fragment-Emulated Menger Fractal"
+                        },
+                        {
+                            "mediaType": "image",
+                            "src": "images/ThirdScene(1).webp",
+                            "caption": "Shadow & Lighting Pass"
+                        },
+                        {
+                            "mediaType": "image",
+                            "src": "images/plot_timings_2_SC.webp",
+                            "caption": "Frame-Time Stability Distribution"
+                        }
                     ]
                 }
             ]
@@ -150,50 +272,37 @@
             "id": "my-shelfie",
             "title": "My Shelfie",
             "image": "images/myshelfie_wall.webp",
-            "tags": ["Java", "JavaFX", "Maven"],
+            "tags": [
+                "Java",
+                "JavaFX",
+                "Maven"
+            ],
             "link": "https://github.com/FedericoCos/MyShelfie",
             "linkText": "View Code",
             "summary": "Distributed client-server implementation of the **Cranio Creations** board game supporting **RMI**, **TCP Sockets**, **JavaFX GUI**, and **ANSI CLI**.",
             "blocks": [
                 {
                     "type": "paragraph",
-                    "text": "Engineered using a strict **Model-View-Controller (MVC)** architecture, **My Shelfie** hosts concurrent multi-player lobbies over a hybrid **Java RMI** and **TCP Socket** networking layer with automated heartbeat detection and disconnect state recovery."
+                    "text": "Developed as the final project for my bachelor thesis, **My Shelfie** is a porting of a board game by Cranio Creations in Java.\n\nUsing a strict **Model-View-Controller (MVC)** architecture, **My Shelfie** hosts concurrent multi-player lobbies over a hybrid **Java RMI** and **TCP Socket** networking layer with automated heartbeat detection and disconnect state recovery."
                 },
                 {
                     "type": "gallery",
                     "items": [
-                        { "mediaType": "image", "src": "images/myshelfie_wall.webp", "caption": "JavaFX Graphical Interface" },
-                        { "mediaType": "image", "src": "images/myshelfie_chat.webp", "caption": "Real-Time Lobby Chat" },
-                        { "mediaType": "image", "src": "images/TUI.webp", "caption": "ANSI Terminal Interface (TUI)" }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": "real-time-menger-sponge",
-            "title": "Real-Time Menger Sponge",
-            "image": "images/menger.webp",
-            "tags": ["Vulkan", "C++", "GLSL"],
-            "link": "https://github.com/FedericoCos/Menger",
-            "linkText": "View Code",
-            "summary": "Vulkan engine rendering recursive **Menger Sponge** fractals in real time via **Instance Rendering**, **SSBO Light Culling**, and an **Autonomous Camera**.",
-            "blocks": [
-                {
-                    "type": "split",
-                    "mediaType": "video",
-                    "src": "videos/mini_menger.mp4",
-                    "caption": "Autonomous Pathfinding Camera",
-                    "text": "The **Menger Sponge** geometry scales exponentially with subdivision depth. Using Vulkan **Instance Rendering**, the engine renders millions of cubes while an **Autonomous Camera System** queries the spatial grid to interpolate collision-free trajectories through the fractal voids."
-                },
-                {
-                    "type": "paragraph",
-                    "text": "To support thousands of dynamic point lights without frame-rate degradation, the CPU pre-computes light influence radii and packs per-instance light indices into **Shader Storage Buffer Objects (SSBOs)** so each fragment evaluates only affecting lights."
-                },
-                {
-                    "type": "gallery",
-                    "items": [
-                        { "mediaType": "video", "src": "videos/menger_look.mp4", "caption": "Recursive Fractal Geometry" },
-                        { "mediaType": "video", "src": "videos/menger_rot.mp4", "caption": "Level-5 Interior Light Culling" }
+                        {
+                            "mediaType": "image",
+                            "src": "images/myshelfie_wall.webp",
+                            "caption": "JavaFX Graphical Interface"
+                        },
+                        {
+                            "mediaType": "image",
+                            "src": "images/myshelfie_chat.webp",
+                            "caption": "Real-Time Lobby Chat"
+                        },
+                        {
+                            "mediaType": "image",
+                            "src": "images/TUI.webp",
+                            "caption": "ANSI Terminal Interface (TUI)"
+                        }
                     ]
                 }
             ]
@@ -201,11 +310,18 @@
     ],
     "experience": [
         {
+            "period": "2026 - Present",
+            "role": "VR\\AR Developer",
+            "organization": "Exprivia",
+            "category": "Experience",
+            "description": "AR\\VR Developer in Unreal Engine. Focus on development of simulated environment to support the training of personnel for Space Missions. Currently working on a project with the European Space Agency (ESA)."
+        },
+        {
             "period": "2023 - Present",
             "role": "MSc in Computer Science & Engineering",
             "organization": "Polytechnic University of Milan",
             "category": "Education",
-            "description": "Specializing in **Computer Graphics** and Game Development, with a minor in Artificial Intelligence and Operational Research."
+            "description": "Specialized in **Computer Graphics** and Game Development, with a minor in Artificial Intelligence and Operational Research. Final Mark: 110L/110."
         },
         {
             "period": "2023 - 2024",
@@ -219,7 +335,7 @@
             "role": "BSc in Computer Engineering",
             "organization": "Polytechnic University of Milan",
             "category": "Education",
-            "description": "Completed undergraduate coursework in **Computer Science and Engineering**."
+            "description": "Completed undergraduate coursework in **Computer Science and Engineering**. Final Mark: 110L/110."
         },
         {
             "period": "2018 - 2019",

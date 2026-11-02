@@ -843,4 +843,84 @@ a {
         color: var(--text-secondary, #9aa0a6);
     }
 
+    .admin-list-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .admin-item-label {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .admin-drag-handle {
+        cursor: grab;
+        color: var(--text-secondary, #9aa0a6);
+        font-size: 0.85rem;
+        letter-spacing: -0.15em;
+        user-select: none;
+        opacity: 0.6;
+    }
+
+    .admin-list-item:hover .admin-drag-handle {
+        opacity: 1;
+    }
+
+    .admin-order-btns {
+        display: flex;
+        gap: 2px;
+        opacity: 0;
+        transition: opacity 0.12s ease;
+    }
+
+    .admin-list-item:hover .admin-order-btns,
+    .admin-list-item:focus-within .admin-order-btns {
+        opacity: 1;
+    }
+
+    /* always visible on touch devices (no hover) */
+    @media (hover: none) {
+        .admin-order-btns { opacity: 1; }
+    }
+
+    .order-btn {
+        width: 22px;
+        height: 22px;
+        padding: 0;
+        border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.12));
+        border-radius: 4px;
+        background: transparent;
+        color: var(--text-secondary, #9aa0a6);
+        font-size: 0.6rem;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .order-btn:hover:not(:disabled) {
+        color: var(--text-primary, inherit);
+        border-color: var(--accent, #4f8cff);
+    }
+
+    .order-btn:disabled {
+        opacity: 0.3;
+        cursor: default;
+    }
+
+    /* drag feedback */
+    .admin-list-item.dragging {
+        opacity: 0.4;
+    }
+
+    .admin-list-item.drop-before {
+        box-shadow: 0 -2px 0 0 var(--accent, #4f8cff);
+    }
+
+    .admin-list-item.drop-after {
+        box-shadow: 0 2px 0 0 var(--accent, #4f8cff);
+    }
+
 }
